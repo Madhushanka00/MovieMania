@@ -7,7 +7,7 @@ export default function Form() {
     <div className="bg-white px-10 py-10 rounded-3xl border-2 border-gray-200">
       <h1 className="text-4xl font-semibold">Welcome Back</h1>
       <p className="font-base text-sm text-grey-500 mt-4">
-        Welcome Back! Please enter your details.
+        Welcome Back to MovieMania ! Please enter your details.
       </p>
       <div className="mt-6">
         <div>
