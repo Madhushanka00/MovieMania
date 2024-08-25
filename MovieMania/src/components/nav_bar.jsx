@@ -3,6 +3,8 @@ import "../styles/nacBar.css";
 import AppsIcon from "@mui/icons-material/Apps";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import SearchBar from "./SearchBar";
+import { InputBase } from "@mui/material";
 
 const NavBar = () => {
   return (
@@ -13,12 +15,14 @@ const NavBar = () => {
         <div className="tabs">Animation</div>
         <div className="tabs">Genres</div>
       </div>
-      <div className="mid"></div>
+      <div className="mid">
+        <SearchBar />
+      </div>
 
       <div className="right">
-        <AccountCircleIcon />
-        <AppsIcon />
-        <NotificationsIcon />
+        <AccountCircleIcon className="apps" />
+        <AppsIcon className="apps" />
+        <NotificationsIcon className="apps" />
       </div>
     </div>
   );
