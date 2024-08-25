@@ -23,7 +23,7 @@ const Home = () => {
         <LogoutOutlinedIcon className="bottomIcon" />
       </div>
       <div className="content">
-        <NavBar />
+        <NavBar className="navSection" />
         <div className="section">
           <h1>Most Popular</h1>
           <div className="moviesArea" category="popular">

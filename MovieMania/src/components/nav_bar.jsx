@@ -14,6 +14,7 @@ const NavBar = () => {
         <div className="tabs">Series</div>
         <div className="tabs">Animation</div>
         <div className="tabs">Genres</div>
+        <div className="tabs">Ask AI</div>
       </div>
       <div className="mid">
         <SearchBar />
