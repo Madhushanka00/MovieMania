@@ -8,7 +8,36 @@ body, html, #root {
   height: 100vh;
 }
 .mainlayout .drawer {
+  display: flex;
+  flex-direction: column;
   width: 5%;
+  border-right: 1px solid rgba(255, 255, 255, 0.186);
+  background: #2d3436;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2), 2px 0 5px rgba(0, 0, 0, 0.1) !important;
+  place-items: center;
+  align-content: center;
+}
+.mainlayout .drawer .mainicon {
+  color: white;
+  width: 120%;
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+.mainlayout .drawer .Icons {
+  color: white;
+  width: 120%;
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  /* Additional subtle right-side shadow */
+}
+.mainlayout .drawer .bottomIcon {
+  position: absolute;
+  color: white;
+  width: 120%;
+  font-size: 30px;
+  bottom: 30px;
 }
 .mainlayout .content {
   width: 95%;
