@@ -7,6 +7,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
+import MoviesArea from "./components/MovieArea";
 // import
 import "./styles/home.css";
 
@@ -24,6 +25,7 @@ const Home = () => {
       <div className="content">
         <NavBar />
         <div className="moviesArea" />
+        <MoviesArea />
       </div>
     </div>
   );
