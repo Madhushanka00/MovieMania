@@ -54,7 +54,7 @@ body, html, #root {
 }
 .mainlayout .content .section .moviesArea {
   display: flex;
-  height: 90vh;
+  height: auto;
   overflow-x: scroll;
   scroll-behavior: smooth;
   -ms-overflow-style: none;

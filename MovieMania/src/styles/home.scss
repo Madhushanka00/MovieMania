@@ -75,7 +75,7 @@ body, html, #root {
             & .moviesArea{
                 display: flex;
                 // flex-direction: column;
-                height: 90vh;
+                height: auto;
                 // overflow: hidden;
                 overflow-x: scroll; 
                 // overflow-y: none;

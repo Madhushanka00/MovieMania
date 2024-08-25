@@ -26,7 +26,11 @@ const Home = () => {
         <NavBar />
         <div className="section">
           <h1>Most Popular</h1>
-          <div className="moviesArea">
+          <div className="moviesArea" category="popular">
+            <MoviesArea />
+          </div>
+          <h1>You might like</h1>
+          <div className="moviesArea" category="popular">
             <MoviesArea />
           </div>
         </div>

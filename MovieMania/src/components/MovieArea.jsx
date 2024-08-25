@@ -3,7 +3,7 @@ import axios from "axios";
 import MovieCard from "./MovieCard"; // import your MovieCard component
 import "../styles/movieArea.css";
 
-const MoviesArea = () => {
+const MoviesArea = ({ category }) => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const MoviesArea = () => {
       }
     };
     fetchMovies();
-  }, []);
+  }, [category]); // Dependency on category to refetch when it changes
   return (
     <div className="moviesArea_next">
       {movies.map((movie) => (
