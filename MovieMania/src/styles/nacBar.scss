@@ -1,6 +1,6 @@
 .ribbon{
     display: flex;
-    background-color: black;
+    background-color: #2d3436;
     height: 7vh;
     color: antiquewhite;
     align-items: center;
@@ -28,6 +28,14 @@
     }
     & .mid{
         width: 40%;
+        justify-content: left;
+        & .Searchbar{
+            position: relative;
+            // top:10px
+        }
+
+
+        
     }
     & .right{
         display: flex;
@@ -36,10 +44,11 @@
         flex-direction: row-reverse;
         right:10px !important;
         margin-right: 20px;
+        
 
         & .apps{
             position: relative;
-            right:20px
+            margin-right:20px
         }
     }
 

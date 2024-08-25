@@ -1,6 +1,6 @@
 .ribbon {
   display: flex;
-  background-color: black;
+  background-color: #2d3436;
   height: 7vh;
   color: antiquewhite;
   align-items: center;
@@ -23,6 +23,10 @@
 }
 .ribbon .mid {
   width: 40%;
+  justify-content: left;
+}
+.ribbon .mid .Searchbar {
+  position: relative;
 }
 .ribbon .right {
   display: flex;
@@ -34,5 +38,5 @@
 }
 .ribbon .right .apps {
   position: relative;
-  right: 20px;
+  margin-right: 20px;
 }/*# sourceMappingURL=nacBar.css.map */
