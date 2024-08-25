@@ -1,30 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import MovieCard from "./MovieCard"; // import your MovieCard component
 import "../styles/movieArea.css";
 
-const movies = [
-  {
-    title: "Inception",
-    overview:
-      "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.",
-    posterUrl:
-      "https://image.tmdb.org/t/p/w500//9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg",
-  },
-  {
-    title: "Interstellar",
-    overview:
-      "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
-    posterUrl:
-      "https://image.tmdb.org/t/p/w500//rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg",
-  },
-  // Add more movies here
-];
-
 const MoviesArea = () => {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/movie/popular?api_key=d71c0d1fc2dbb217c92ab366689201ae&language=en-US&page=1`
+        );
+        setMovies(response.data.results);
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+      }
+    };
+    fetchMovies();
+  }, []);
   return (
     <div className="moviesArea">
-      {movies.map((movie, index) => (
-        <MovieCard key={index} movie={movie} />
+      {movies.map((movie) => (
+        <MovieCard
+          key={movie.id}
+          movie={{
+            title: movie.title,
+            ratings: movie.ratings,
+            posterUrl: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+          }}
+        />
       ))}
     </div>
   );

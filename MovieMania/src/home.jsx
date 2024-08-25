@@ -24,8 +24,9 @@ const Home = () => {
       </div>
       <div className="content">
         <NavBar />
-        <div className="moviesArea" />
-        <MoviesArea />
+        <div className="moviesArea">
+          <MoviesArea />
+        </div>
       </div>
     </div>
   );

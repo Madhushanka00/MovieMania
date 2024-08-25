@@ -58,9 +58,15 @@ body, html, #root {
     }
     & .content{
         width: 95%;
-background:#191a1a;
+        background:#191a1a;
+
         & .moviesArea{
-            
+            height: 90vh;
+            // overflow: hidden;
+            overflow-x: none; 
+            overflow-y: none;
+            scroll-behavior: smooth; 
+  
         }
     }
 

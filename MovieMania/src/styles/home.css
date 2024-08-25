@@ -42,4 +42,10 @@ body, html, #root {
 .mainlayout .content {
   width: 95%;
   background: #191a1a;
+}
+.mainlayout .content .moviesArea {
+  height: 90vh;
+  overflow-x: none;
+  overflow-y: none;
+  scroll-behavior: smooth;
 }/*# sourceMappingURL=home.css.map */
