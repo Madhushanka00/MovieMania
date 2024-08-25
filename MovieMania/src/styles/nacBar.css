@@ -1,0 +1,38 @@
+.ribbon {
+  display: flex;
+  background-color: black;
+  height: 7vh;
+  color: antiquewhite;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+.ribbon .left {
+  display: flex;
+  flex-direction: row;
+  width: 40%;
+}
+.ribbon .left .tabs {
+  display: flex;
+  margin-left: 2%;
+  height: 4.5vh;
+  padding-left: 1%;
+  padding-right: 1%;
+  justify-content: center;
+  align-items: center;
+}
+.ribbon .mid {
+  width: 40%;
+}
+.ribbon .right {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 20%;
+  flex-direction: row-reverse;
+  right: 10px !important;
+  margin-right: 20px;
+}
+.ribbon .right .apps {
+  position: relative;
+  right: 20px;
+}/*# sourceMappingURL=nacBar.css.map */
