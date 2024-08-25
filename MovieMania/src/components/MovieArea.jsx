@@ -20,7 +20,7 @@ const MoviesArea = () => {
     fetchMovies();
   }, []);
   return (
-    <div className="moviesArea">
+    <div className="moviesArea_next">
       {movies.map((movie) => (
         <MovieCard
           key={movie.id}

@@ -42,10 +42,27 @@ body, html, #root {
 .mainlayout .content {
   width: 95%;
   background: #191a1a;
-}
-.mainlayout .content .moviesArea {
-  height: 90vh;
-  overflow-x: none;
-  overflow-y: none;
+  overflow-y: scroll;
   scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.mainlayout .content .section h1 {
+  color: azure;
+  margin-top: 20px;
+  font-size: 25px;
+  margin-left: 25px;
+}
+.mainlayout .content .section .moviesArea {
+  display: flex;
+  height: 90vh;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.mainlayout .content .section .moviesArea::-webkit-scrollbar {
+  display: none;
+}
+.mainlayout .content::-webkit-scrollbar {
+  display: none;
 }/*# sourceMappingURL=home.css.map */

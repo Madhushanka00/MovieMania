@@ -24,8 +24,11 @@ const Home = () => {
       </div>
       <div className="content">
         <NavBar />
-        <div className="moviesArea">
-          <MoviesArea />
+        <div className="section">
+          <h1>Most Popular</h1>
+          <div className="moviesArea">
+            <MoviesArea />
+          </div>
         </div>
       </div>
     </div>

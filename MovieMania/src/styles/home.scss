@@ -59,15 +59,41 @@ body, html, #root {
     & .content{
         width: 95%;
         background:#191a1a;
-
-        & .moviesArea{
-            height: 90vh;
-            // overflow: hidden;
-            overflow-x: none; 
-            overflow-y: none;
+        overflow-y: scroll; 
+            // overflow-y: none;
             scroll-behavior: smooth; 
-  
-        }
+
+        & .section{
+
+            & h1{
+                color: azure;
+                margin-top: 20px;
+                font-size: 25px;
+                margin-left: 25px;
+            }
+
+            & .moviesArea{
+                display: flex;
+                // flex-direction: column;
+                height: 90vh;
+                // overflow: hidden;
+                overflow-x: scroll; 
+                // overflow-y: none;
+                scroll-behavior: smooth; 
+                &::-webkit-scrollbar {
+                            display: none;
+                        }
+                        // Hide scrollbar for Internet Explorer and Edge
+                        -ms-overflow-style: none;
+                        
+                        // Hide scrollbar for Firefox
+                        scrollbar-width: none;
+                }
+    }
+    &::-webkit-scrollbar {
+        display: none;
+      }
+       scrollbar-width: none; 
     }
 
 

@@ -1,6 +1,8 @@
-.moviesArea {
+.moviesArea_next {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
+  height: 20vh;
   padding: 20px;
 }/*# sourceMappingURL=movieArea.css.map */

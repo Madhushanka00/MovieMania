@@ -1,8 +1,9 @@
-.moviesArea {
+.moviesArea_next {
     display: flex;
-    // flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
+    height: 20vh;
     // overflow: scroll;
     // scroll-behavior: smooth;
     padding: 20px;
