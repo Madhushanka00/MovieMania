@@ -1,0 +1,16 @@
+body, html, #root {
+  height: 100%;
+  margin: 0;
+}
+
+.mainlayout {
+  display: flex;
+  height: 100vh;
+}
+.mainlayout .drawer {
+  width: 5%;
+}
+.mainlayout .content {
+  width: 95%;
+  background: #2d3436;
+}/*# sourceMappingURL=home.css.map */

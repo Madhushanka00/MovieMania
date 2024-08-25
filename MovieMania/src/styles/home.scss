@@ -1,0 +1,32 @@
+body, html, #root {
+    height: 100%;
+    margin: 0;
+  }
+  
+
+
+.mainlayout{
+    display: flex;
+    // flex-direction: row;
+    height: 100vh;
+
+    // .drawer, .content {
+    //     flex: 1;
+    // }
+
+    & .drawer{
+        width: 5%;
+        // border-right: 1px solid white;
+        
+
+    }
+    & .content{
+        width: 95%;
+background:#2d3436;
+        & .moviesArea{
+            
+        }
+    }
+
+
+}
