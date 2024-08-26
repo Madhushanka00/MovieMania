@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+// import dotenv from "dotenv";
 import MovieCard from "./MovieCard"; // import your MovieCard component
 import "../styles/movieArea.css";
 
+// dotenv.config();
+
 const MoviesArea = ({ category }) => {
   const [movies, setMovies] = useState([]);
+  // console.log("API Key:", process.env.REACT_APP_TMDB_API_KEY);
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
         const response = await axios.get(
-          `https://api.themoviedb.org/3/movie/popular?api_key=d71c0d1fc2dbb217c92ab366689201ae&language=en-US&page=1`
+          `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
         );
         setMovies(response.data.results);
       } catch (error) {
