@@ -1,15 +1,29 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { InputBase } from "@mui/material";
 import "../styles/searchbar.css";
 import SearchIcon from "@mui/icons-material/Search";
 export default function SearchBar() {
+  const [query, setQuery] = useState("");
+
+  const handleSearchClick = () => {
+    if (query != "") {
+      console.log(query);
+    }
+  };
+
   return (
     <div className="Searchbar">
       <div className="inputSearch">
-        <SearchIcon />
-        <input type="text" placeholder="Search..." />
+        <SearchIcon onClick={handleSearchClick} style={{ cursor: "pointer" }} />
+        <input
+          type="text"
+          placeholder="Search Movies here..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
       </div>
     </div>
   );
