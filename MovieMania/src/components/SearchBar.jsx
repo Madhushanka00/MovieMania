@@ -13,6 +13,11 @@ export default function SearchBar() {
       console.log(query);
     }
   };
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleSearchClick();
+    }
+  };
 
   return (
     <div className="Searchbar">
@@ -23,6 +28,7 @@ export default function SearchBar() {
           placeholder="Search Movies here..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
       </div>
     </div>
