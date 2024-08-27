@@ -27,6 +27,11 @@
     border: 2px solid rgba(255,255,255,0.18);
     box-shadow: 0 8px 32px 0 rgba(220, 221, 228, 0.37);
 
+    & .loadingScreen{
+        align-items: center;
+        justify-content: center;
+    }
+
     & .Construction{
         display: flex;
 
@@ -144,6 +149,27 @@
                 & p{
                     font-family: system-ui;
                     padding-left: 10px;
+                    letter-spacing: 1px;
+                    font-size: .9rem;
+                }
+            }
+
+            & .myRatings{
+                position: absolute;
+                bottom: 20px;
+                right: 5%;
+                font-size: medium;
+                color: aliceblue;
+                // background-color: aliceblue;
+
+                & .stars{
+                    // background-color: rgb(255, 255, 255);
+                    padding: 5px;
+                    // border: solid white 1px;
+                    border-radius: 10px;
+                    background-color: rgba(240, 248, 255, 0.382);
+                    box-shadow: 1px 1px 10px #f6f0f046;
+                    
                 }
             }
             

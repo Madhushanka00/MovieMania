@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import "../styles/DetailedView.css";
 import StarIcon from "@mui/icons-material/Star";
 import CloseIcon from "@mui/icons-material/Close";
+import { Rate } from "antd";
+import { yellow } from "@mui/material/colors";
 
 const DetailedView = () => {
   const [movie, setMovie] = useState("");
@@ -63,7 +65,10 @@ const DetailedView = () => {
                 <h3 className="ttle">Overview</h3>
                 <p>{movie.overview}</p>
               </div>
-
+              <div className="myRatings">
+                How much I like {"  "}
+                <Rate allowHalf className="stars" />
+              </div>
               {/* Render other movie details here */}
             </div>
           </div>
