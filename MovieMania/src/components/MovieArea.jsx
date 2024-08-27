@@ -4,29 +4,16 @@ import axios from "axios";
 import MovieCard from "./MovieCard"; // import your MovieCard component
 import "../styles/movieArea.css";
 
-import io from "socket.io-client";
-
-const socket = io("http://localhost:5000");
-// dotenv.config();
-
 const MoviesArea = ({ category }) => {
   const [movies, setMovies] = useState([]);
   // console.log("API Key:", process.env.REACT_APP_TMDB_API_KEY);
   useEffect(() => {
-    socket.on("connect", () => {
-      console.log("Connected to the server");
-
-      socket.emit("get_movies");
-
-      socket.on("response", (data) => {
-        console.log(data.message);
-        // Handle movie data here
+    fetch("http://localhost:5000/movies/popular")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setMovies(data.results);
       });
-    });
-
-    return () => {
-      socket.disconnect();
-    };
   }, []);
 
   return (
