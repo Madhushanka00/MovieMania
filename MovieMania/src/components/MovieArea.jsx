@@ -15,7 +15,7 @@ const MoviesArea = ({ mode }) => {
       fetch(`http://localhost:5000/movies/popular`)
         .then((res) => res.json())
         .then((data) => {
-          // console.log(data);
+          console.log(data);
           setMovies(data.results);
         });
     } else if (mode === "topRated") {

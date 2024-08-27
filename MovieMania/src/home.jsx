@@ -8,6 +8,7 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import MoviesArea from "./components/MovieArea";
+import DetailedView from "./components/DetailedView";
 // import
 import "./styles/home.css";
 
@@ -33,6 +34,9 @@ const Home = () => {
           <div className="moviesArea">
             <MoviesArea mode="topRated" />
           </div>
+        </div>
+        <div className="detailedView">
+          <DetailedView />
         </div>
       </div>
     </div>
