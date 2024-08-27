@@ -4,16 +4,28 @@ import axios from "axios";
 import MovieCard from "./MovieCard"; // import your MovieCard component
 import "../styles/movieArea.css";
 
-const MoviesArea = ({ category }) => {
+const MoviesArea = ({ mode }) => {
   const [movies, setMovies] = useState([]);
+  // console.log("Mode:", mode);
+  // const [Mode, setMode] = useState("");
+  // setMode(mode);
   // console.log("API Key:", process.env.REACT_APP_TMDB_API_KEY);
   useEffect(() => {
-    fetch("http://localhost:5000/movies/popular")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setMovies(data.results);
-      });
+    if (mode === "popular") {
+      fetch(`http://localhost:5000/movies/popular`)
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data);
+          setMovies(data.results);
+        });
+    } else if (mode === "topRated") {
+      fetch(`http://localhost:5000/movies/top-rated`)
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data);
+          setMovies(data.results);
+        });
+    }
   }, []);
 
   return (
