@@ -37,6 +37,7 @@ const MoviesArea = ({ mode }) => {
             title: movie.title,
             ratings: movie.ratings,
             posterUrl: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+            id: movie.id,
           }}
         />
       ))}

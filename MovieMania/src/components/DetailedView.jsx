@@ -6,9 +6,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Rate } from "antd";
 import { yellow } from "@mui/material/colors";
 
-const DetailedView = () => {
+const DetailedView = ({ movieId, onClose }) => {
   const [movie, setMovie] = useState("");
-  const movieId = 533535;
+  const [isVisible, setIsVisible] = useState(true);
+  console.log("Movie ID:", movieId);
+  // const movieId = 533535;
 
   useEffect(() => {
     fetch(`http://localhost:5000/getDetails?movieId=${movieId}`)
@@ -22,6 +24,14 @@ const DetailedView = () => {
       });
   }, [movieId]);
 
+  const handleClose = () => {
+    setIsVisible(false); // Hide DetailedView when CloseIcon is clicked
+  };
+
+  if (!isVisible) {
+    return null; // Render nothing if DetailedView is not visible
+  }
+
   return (
     <>
       <div className="overlay"></div>
@@ -34,7 +44,7 @@ const DetailedView = () => {
               className="movie-backdrop"
             />
             <div className="DetailsSection_">
-              <CloseIcon className="close" />
+              <CloseIcon className="close" onClick={onClose} />
               <div className="titleSection_">
                 <h3>{movie.title}</h3>
                 <div className="releaseDate">

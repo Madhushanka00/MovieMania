@@ -35,9 +35,9 @@ const Home = () => {
             <MoviesArea mode="topRated" />
           </div>
         </div>
-        <div className="detailedView">
+        {/* <div className="detailedView">
           <DetailedView />
-        </div>
+        </div> */}
       </div>
     </div>
   );

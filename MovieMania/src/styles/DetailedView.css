@@ -37,7 +37,7 @@
   flex: 1;
   border-radius: 20px 0 0 20px;
   position: relative;
-  height: 89vh;
+  height: 89.5vh;
 }
 .glass .Construction .DetailsSection_ {
   padding-left: 20px;
@@ -67,6 +67,7 @@
   font-size: 2.9rem;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 700;
+  text-align: left !important;
 }
 .glass .Construction .DetailsSection_ .titleSection_ .releaseDate {
   display: flex;
@@ -114,12 +115,14 @@
   color: beige;
   font-weight: 300;
   padding-bottom: 10px;
+  text-align: left !important;
 }
 .glass .Construction .DetailsSection_ .Overview p {
   font-family: system-ui;
   padding-left: 10px;
   letter-spacing: 1px;
   font-size: 0.9rem;
+  text-align: left !important;
 }
 .glass .Construction .DetailsSection_ .myRatings {
   position: absolute;
