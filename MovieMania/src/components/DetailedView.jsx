@@ -9,14 +9,14 @@ import { yellow } from "@mui/material/colors";
 const DetailedView = ({ movieId, onClose }) => {
   const [movie, setMovie] = useState("");
   const [isVisible, setIsVisible] = useState(true);
-  console.log("Movie ID:", movieId);
+  // console.log("Movie ID:", movieId);
   // const movieId = 533535;
 
   useEffect(() => {
     fetch(`http://localhost:5000/getDetails?movieId=${movieId}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setMovie(data);
       })
       .catch((error) => {

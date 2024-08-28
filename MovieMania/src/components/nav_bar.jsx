@@ -6,15 +6,54 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SearchBar from "./SearchBar";
 import { InputBase } from "@mui/material";
 
-const NavBar = () => {
+const NavBar = ({ changeTab }) => {
+  const handleClick = (content) => {
+    console.log(content);
+  };
+
   return (
     <div className="ribbon">
       <div className="left">
-        <div className="tabs">Movies</div>
-        <div className="tabs">Series</div>
-        <div className="tabs">Animation</div>
-        <div className="tabs">Genres</div>
-        <div className="tabs">Ask AI</div>
+        <div
+          className="tabs"
+          onClick={() => {
+            changeTab("Movies");
+          }}
+        >
+          Movies
+        </div>
+        <div
+          className="tabs"
+          onClick={() => {
+            changeTab("Series");
+          }}
+        >
+          Series
+        </div>
+        <div
+          className="tabs"
+          onClick={() => {
+            changeTab("Animation");
+          }}
+        >
+          Animation
+        </div>
+        <div
+          className="tabs"
+          onClick={() => {
+            changeTab("Genres");
+          }}
+        >
+          Genres
+        </div>
+        <div
+          className="tabs"
+          onClick={() => {
+            changeTab("Ask AI");
+          }}
+        >
+          Ask AI
+        </div>
       </div>
       <div className="mid">
         <SearchBar />

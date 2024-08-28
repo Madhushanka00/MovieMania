@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import NavBar from "./components/nav_bar";
 import LeftBar from "./components/leftBar";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
@@ -13,6 +14,37 @@ import DetailedView from "./components/DetailedView";
 import "./styles/home.css";
 
 const Home = () => {
+  const [tab, setTab] = useState("Movies");
+
+  const changeTab = (tab) => {
+    console.log(tab);
+    setTab(tab);
+  };
+
+  const renderContent = () => {
+    switch (tab) {
+      case "Movies":
+        return (
+          <>
+            <h1>Most Popular</h1>
+            <div className="moviesArea">
+              <MoviesArea mode="popular" />
+            </div>
+            <h1>You might like</h1>
+            <div className="moviesArea">
+              <MoviesArea mode="topRated" />
+            </div>
+          </>
+        );
+      case "Series":
+        return <h1>Series</h1>;
+      case "Animation":
+        return <h1>Animation</h1>;
+      default:
+        return <h1>Welcome</h1>;
+    }
+  };
+
   return (
     <div className="mainlayout">
       <div className="drawer">
@@ -24,20 +56,18 @@ const Home = () => {
         <LogoutOutlinedIcon className="bottomIcon" />
       </div>
       <div className="content">
-        <NavBar className="navSection" />
+        <NavBar className="navSection" changeTab={changeTab} />
         <div className="section">
-          <h1>Most Popular</h1>
+          {/* <h1>Most Popular</h1>
           <div className="moviesArea">
             <MoviesArea mode="popular" />
           </div>
           <h1>You might like</h1>
           <div className="moviesArea">
             <MoviesArea mode="topRated" />
-          </div>
+          </div> */}
+          {renderContent()}
         </div>
-        {/* <div className="detailedView">
-          <DetailedView />
-        </div> */}
       </div>
     </div>
   );
