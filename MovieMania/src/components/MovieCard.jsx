@@ -25,9 +25,9 @@ const MovieCard = ({ movie }) => {
       <div className="movie-details" onClick={handleClick}>
         <h3>{movie.title}</h3>
       </div>
-      {goToDetails && (
+      {/* {goToDetails && (
         <DetailedView movieId={movie.id} onClose={hideDetailedView} />
-      )}
+      )} */}
     </div>
   );
 };
