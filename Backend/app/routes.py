@@ -17,6 +17,22 @@ def get_top_rated_movies():
     # Return the results from TMDB API as JSON
     return jsonify(response.json())
 
+@main.route('/movies/upcoming', methods=['GET'])
+def get_upcoming_movies():
+    api_key = current_app.config['TMDB_API_KEY']
+    response = requests.get(f'https://api.themoviedb.org/3/movie/upcoming?api_key={api_key}&language=en-US&page=1')
+    
+    # Return the results from TMDB API as JSON
+    return jsonify(response.json())
+
+@main.route('/TV/popular', methods=['GET'])
+def get_popular_tv():
+    api_key = current_app.config['TMDB_API_KEY']
+    response = requests.get(f'https://api.themoviedb.org/3/tv/popular?api_key={api_key}&language=en-US&page=1')
+    
+    # Return the results from TMDB API as JSON
+    return jsonify(response.json())
+
 @main.route('/getDetails', methods=['GET'])
 def get_movie_details():
     # Get the movieId from the query parameters

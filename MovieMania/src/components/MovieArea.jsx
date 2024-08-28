@@ -38,6 +38,13 @@ const MoviesArea = ({ mode }) => {
           // console.log(data);
           setMovies(data.results);
         });
+    } else if (mode === "popularTV") {
+      fetch(`http://localhost:5000/TV/popular`)
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data);
+          setMovies(data.results);
+        });
     }
   }, []);
 

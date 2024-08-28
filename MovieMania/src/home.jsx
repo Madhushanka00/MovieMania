@@ -37,9 +37,21 @@ const Home = () => {
           </>
         );
       case "Series":
-        return <h1>Series</h1>;
+        return (
+          <>
+            <h1>Popular TV Series</h1>
+            <div className="moviesArea">
+              <MoviesArea mode="popularTV" />
+            </div>
+          </>
+        );
       case "Animation":
         return <h1>Animation</h1>;
+
+      case "Genres":
+        return <h1>Genres</h1>;
+      case "Ask AI":
+        return <h1>Ask AI</h1>;
       default:
         return <h1>Welcome</h1>;
     }
