@@ -79,6 +79,10 @@
   color: rgb(154, 153, 153);
   margin-left: 10px;
   font-size: 2.2rem;
+  cursor: pointer;
+}
+.box .chatArea .chatWindow .chatInput .send:hover {
+  color: white;
 }
 .box .moviesSugest {
   flex: 1;
