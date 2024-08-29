@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "react-markdown": "^9.0.1",
     "socket.io-client": "^4.7.5"
   }
 }
