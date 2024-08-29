@@ -1,0 +1,70 @@
+.box {
+  width: 100%;
+  height: 89vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.box .chatArea {
+  flex: 1;
+  justify-content: center;
+}
+.box .chatArea .chatWindow {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1%;
+  margin-top: 2%;
+  width: 100%;
+  height: 99%;
+  justify-content: center;
+  border-radius: 20px;
+  background-color: rgba(49, 49, 49, 0.416);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(146, 146, 146, 0.18);
+  box-shadow: 0 1px 1px 0 rgba(44, 44, 44, 0.37);
+}
+.box .chatArea .chatWindow .chatbox {
+  flex: 1;
+  width: 100%;
+  height: 90%;
+  border-bottom: solid 1px rgba(179, 177, 177, 0.419);
+}
+.box .chatArea .chatWindow .chatbox .bot {
+  border-radius: 20px;
+  margin: 10px;
+  width: auto;
+  max-width: 75%;
+  align-items: center;
+  padding: 10px 10px 10px 25px;
+  background-color: #2a2e2e;
+  box-shadow: 5px rgba(228, 227, 227, 0.419);
+  color: azure;
+}
+.box .chatArea .chatWindow .chatInput {
+  width: 100%;
+  height: 10%;
+  place-content: center;
+  justify-content: center;
+}
+.box .chatArea .chatWindow .chatInput input {
+  width: 90%;
+  height: 80%;
+  border-radius: 20px;
+  margin-left: 10px;
+  padding-left: 3%;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  background-color: #2a2e2e;
+  color: white;
+  resize: none;
+}
+.box .chatArea .chatWindow .chatInput .send {
+  color: rgb(154, 153, 153);
+  margin-left: 10px;
+  font-size: 2.2rem;
+}
+.box .moviesSugest {
+  flex: 1;
+}/*# sourceMappingURL=assistant.css.map */
