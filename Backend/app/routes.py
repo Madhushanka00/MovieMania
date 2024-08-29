@@ -1,5 +1,14 @@
 from flask import Blueprint, jsonify, current_app,request
 import requests
+import google.generativeai as genai
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Configure the API key for the Generative AI API
+genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
+model = genai.GenerativeModel("gemini-1.5-flash")
 
 main = Blueprint('main', __name__)
 
@@ -42,7 +51,7 @@ def get_movie_details():
     if not movie_id:
         return jsonify({"error": "movieId is required"}), 400
 
-    # Get the TMDB API key from the configuration
+    # # Get the TMDB API key from the configuration
     api_key = current_app.config['TMDB_API_KEY']
     
     # Make the API request to TMDB to get movie details
@@ -53,3 +62,18 @@ def get_movie_details():
         return jsonify(response.json())
     else:
         return jsonify({"error": "Unable to fetch movie details"}), response.status_code
+    
+
+
+@main.route('/chatagent/ask', methods=['GET'])
+def post_chatagent_question():    
+   Query = request.args.get("query")
+   response = model.generate_content(Query)
+   print(response.text)
+   return (response.text)
+
+
+
+@main.route('/chatagent/answer', methods=['GET'])
+def get_chatagent_answer():    
+    pass
