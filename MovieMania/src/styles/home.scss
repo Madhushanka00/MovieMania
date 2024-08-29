@@ -71,6 +71,16 @@ body, html, #root {
         }
 
         & .section{
+            overflow-y: scroll;
+            scroll-behavior: smooth; 
+            &::-webkit-scrollbar {
+                display: none;
+            }
+                        // Hide scrollbar for Internet Explorer and Edge
+                        -ms-overflow-style: none;
+                        
+                        // Hide scrollbar for Firefox
+            scrollbar-width: none;
 
             & h1{
                 color: azure;

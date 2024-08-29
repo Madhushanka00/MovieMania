@@ -1,12 +1,14 @@
 .box {
   width: 100%;
-  height: 89vh;
+  height: 92vh;
   display: flex;
   justify-content: center;
   flex-direction: row;
 }
 .box .chatArea {
   flex: 1;
+  height: 97%;
+  width: 50%;
   justify-content: center;
 }
 .box .chatArea .chatWindow {
@@ -22,7 +24,7 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 2px solid rgba(146, 146, 146, 0.18);
-  box-shadow: 0 1px 1px 0 rgba(44, 44, 44, 0.37);
+  box-shadow: 0 1px 1px 0 rgba(130, 130, 130, 0.37);
 }
 .box .chatArea .chatWindow .chatbox {
   flex: 1;
@@ -31,21 +33,37 @@
   width: 100%;
   height: 90%;
   border-bottom: solid 1px rgba(179, 177, 177, 0.419);
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.box .chatArea .chatWindow .chatbox::-webkit-scrollbar {
+  display: none;
 }
 .box .chatArea .chatWindow .chatbox .bot {
   display: inline-block;
   border-radius: 20px;
-  margin: 10px;
+  padding-left: 2%;
+  margin: 0.5%;
   width: 100%;
-  max-width: 75%;
-  padding: 10px 20px 10px 25px;
-  background-color: #1d1c1c;
+  display: flex;
+  justify-content: flex-start;
+}
+.box .chatArea .chatWindow .chatbox .bot p {
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 80%;
+  margin-bottom: 1.5%;
+  margin-top: 1.5%;
+  background: linear-gradient(135deg, #1d1c1c, rgba(0, 0, 0, 0.392));
   border: solid 1px rgba(179, 177, 177, 0.419);
   box-shadow: 5px rgba(228, 227, 227, 0.419);
-  color: rgb(218, 218, 218);
+  color: rgb(175, 175, 175);
+  border-radius: 20px 20px 20px 2px;
+  padding: 1% 2% 1% 2%;
 }
 .box .chatArea .chatWindow .chatbox .user {
-  float: right;
   display: inline-block;
   border-radius: 20px;
   padding-right: 4%;
@@ -58,12 +76,12 @@
   width: -moz-fit-content;
   width: fit-content;
   max-width: 80%;
-  background-color: #1d1c1c;
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.392), rgba(25, 25, 25, 0.392));
   border: solid 1px rgba(179, 177, 177, 0.419);
   box-shadow: 5px rgba(228, 227, 227, 0.419);
   color: rgb(175, 175, 175);
-  border-radius: 20px;
-  padding: 1%;
+  border-radius: 20px 20px 2px 20px;
+  padding: 1% 2% 1% 2%;
 }
 .box .chatArea .chatWindow .chatInput {
   width: 100%;

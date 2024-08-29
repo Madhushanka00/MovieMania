@@ -49,6 +49,15 @@ body, html, #root {
 .mainlayout .content .navSection {
   position: fixed;
 }
+.mainlayout .content .section {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.mainlayout .content .section::-webkit-scrollbar {
+  display: none;
+}
 .mainlayout .content .section h1 {
   color: azure;
   margin-top: 20px;
