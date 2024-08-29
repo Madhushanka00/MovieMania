@@ -10,7 +10,17 @@ const Asistant = () => {
   const [msg, setMsg] = useState("");
   const [messages, setMessages] = useState([
     {
-      text: "Hi, I am FilmSeeker, your personal movie assistant. How can I help",
+      text: `**FilmSeeker**:  
+      Welcome to FilmSeeker, your ultimate movie guide! 🎬✨  
+**How can I assist you today?**
+
+1. **Looking for something specific?**  
+   Tell me about a plot or genre you're interested in, and I'll find movies that match.
+
+2. **Got a favorite movie?**  
+   Share it with me, and I’ll recommend similar films you might enjoy.
+
+Let’s explore the world of movies together! 🍿🎥`,
       sender: "bot",
     },
   ]);
