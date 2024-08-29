@@ -9,10 +9,10 @@ const Asistant = () => {
         <div className="chatWindow">
           <div className="chatbox">
             <div className="bot">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-              accusantium vitae incidunt odio dolores dolor aspernatur aut
-              praesentium porro? Cupiditate nam possimus voluptatum rerum cumque
-              eveniet alias dolorem repudiandae esse.
+              Hi, I am FilmSeeker, your personal movie assistant. How can I help
+            </div>
+            <div className="user">
+              Hi, I am looking for a movie to watch with my family
             </div>
           </div>
           <div className="chatInput">
