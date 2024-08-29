@@ -10,6 +10,7 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import MoviesArea from "./components/MovieArea";
 import DetailedView from "./components/DetailedView";
+import Asistant from "./components/Asistant";
 // import
 import "./styles/home.css";
 
@@ -46,12 +47,20 @@ const Home = () => {
           </>
         );
       case "Animation":
-        return <h1>Animation</h1>;
+        return (
+          <>
+            <h1>Animation</h1>
+          </>
+        );
 
       case "Genres":
         return <h1>Genres</h1>;
       case "Ask AI":
-        return <h1>Ask AI</h1>;
+        return (
+          <>
+            <Asistant />
+          </>
+        );
       default:
         return <h1>Welcome</h1>;
     }
