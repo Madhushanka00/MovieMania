@@ -157,75 +157,28 @@
     }
     & .moviesSugest{
         flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding-left: 1%;
+        overflow-y: scroll;
+            scroll-behavior: smooth; 
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
         // width: 4%0;
         // background-color: rgb(154, 20, 20);
+
+       & .moviesArea_next{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 10px; /* Adjust the gap between cards */
+        padding: 15px;
+        // background-color: rgba(179, 177, 177, 0.419);
+       }
     }
 
 
 
 
 }
-.markdown {
-    font-family: Arial, sans-serif;
-    line-height: 1.5;
-  
-    h1, h2, h3, h4, h5, h6 {
-      margin: 0;
-      padding: 0;
-      font-weight: bold;
-    }
-  
-    p {
-      margin: 0 0 10px;
-      padding: 0;
-    }
-  
-    a {
-      color: #007bff;
-      text-decoration: none;
-      
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  
-    ul, ol {
-      padding-left: 20px;
-      margin: 0 0 10px;
-    }
-  
-    li {
-      margin-bottom: 5px;
-    }
-  
-    strong {
-      font-weight: bold;
-    }
-  
-    em {
-      font-style: italic;
-    }
-  
-    blockquote {
-      margin: 0 0 10px;
-      padding-left: 10px;
-      border-left: 5px solid #ccc;
-      color: #666;
-    }
-  
-    code {
-      font-family: monospace;
-      background-color: #f9f2f4;
-      padding: 2px 4px;
-      border-radius: 3px;
-      color: #c7254e;
-    }
-  
-    pre {
-      background-color: #f5f5f5;
-      padding: 10px;
-      border-radius: 3px;
-      overflow-x: auto;
-    }
-  }
-  

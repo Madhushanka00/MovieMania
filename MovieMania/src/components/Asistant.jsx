@@ -6,6 +6,7 @@ import ArrowCircleUpTwoToneIcon from "@mui/icons-material/ArrowCircleUpTwoTone";
 import { TypeAnimation } from "react-type-animation";
 import ChatRecomends from "./chatrecomends";
 import MovieCard from "./MovieCard";
+import axios from "axios";
 
 const Asistant = () => {
   const chatref = useRef();
@@ -77,13 +78,15 @@ Let’s explore the world of movies together! 🍿🎥`,
         if (data == {} || data == [] || data.trim() === "") {
           console.log("no movies");
         } else {
-          console.log("Valid data received:", data);
-          fetch("http://localhost:5000/chatMovieDetails")
-            .then((res) => res.json())
-            .then((data) => {
-              console.log(data.results);
-              setMovies(data.results);
-              console.log("movies,", movies);
+          axios
+            .get("http://localhost:5000/chatMovieDetails")
+            .then((response) => {
+              console.log(response.data); // Access the data in the response
+              setMovies(response.data);
+              console.log("movies,", response.data);
+            })
+            .catch((error) => {
+              console.error("Error fetching movie details:", error);
             });
         }
       });
@@ -140,29 +143,29 @@ Let’s explore the world of movies together! 🍿🎥`,
         </div>
       </div>
       <div className="moviesSugest">
-        {console.log(movies)}
-        {movies && movies.length > 0 ? (
-          movies.map((movie) => {
-            return (
-              <>
-                <div onClick={() => handleClick(movie.id)}>
-                  <MovieCard
-                    key={movie.id}
-                    movie={{
-                      title: movie.title,
-                      ratings: movie.ratings,
-                      posterUrl: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-                      id: movie.id,
-                    }}
-                  />
-                </div>
-                ;
-              </>
-            );
-          })
-        ) : (
-          <p>No movies available</p>
-        )}
+        <div className="moviesArea_next">
+          {movies && movies.length > 0 ? (
+            movies.map((movie) => {
+              return (
+                <>
+                  <div onClick={() => handleClick(movie.id)}>
+                    <MovieCard
+                      key={movie.id}
+                      movie={{
+                        title: movie.title,
+                        ratings: movie.ratings,
+                        posterUrl: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                        id: movie.id,
+                      }}
+                    />
+                  </div>
+                </>
+              );
+            })
+          ) : (
+            <p>No movies available</p>
+          )}
+        </div>
       </div>
     </div>
   );

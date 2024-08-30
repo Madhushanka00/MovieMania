@@ -211,7 +211,7 @@ def get_chatagent_movielist():
                     currentList.append(movie_details['results'][0])  # Append the first result
             else:
                 print(f"Error fetching details for {movie}: {response.status_code}")
-
+        print(currentList)
         return jsonify(currentList)  # Return the list of movie details as JSON
 
     else:
