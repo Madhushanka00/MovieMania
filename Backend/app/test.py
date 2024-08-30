@@ -1,45 +1,36 @@
-from flask import Blueprint, jsonify, current_app,request
+from flask import Flask, Blueprint, jsonify, current_app,request
 import requests
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
 import re
 import json
+from flask_cors import CORS
 
+app = Flask(__name__)
 
-
-
+CORS(app)
 load_dotenv()
+
 
 messages = []
 moviesrowtext =''
-def extract_tmdb_ids(text):
-    """
-    Extracts TMDB IDs from the given text and returns them as a JSON array.
 
-    :param text: The input text containing TMDB IDs.
-    :return: A JSON array of TMDB IDs.
-    """
-    # Regular expression to find TMDB IDs
-    tmdb_ids = re.findall(r'TMDB_ID: (\d+)', text)
-    
-    # Convert the list of TMDB IDs to a JSON array
-    return json.dumps(tmdb_ids)
-
+app.config['TMDB_API_KEY'] = os.getenv('TMDB_API_KEY')
 
 # Configure the API key for the Generative AI API
 genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
 model = genai.GenerativeModel("gemini-1.5-flash")
 
-main = Blueprint('main', __name__)
 
-@main.route('/movies/popular', methods=['GET'])
+
+@app.route('/movies/popular', methods=['GET'])
 def get_popular_movies():
     api_key = current_app.config['TMDB_API_KEY']
     response = requests.get(f'https://api.themoviedb.org/3/movie/popular?api_key={api_key}&language=en-US&page=1')
     return jsonify(response.json())
 
-@main.route('/movies/top-rated', methods=['GET'])
+@app.route('/movies/top-rated', methods=['GET'])
 def get_top_rated_movies():
     api_key = current_app.config['TMDB_API_KEY']
     response = requests.get(f'https://api.themoviedb.org/3/movie/top_rated?api_key={api_key}&language=en-US&page=1')
@@ -47,7 +38,7 @@ def get_top_rated_movies():
     # Return the results from TMDB API as JSON
     return jsonify(response.json())
 
-@main.route('/movies/upcoming', methods=['GET'])
+@app.route('/movies/upcoming', methods=['GET'])
 def get_upcoming_movies():
     api_key = current_app.config['TMDB_API_KEY']
     response = requests.get(f'https://api.themoviedb.org/3/movie/upcoming?api_key={api_key}&language=en-US&page=1')
@@ -55,7 +46,11 @@ def get_upcoming_movies():
     # Return the results from TMDB API as JSON
     return jsonify(response.json())
 
-@main.route('/TV/popular', methods=['GET'])
+@app.route('/test', methods=['GET'])
+def test():
+    return jsonify({"message": "Hello World!"})
+
+@app.route('/TV/popular', methods=['GET'])
 def get_popular_tv():
     api_key = current_app.config['TMDB_API_KEY']
     response = requests.get(f'https://api.themoviedb.org/3/tv/popular?api_key={api_key}&language=en-US&page=1')
@@ -63,7 +58,7 @@ def get_popular_tv():
     # Return the results from TMDB API as JSON
     return jsonify(response.json())
 
-@main.route('/getDetails', methods=['GET'])
+@app.route('/getDetails', methods=['GET'])
 def get_movie_details():
     # Get the movieId from the query parameters
     movie_id = request.args.get('movieId')
@@ -86,7 +81,7 @@ def get_movie_details():
     
 
 
-@main.route('/chatagent/ask', methods=['GET'])
+@app.route('/chatagent/ask', methods=['GET'])
 def post_chatagent_question():   
    Query = request.args.get("query")
    messages.append({"user": Query})
@@ -108,14 +103,15 @@ def post_chatagent_question():
 
 
 
-@main.route('/requestIds', methods=['GET'])
+@app.route('/requestIds', methods=['GET'])
 def get_chatagent_movies():
     # List of movie IDs you want to fetch details for
     movie_row = messages[-1]
 
-    injectMessage = f"""give me the film titles if mentioned here only in a list {movie_row} if no movietitles there, reply empty list"""
+    injectMessage = f"""give me the film titles if mentioned here only in a string coma seperated list {movie_row} if no movietitles there, reply empty list"""
     
     response = model.generate_content(injectMessage)
     return (response.text)
-    1
-    
+
+
+app.run(port=5000, debug=True , host="0.0.0.0")

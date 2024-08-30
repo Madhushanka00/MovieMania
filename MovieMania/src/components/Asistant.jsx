@@ -9,6 +9,7 @@ const Asistant = () => {
   const chatref = useRef();
   const msgRef = useRef();
   const [msg, setMsg] = useState("");
+  const [movieslist, setMovieslist] = useState([]);
   const [messages, setMessages] = useState([
     {
       text: `**FilmSeeker**:  
@@ -46,7 +47,7 @@ Let’s explore the world of movies together! 🍿🎥`,
 
     // Fetch the bot response
     fetch(
-      `http://localhost:5000/chatagent/ask?query=${encodeURIComponent(
+      `http://127.0.0.1:5000/chatagent/ask?query=${encodeURIComponent(
         userMessage
       )}`
     )
@@ -67,71 +68,12 @@ Let’s explore the world of movies together! 🍿🎥`,
     if (chatref.current) {
       chatref.current.scrollTop = chatref.current.scrollHeight;
     }
+    fetch("http://localhost:5000/requestIds")
+      .then((res) => res.text())
+      .then((data) => {
+        console.log(data);
+      });
   }, [messages]);
-
-  // const sendMsg = () => {
-  //   const userMessage = msgRef.current.value;
-
-  //   let newUsermsg = document.createElement("div");
-  //   newUsermsg.className = "user";
-  //   let text = document.createElement("p");
-  //   text.innerText = userMessage;
-  //   newUsermsg.appendChild(text);
-  //   chatref.current.appendChild(newUsermsg);
-
-  //   // Clear the text input
-  //   msgRef.current.value = "";
-
-  //   fetch(
-  //     `http://localhost:5000/chatagent/ask?query=${encodeURIComponent(
-  //       userMessage
-  //     )}`
-  //   )
-  //     .then((res) => res.text())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setMsg(data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error:", error);
-  //     });
-  // };
-  // useEffect(() => {
-  //   // Scroll to the bottom of the chatbox whenever a new message is added
-  //   if (chatref.current) {
-  //     chatref.current.scrollTop = chatref.current.scrollHeight;
-  //   }
-  // }, [msg]);
-
-  // useEffect(() => {
-  //   // Create the bot response element if msg is not empty
-  //   if (msg !== "") {
-  //     let newBotmsg = document.createElement("div");
-  //     newBotmsg.className = "bot";
-
-  //     // Append the ReactMarkdown component to render markdown content
-  //     const botTextElement = (
-  //       <div className="markdown">
-  //         <ReactMarkdown>{msg}</ReactMarkdown>
-  //       </div>
-  //     );
-  //     // Append the ReactMarkdown component to the chat
-  //     chatref.current.appendChild(newBotmsg);
-
-  //     // // Render the botTextElement into the newBotmsg
-  //     // newBotmsg
-  //     //   .appendChild(document.createElement("div"))
-  //     //   .appendChild(document.createElement("div")).outerHTML =
-  //     //   ReactDOMServer.renderToStaticMarkup(botTextElement);
-
-  //     let botText = document.createElement("p");
-  //     // let botText = document.createElement("div");
-  //     botText.innerText = msg; // 'msg' contains the response text
-  //     // botText.innerText = `<div class="markdown"><ReactMarkdown>${msg}</ReactMarkdown></div>`;
-  //     newBotmsg.appendChild(botText);
-  //     chatref.current.appendChild(newBotmsg);
-  //   }
-  // }, [msg]);
 
   return (
     <div className="box">
