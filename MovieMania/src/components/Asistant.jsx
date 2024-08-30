@@ -4,12 +4,14 @@ import ReactMarkdown from "react-markdown";
 import "../styles/assistant.css";
 import ArrowCircleUpTwoToneIcon from "@mui/icons-material/ArrowCircleUpTwoTone";
 import { TypeAnimation } from "react-type-animation";
+import ChatRecomends from "./chatrecomends";
+import MovieCard from "./MovieCard";
 
 const Asistant = () => {
   const chatref = useRef();
   const msgRef = useRef();
   const [msg, setMsg] = useState("");
-  const [movieslist, setMovieslist] = useState([]);
+  const [movies, setMovies] = useState([]);
   const [messages, setMessages] = useState([
     {
       text: `**FilmSeeker**:  
@@ -72,6 +74,18 @@ Let’s explore the world of movies together! 🍿🎥`,
       .then((res) => res.text())
       .then((data) => {
         console.log(data);
+        if (data == {} || data == [] || data.trim() === "") {
+          console.log("no movies");
+        } else {
+          console.log("Valid data received:", data);
+          fetch("http://localhost:5000/chatMovieDetails")
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data.results);
+              setMovies(data.results);
+              console.log("movies,", movies);
+            });
+        }
       });
   }, [messages]);
 
@@ -125,7 +139,31 @@ Let’s explore the world of movies together! 🍿🎥`,
           </div>
         </div>
       </div>
-      <div className="moviesSugest"></div>
+      <div className="moviesSugest">
+        {console.log(movies)}
+        {movies && movies.length > 0 ? (
+          movies.map((movie) => {
+            return (
+              <>
+                <div onClick={() => handleClick(movie.id)}>
+                  <MovieCard
+                    key={movie.id}
+                    movie={{
+                      title: movie.title,
+                      ratings: movie.ratings,
+                      posterUrl: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                      id: movie.id,
+                    }}
+                  />
+                </div>
+                ;
+              </>
+            );
+          })
+        ) : (
+          <p>No movies available</p>
+        )}
+      </div>
     </div>
   );
 };
