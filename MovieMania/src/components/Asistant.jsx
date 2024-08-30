@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import "../styles/assistant.css";
 import ArrowCircleUpTwoToneIcon from "@mui/icons-material/ArrowCircleUpTwoTone";
+import { TypeAnimation } from "react-type-animation";
 
 const Asistant = () => {
   const chatref = useRef();
@@ -139,9 +140,16 @@ Let’s explore the world of movies together! 🍿🎥`,
           <div className="chatbox" ref={chatref}>
             {messages.map((msg, index) => (
               <div key={index} className={msg.sender}>
-                <div className="markdown">
-                  <ReactMarkdown>{msg.text}</ReactMarkdown>
-                </div>
+                {msg.sender === "bot" ? (
+                  <div className="markdown">
+                    <ReactMarkdown>{msg.text}</ReactMarkdown>
+                    {/* <TypeAnimation>{msg.text}</TypeAnimation> */}
+                  </div>
+                ) : (
+                  <div className="markdown">
+                    <ReactMarkdown>{msg.text}</ReactMarkdown>
+                  </div>
+                )}
               </div>
             ))}
             {/* <div className="bot">
@@ -161,7 +169,16 @@ Let’s explore the world of movies together! 🍿🎥`,
             </div> */}
           </div>
           <div className="chatInput">
-            <input type="text" placeholder="Type here..." ref={msgRef} />
+            <input
+              type="text"
+              placeholder="Type here..."
+              ref={msgRef}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  sendMsg();
+                }
+              }}
+            />
             <ArrowCircleUpTwoToneIcon className="send" onClick={sendMsg} />
           </div>
         </div>

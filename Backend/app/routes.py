@@ -5,6 +5,7 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
+messages = []
 
 # Configure the API key for the Generative AI API
 genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
@@ -68,6 +69,7 @@ def get_movie_details():
 @main.route('/chatagent/ask', methods=['GET'])
 def post_chatagent_question():    
    Query = request.args.get("query")
+   print(Query)
    response = model.generate_content(Query)
    print(response.text)
    return (response.text)
