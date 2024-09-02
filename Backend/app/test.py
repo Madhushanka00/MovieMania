@@ -103,6 +103,15 @@ def get_upcoming_movies():
     # Return the results from TMDB API as JSON
     return jsonify(response.json())
 
+@app.route('/tv/top-rated', methods=['GET'])
+def get_top_rated_tv():
+    api_key = current_app.config['TMDB_API_KEY']
+    response = requests.get(f'https://api.themoviedb.org/3/tv/top_rated?api_key={api_key}&language=en-US&page=1')
+    
+    # Return the results from TMDB API as JSON
+    return jsonify(response.json())
+
+
 @app.route('/test', methods=['GET'])
 def test():
     return jsonify({"message": "Hello World!"})
@@ -119,6 +128,7 @@ def get_popular_tv():
 def get_movie_details():
     # Get the movieId from the query parameters
     movie_id = request.args.get('movieId')
+    type = request.args.get('type')
     
     # Check if the movieId is provided
     if not movie_id:
@@ -127,9 +137,11 @@ def get_movie_details():
     # # Get the TMDB API key from the configuration
     api_key = current_app.config['TMDB_API_KEY']
     
+    if type == 'movie':
     # Make the API request to TMDB to get movie details
-    response = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}&language=en-US')
-    
+        response = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}&language=en-US')
+    else:
+        response = requests.get(f'https://api.themoviedb.org/3/tv/{movie_id}?api_key={api_key}&language=en-US')
     # Return the results from TMDB API as JSON
     if response.status_code == 200:
         return jsonify(response.json())
