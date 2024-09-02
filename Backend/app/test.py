@@ -34,9 +34,10 @@ def formatTxtx(movie_input):
         movie_input = movie_input.replace("[", "").replace("]", "")
         
         # Split the string by commas but keep the parentheses together
-        movies = re.findall(r'"([^"]+)"|\(([^)]+)\)', movie_input)
-        tempFormatedarr = [m[0] if m[0] else m[1] for m in movies]
-        for item in tempFormatedarr:
+        # movies = re.findall(r'"([^"]+)"|\(([^)]+)\)', movie_input)
+        # tempFormatedarr = [m[0] if m[0] else m[1] for m in movies]
+        movies = re.split(r',\s*', movie_input)
+        for item in movies:
             formatted_movies.append(re.sub(r'\s*\(\d{4}\)', '', item))
         # Split the string into movie titles
         movie_titles = re.split(r',\s*', movie_input)
@@ -151,6 +152,7 @@ def post_chatagent_question():
 
 
    response = model.generate_content(injectMessage)
+#    print(response)
    messages.append({"bot": response.text})
    print(response.text)
    moviesrowtext = response.text
@@ -169,6 +171,7 @@ def get_chatagent_movies():
     injectMessage = f"""give me the film titles if mentioned here only in a string coma seperated list {movie_row} if no movietitles there, reply empty list"""
     
     response = model.generate_content(injectMessage)
+    # print(response)
     respondedmovies=formatTxtx(response.text)
     print(respondedmovies, len(respondedmovies))
     return (response.text)
@@ -194,6 +197,7 @@ def get_chatagent_movielist():
     #     return jsonify({"error": "Unable to fetch movie details"}), response.status_code
     if len(respondedmovies):  # Assuming respondedmovies is defined elsewhere
         api_key = current_app.config['TMDB_API_KEY']
+        # print(api_key)
         for movie in respondedmovies:
             response = requests.get(
                 f'https://api.themoviedb.org/3/search/movie',
