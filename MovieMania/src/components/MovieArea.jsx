@@ -76,7 +76,7 @@ const MoviesArea = ({ mode, tab, type }) => {
                 <MovieCard
                   key={movie.id}
                   movie={{
-                    title: movie.title,
+                    title: type === "movie" ? movie.title : movie.original_name,
                     ratings: movie.ratings,
                     posterUrl: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
                     id: movie.id,

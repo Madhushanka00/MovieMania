@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import NavBar from "./components/nav_bar";
 import LeftBar from "./components/leftBar";
@@ -15,7 +15,32 @@ import Asistant from "./components/Asistant";
 import "./styles/home.css";
 
 const Home = () => {
+  const [genres, setGenres] = useState([]);
+  const [activeType, setActiveType] = useState("");
+  const [activeGenre, setActiveGenre] = useState("");
+  const [movietype, setMovieType] = useState("");
   const [tab, setTab] = useState("Home");
+
+  useEffect(() => {
+    console.log("Movie Type:", movietype);
+    fetch(`http://localhost:5000/genres?media_type=${movietype}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setGenres(data.genres);
+        // console.log(data.genres);
+      });
+  }, [movietype]);
+
+  const handleClick = (type) => {
+    console.log(type);
+    setMovieType(type);
+    setActiveType(type);
+  };
+
+  const selectGenre = (genre) => {
+    console.log(genre);
+    setActiveGenre(genre);
+  };
 
   const changeTab = (tab) => {
     console.log(tab);
@@ -60,7 +85,39 @@ const Home = () => {
         </>
       );
     } else if (tab == "Genres") {
-      return <h1>Genres</h1>;
+      return (
+        <>
+          <div className="typeSelect">
+            <div
+              className={`typeButton ${movietype === "movie" ? "active" : ""}`}
+              onClick={() => handleClick("movie")}
+            >
+              Movies
+            </div>
+            <div
+              className={`typeButton ${movietype === "tv" ? "active" : ""}`}
+              onClick={() => handleClick("tv")}
+            >
+              TV Series
+            </div>
+          </div>
+          <div className="typeSelect">
+            {genres.map((genre) => {
+              return (
+                <div
+                  className={`typeButton ${
+                    activeGenre === genre.name ? "active" : ""
+                  }`}
+                  key={genre.id}
+                  onClick={() => selectGenre(genre.name)}
+                >
+                  {genre.name}
+                </div>
+              );
+            })}
+          </div>
+        </>
+      );
     } else if (tab == "Ask AI") {
       return (
         <>
@@ -86,12 +143,12 @@ const Home = () => {
         <NavBar className="navSection" changeTab={changeTab} />
         <div className="section">
           {/* <h1>Most Popular</h1>
-          <div className="moviesArea">
-            <MoviesArea mode="popular" />
-          </div>
-          <h1>You might like</h1>
-          <div className="moviesArea">
-            <MoviesArea mode="topRated" />
+          // <div className="moviesArea">
+          //   <MoviesArea mode="popular" />
+          // </div>
+          // <h1>You might like</h1>
+          // <div className="moviesArea">
+          //   <MoviesArea mode="topRated" />
           </div> */}
           {renderContent()}
         </div>

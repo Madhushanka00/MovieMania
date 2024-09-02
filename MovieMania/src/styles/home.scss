@@ -89,6 +89,53 @@ body, html, #root {
                 margin-left: 25px;
             }
 
+            & .typeSelect{
+                display: flex;
+                // background-color: #377c7c;
+                height: 5vh;
+                margin-top: 10px;
+                margin-left: 1%;
+                align-items: center;
+                font-size: .9rem;
+                
+
+                & .typeButton{
+                    // background-color: aliceblue;
+                    margin-left: .5%;
+                    color: rgb(243, 234, 234);
+                    padding: .5%;
+                    border-radius: 10px 10px 0px 0px;
+                    border-top: solid 1px #494949;    /* Top border */
+                    border-right: solid 1px #494949;  /* Right border */
+                    border-bottom: none;              /* No bottom border */
+                    border-left: solid 1px #494949;   /* Left border */
+                    background: #191a1a;
+                    box-shadow: #f1f1f1;
+                    cursor: pointer;
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    
+            &.active{
+                scale: 1.1;
+                // background-color: #191a1a;
+                // background: linear-gradient(0deg, #191a1a 0%, rgba(25,26,26,1) 100%);
+                border-radius: 10px 10px 0px 0px;
+                background-color: #f1f1f128;
+                // box-shadow:
+                // 0 -4px 4px rgba(164, 164, 164, 0.2), 
+                // 0 -1px 2px rgba(164, 164, 164, 0.2);
+            }
+
+            &:hover {
+                transform: scale(1.05);
+                box-shadow: 
+                0 8px 12px rgba(0, 0, 0, 0.2), 
+                0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+                }
+            }
+
+
             & .moviesArea{
                 display: flex;
                 // flex-direction: column;

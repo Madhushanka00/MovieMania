@@ -148,7 +148,20 @@ def get_movie_details():
     else:
         return jsonify({"error": "Unable to fetch movie details"}), response.status_code
     
-
+@app.route('/genres', methods=['GET'])
+def get_genres():
+    # movie_id = request.args.get('movieId')
+    media_type = request.args.get('media_type')
+    print(media_type=="movie")
+    
+    api_key = current_app.config['TMDB_API_KEY']
+    if media_type == 'movie':
+        response = requests.get(f'https://api.themoviedb.org/3/genre/movie/list?api_key={api_key}&language=en-US')
+    else:
+        response = requests.get(f'https://api.themoviedb.org/3/genre/tv/list?api_key={api_key}&language=en-US')
+    
+    # Return the results from TMDB API as JSON
+    return jsonify(response.json())
 
 @app.route('/chatagent/ask', methods=['GET'])
 def post_chatagent_question():   
