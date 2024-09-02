@@ -8,7 +8,7 @@ const ChatRecomends = () => {
   const [selectedMovieId, setSelectedMovieId] = useState(null);
   const [goToDetails, setGoToDetails] = useState(false);
 
-  fetch("http://localhost:5000/chatMovieDetails")
+  fetch("https://dspndkpg-5000.asse.devtunnels.ms/chatMovieDetails")
     .then((res) => res.json())
     .then((data) => {
       console.log(data);

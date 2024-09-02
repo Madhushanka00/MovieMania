@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { act, useEffect } from "react";
 import { useState } from "react";
 import NavBar from "./components/nav_bar";
 import LeftBar from "./components/leftBar";
@@ -11,19 +11,23 @@ import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import MoviesArea from "./components/MovieArea";
 import DetailedView from "./components/DetailedView";
 import Asistant from "./components/Asistant";
+import Genres from "./genres";
 // import
 import "./styles/home.css";
 
 const Home = () => {
   const [genres, setGenres] = useState([]);
   const [activeType, setActiveType] = useState("");
+  const [activeGenreName, setActiveGenreName] = useState("");
   const [activeGenre, setActiveGenre] = useState("");
   const [movietype, setMovieType] = useState("");
   const [tab, setTab] = useState("Home");
 
   useEffect(() => {
     console.log("Movie Type:", movietype);
-    fetch(`http://localhost:5000/genres?media_type=${movietype}`)
+    fetch(
+      `https://dspndkpg-5000.asse.devtunnels.ms/genres?media_type=${movietype}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setGenres(data.genres);
@@ -32,25 +36,26 @@ const Home = () => {
   }, [movietype]);
 
   const handleClick = (type) => {
-    console.log(type);
+    // console.log(type);
     setMovieType(type);
     setActiveType(type);
   };
 
-  const selectGenre = (genre) => {
-    console.log(genre);
-    setActiveGenre(genre);
+  const selectGenre = (id, name) => {
+    // console.log(genre);
+    setActiveGenre(id);
+    setActiveGenreName(name);
   };
 
   const changeTab = (tab) => {
-    console.log(tab);
+    // console.log(tab);
     setTab(tab);
   };
 
   const renderContent = () => {
     if (tab == "Movies") {
       return (
-        <>
+        <div className="mainWrapper">
           <h1>Most Popular</h1>
           <div className="moviesArea">
             <MoviesArea mode="popular" tab={tab} type="movie" />
@@ -63,11 +68,11 @@ const Home = () => {
           <div className="moviesArea">
             <MoviesArea mode="topRated" tab={tab} type="movie" />
           </div>
-        </>
+        </div>
       );
     } else if (tab == "Series") {
       return (
-        <>
+        <div className="mainWrapper">
           <h1>Popular TV Series</h1>
           <div className="moviesArea">
             <MoviesArea mode="popularTV" tab={tab} type="tv" />
@@ -76,7 +81,7 @@ const Home = () => {
           <div className="moviesArea">
             <MoviesArea mode="topRatedTV" tab={tab} type="tv" />
           </div>
-        </>
+        </div>
       );
     } else if (tab == "Animation") {
       return (
@@ -87,35 +92,52 @@ const Home = () => {
     } else if (tab == "Genres") {
       return (
         <>
-          <div className="typeSelect">
-            <div
-              className={`typeButton ${movietype === "movie" ? "active" : ""}`}
-              onClick={() => handleClick("movie")}
-            >
-              Movies
+          <div className="typemainSection">
+            <div className="typeSelect">
+              <div
+                className={`typeButton ${
+                  movietype === "movie" ? "active" : ""
+                }`}
+                onClick={() => handleClick("movie")}
+              >
+                Movies
+              </div>
+              <div
+                className={`typeButton ${movietype === "tv" ? "active" : ""}`}
+                onClick={() => handleClick("tv")}
+              >
+                TV Series
+              </div>
             </div>
-            <div
-              className={`typeButton ${movietype === "tv" ? "active" : ""}`}
-              onClick={() => handleClick("tv")}
-            >
-              TV Series
+            <div className="typeSelect">
+              {genres.map((genre) => {
+                return (
+                  <div
+                    className={`typeButton ${
+                      activeGenreName === genre.name ? "active" : ""
+                    }`}
+                    key={genre.id}
+                    onClick={() => selectGenre(genre.id, genre.name)}
+                  >
+                    {genre.name}
+                  </div>
+                );
+              })}
             </div>
           </div>
-          <div className="typeSelect">
-            {genres.map((genre) => {
-              return (
-                <div
-                  className={`typeButton ${
-                    activeGenre === genre.name ? "active" : ""
-                  }`}
-                  key={genre.id}
-                  onClick={() => selectGenre(genre.name)}
-                >
-                  {genre.name}
-                </div>
-              );
-            })}
-          </div>
+          {activeGenre && activeType ? (
+            <div className="genresArea">
+              {/* <div className="movieGenreSugestArea"> */}
+              <Genres
+                className=""
+                media_type={activeType}
+                genre_ID={activeGenre}
+              />
+              {/* </div> */}
+            </div>
+          ) : (
+            ""
+          )}
         </>
       );
     } else if (tab == "Ask AI") {

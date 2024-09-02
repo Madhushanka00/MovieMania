@@ -26,21 +26,21 @@ const MoviesArea = ({ mode, tab, type }) => {
   useEffect(() => {
     if (type === "movie") {
       if (mode === "popular") {
-        fetch(`http://localhost:5000/movies/popular`)
+        fetch(`https://dspndkpg-5000.asse.devtunnels.ms//movies/popular`)
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
             setMovies(data.results);
           });
       } else if (mode === "topRated") {
-        fetch(`http://localhost:5000/movies/top-rated`)
+        fetch(`https://dspndkpg-5000.asse.devtunnels.ms//movies/top-rated`)
           .then((res) => res.json())
           .then((data) => {
             // console.log(data);
             setMovies(data.results);
           });
       } else if (mode === "upcoming") {
-        fetch(`http://localhost:5000/movies/upcoming`)
+        fetch(`https://dspndkpg-5000.asse.devtunnels.ms//movies/upcoming`)
           .then((res) => res.json())
           .then((data) => {
             // console.log(data);
@@ -49,14 +49,14 @@ const MoviesArea = ({ mode, tab, type }) => {
       }
     } else if (type === "tv") {
       if (mode === "popularTV") {
-        fetch(`http://localhost:5000/TV/popular`)
+        fetch(`https://dspndkpg-5000.asse.devtunnels.ms//TV/popular`)
           .then((res) => res.json())
           .then((data) => {
             // console.log(data);
             setMovies(data.results);
           });
       } else if (mode === "topRatedTV") {
-        fetch(`http://localhost:5000/tv/top-rated`)
+        fetch(`https://dspndkpg-5000.asse.devtunnels.ms//tv/top-rated`)
           .then((res) => res.json())
           .then((data) => {
             // console.log(data);

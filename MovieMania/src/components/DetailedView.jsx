@@ -13,7 +13,9 @@ const DetailedView = ({ movieId, onClose, type }) => {
   // const movieId = 533535;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/getDetails?movieId=${movieId}&type=${type}`)
+    fetch(
+      `https://dspndkpg-5000.asse.devtunnels.ms/getDetails?movieId=${movieId}&type=${type}`
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

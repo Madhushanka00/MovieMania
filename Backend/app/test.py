@@ -163,6 +163,22 @@ def get_genres():
     # Return the results from TMDB API as JSON
     return jsonify(response.json())
 
+@app.route('/getGenreMovies' , methods=['GET'])
+def get_genre_movies():
+    genre_id = request.args.get('genreId')
+    media_type = request.args.get('media_type')
+    api_key = current_app.config['TMDB_API_KEY']
+    if media_type == 'movie':
+        response = requests.get(f'https://api.themoviedb.org/3/discover/movie?api_key={api_key}&with_genres={genre_id}&language=en-US&page=1')
+    else:
+        response = requests.get(f'https://api.themoviedb.org/3/discover/tv?api_key={api_key}&with_genres={genre_id}&language=en-US&page=1')
+    
+    # Return the results from TMDB API as JSON
+    return jsonify(response.json())
+
+
+
+
 @app.route('/chatagent/ask', methods=['GET'])
 def post_chatagent_question():   
    Query = request.args.get("query")
