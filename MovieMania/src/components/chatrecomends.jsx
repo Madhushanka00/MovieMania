@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 // import dotenv from "dotenv";
 import MovieCard from "./MovieCard";
+import DetailedView from "./DetailedView";
 
 const ChatRecomends = () => {
   const [movies, setMovies] = useState([]);
-  const [selectedMovieId, setSelectedMovieId] = useState(null);
   const [goToDetails, setGoToDetails] = useState(false);
+  const [selectedMovieDetails, setSelectedMovieDetails] = useState(null);
 
   fetch("https://dspndkpg-5000.asse.devtunnels.ms/chatMovieDetails")
     .then((res) => res.json())
@@ -15,10 +16,12 @@ const ChatRecomends = () => {
       setMovies(data.results);
     });
 
-  const handleClick = (id) => {
+  const handleClick = (details) => {
     console.log("Clicked");
     setGoToDetails(true);
-    setSelectedMovieId(id);
+    console.log("Details:", details);
+    setSelectedMovieDetails(details);
+    // console.log("Selected Movie Details:", selectedMovieDetails);
   };
 
   const hideDetailedView = () => {
@@ -29,7 +32,8 @@ const ChatRecomends = () => {
       {movies.map((movie) => {
         return (
           <>
-            <div onClick={() => handleClick(movie.id)}>
+            {console.log("Movie:", movie)}
+            <div onClick={() => handleClick(movie)}>
               <MovieCard
                 key={movie.id}
                 movie={{
@@ -44,6 +48,13 @@ const ChatRecomends = () => {
           </>
         );
       })}
+      {goToDetails && (
+        <DetailedView
+          movie={selectedMovieDetails}
+          onClose={hideDetailedView}
+          type={"none"}
+        />
+      )}
     </>
   );
 };

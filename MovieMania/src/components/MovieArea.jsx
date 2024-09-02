@@ -7,13 +7,16 @@ import DetailedView from "./DetailedView";
 
 const MoviesArea = ({ mode, tab, type }) => {
   const [movies, setMovies] = useState([]);
-  const [selectedMovieId, setSelectedMovieId] = useState(null);
+  const [selectedMovieDetails, setSelectedMovieDetails] = useState(null);
+  const [selectedGenras, setSelectedGenres] = useState(null);
   const [goToDetails, setGoToDetails] = useState(false);
 
-  const handleClick = (id) => {
+  const handleClick = (details) => {
     console.log("Clicked");
     setGoToDetails(true);
-    setSelectedMovieId(id);
+    console.log("Details:", details);
+    setSelectedMovieDetails(details);
+    // console.log("Selected Movie Details:", selectedMovieDetails);
   };
 
   const hideDetailedView = () => {
@@ -40,7 +43,7 @@ const MoviesArea = ({ mode, tab, type }) => {
             setMovies(data.results);
           });
       } else if (mode === "upcoming") {
-        fetch(`https://dspndkpg-5000.asse.devtunnels.ms//movies/upcoming`)
+        fetch(`https://dspndkpg-5000.asse.devtunnels.ms/movies/upcoming`)
           .then((res) => res.json())
           .then((data) => {
             // console.log(data);
@@ -49,14 +52,14 @@ const MoviesArea = ({ mode, tab, type }) => {
       }
     } else if (type === "tv") {
       if (mode === "popularTV") {
-        fetch(`https://dspndkpg-5000.asse.devtunnels.ms//TV/popular`)
+        fetch(`https://dspndkpg-5000.asse.devtunnels.ms/TV/popular`)
           .then((res) => res.json())
           .then((data) => {
             // console.log(data);
             setMovies(data.results);
           });
       } else if (mode === "topRatedTV") {
-        fetch(`https://dspndkpg-5000.asse.devtunnels.ms//tv/top-rated`)
+        fetch(`https://dspndkpg-5000.asse.devtunnels.ms/tv/top-rated`)
           .then((res) => res.json())
           .then((data) => {
             // console.log(data);
@@ -70,9 +73,10 @@ const MoviesArea = ({ mode, tab, type }) => {
     <>
       <div className="moviesArea_next">
         {movies.map((movie) => {
+          // console.log("Movie:", movie);
           return (
             <>
-              <div onClick={() => handleClick(movie.id)}>
+              <div onClick={() => handleClick(movie)}>
                 <MovieCard
                   key={movie.id}
                   movie={{
@@ -89,7 +93,7 @@ const MoviesArea = ({ mode, tab, type }) => {
         })}
         {goToDetails && (
           <DetailedView
-            movieId={selectedMovieId}
+            movie={selectedMovieDetails}
             onClose={hideDetailedView}
             type={type}
           />

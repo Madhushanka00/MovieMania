@@ -137,7 +137,7 @@
 .glass .Construction .DetailsSection_ .myRatings .stars {
   padding: 5px;
   border-radius: 10px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.327);
   box-shadow: 1px 1px 10px rgba(246, 240, 240, 0.2745098039);
 }
 .glass .Construction .DetailsSection_ .myRatings .stars :root {

@@ -18,6 +18,8 @@ const Asistant = () => {
   const [movies, setMovies] = useState([]);
   const [goToDetails, setGoToDetails] = useState(false);
   const [selectedMovieId, setSelectedMovieId] = useState(null);
+  const [selectedMovieDetails, setSelectedMovieDetails] = useState(null);
+
   const [messages, setMessages] = useState([
     {
       text: `**FilmSeeker**:  
@@ -35,10 +37,12 @@ Let’s explore the world of movies together! 🍿🎥`,
     },
   ]);
 
-  const handleClick = (id) => {
+  const handleClick = (details) => {
     console.log("Clicked");
     setGoToDetails(true);
-    setSelectedMovieId(id);
+    console.log("Details:", details);
+    setSelectedMovieDetails(details);
+    // console.log("Selected Movie Details:", selectedMovieDetails);
   };
 
   const hideDetailedView = () => {
@@ -162,7 +166,7 @@ Let’s explore the world of movies together! 🍿🎥`,
           {movies && movies.length > 0 ? (
             movies.map((movie, index) => {
               return (
-                <div onClick={() => handleClick(movie.id)} key={index}>
+                <div onClick={() => handleClick(movie)} key={index}>
                   <MovieCard
                     key={movie.id}
                     movie={{
@@ -180,8 +184,9 @@ Let’s explore the world of movies together! 🍿🎥`,
           )}
           {goToDetails && (
             <DetailedView
-              movieId={selectedMovieId}
+              movie={selectedMovieDetails}
               onClose={hideDetailedView}
+              type={"none"}
             />
           )}
         </div>

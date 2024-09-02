@@ -2,9 +2,21 @@ import React from "react";
 import { useState, useEffect } from "react";
 import MovieCard from "./components/MovieCard";
 import "./styles/genres.css";
+import DetailedView from "./components/DetailedView";
 
 const Genres = ({ media_type, genre_ID }) => {
   const [movies, setMovies] = useState([]);
+  const [selectedMovieDetails, setSelectedMovieDetails] = useState(null);
+  const [goToDetails, setGoToDetails] = useState(false);
+  const handleClick = (details) => {
+    // console.log("Clicked");
+    console.log("Details:", details);
+    setGoToDetails(true);
+    setSelectedMovieDetails(details);
+  };
+  const hideDetailedView = () => {
+    setGoToDetails(false);
+  };
 
   useEffect(() => {
     fetch(
@@ -22,7 +34,7 @@ const Genres = ({ media_type, genre_ID }) => {
       {movies.map((movie) => {
         return (
           <>
-            <div>
+            <div onClick={() => handleClick(movie)}>
               <MovieCard
                 key={movie.id}
                 movie={{
@@ -37,6 +49,9 @@ const Genres = ({ media_type, genre_ID }) => {
           </>
         );
       })}
+      {goToDetails && (
+        <DetailedView movie={selectedMovieDetails} onClose={hideDetailedView} />
+      )}
     </div>
   );
 };

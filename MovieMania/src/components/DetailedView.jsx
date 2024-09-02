@@ -6,8 +6,118 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Rate } from "antd";
 import { yellow } from "@mui/material/colors";
 
-const DetailedView = ({ movieId, onClose, type }) => {
-  const [movie, setMovie] = useState("");
+const DetailedView = ({ movie, onClose, type }) => {
+  const genreDetails = [
+    {
+      id: 28,
+      name: "Action",
+    },
+    {
+      id: 12,
+      name: "Adventure",
+    },
+    {
+      id: 16,
+      name: "Animation",
+    },
+    {
+      id: 35,
+      name: "Comedy",
+    },
+    {
+      id: 80,
+      name: "Crime",
+    },
+    {
+      id: 99,
+      name: "Documentary",
+    },
+    {
+      id: 18,
+      name: "Drama",
+    },
+    {
+      id: 10751,
+      name: "Family",
+    },
+    {
+      id: 14,
+      name: "Fantasy",
+    },
+    {
+      id: 36,
+      name: "History",
+    },
+    {
+      id: 27,
+      name: "Horror",
+    },
+    {
+      id: 10402,
+      name: "Music",
+    },
+    {
+      id: 9648,
+      name: "Mystery",
+    },
+    {
+      id: 10749,
+      name: "Romance",
+    },
+    {
+      id: 878,
+      name: "Science Fiction",
+    },
+    {
+      id: 10770,
+      name: "TV Movie",
+    },
+    {
+      id: 53,
+      name: "Thriller",
+    },
+    {
+      id: 10752,
+      name: "War",
+    },
+    {
+      id: 37,
+      name: "Western",
+    },
+    {
+      id: 10759,
+      name: "Action & Adventure",
+    },
+    {
+      id: 10762,
+      name: "Kids",
+    },
+    {
+      id: 10763,
+      name: "News",
+    },
+    {
+      id: 10764,
+      name: "Reality",
+    },
+    {
+      id: 10765,
+      name: "Sci-Fi & Fantasy",
+    },
+    {
+      id: 10766,
+      name: "Soap",
+    },
+    {
+      id: 10767,
+      name: "Talk",
+    },
+    {
+      id: 10768,
+      name: "War & Politics",
+    },
+  ];
+  // const [movie, setMovie] = useState("");
   const [isVisible, setIsVisible] = useState(true);
   const [rating, setRating] = useState(0);
   // console.log("Movie ID:", movieId);
@@ -16,20 +126,20 @@ const DetailedView = ({ movieId, onClose, type }) => {
     console.log("Rating:", value);
     setRating(value);
   };
-
-  useEffect(() => {
-    fetch(
-      `https://dspndkpg-5000.asse.devtunnels.ms/getDetails?movieId=${movieId}&type=${type}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setMovie(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching movie details:", error);
-      });
-  }, [movieId]);
+  console.log("genres check", movie);
+  // useEffect(() => {
+  //   fetch(
+  //     `https://dspndkpg-5000.asse.devtunnels.ms/getDetails?movieId=${movieId}&type=${type}`
+  //   )
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setMovie(data);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching movie details:", error);
+  //     });
+  // }, [movieId]);
 
   const handleClose = () => {
     setIsVisible(false); // Hide DetailedView when CloseIcon is clicked
@@ -53,11 +163,7 @@ const DetailedView = ({ movieId, onClose, type }) => {
             <div className="DetailsSection_">
               <CloseIcon className="close" onClick={onClose} />
               <div className="titleSection_">
-                {type === "movie" ? (
-                  <h3>{movie.title}</h3>
-                ) : (
-                  <h3>{movie.original_name}</h3>
-                )}
+                <h3>{movie.title ? movie.title : movie.original_name}</h3>
 
                 <div className="releaseDate">
                   <h6>{movie.tagline}</h6>
@@ -71,13 +177,19 @@ const DetailedView = ({ movieId, onClose, type }) => {
                   {movie.vote_average}
                 </div>
                 <div className="genras">
-                  {movie.genres && movie.genres.length > 0 ? (
-                    movie.genres.map((genre, index) => (
-                      <span key={genre.id} className="genre">
-                        {genre.name}
-                        {index < movie.genres.length - 1 && " | "}
-                      </span>
-                    ))
+                  {console.log("genre_ids", movie.genre_ids)}
+                  {movie.genre_ids && movie.genre_ids.length > 0 ? (
+                    movie.genre_ids.map((genre, index) => {
+                      const genrename = genreDetails.find(
+                        (g) => g.id === genre
+                      );
+                      return (
+                        <span key={genrename.id} className="genre">
+                          {genrename.name}
+                          {index < movie.genre_ids.length - 1 && " | "}
+                        </span>
+                      );
+                    })
                   ) : (
                     <span>No genres available</span>
                   )}
