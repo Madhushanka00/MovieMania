@@ -5,7 +5,7 @@ import MovieCard from "./MovieCard"; // import your MovieCard component
 import "../styles/movieArea.css";
 import DetailedView from "./DetailedView";
 
-const MoviesArea = ({ mode }) => {
+const MoviesArea = ({ mode, tab, type }) => {
   const [movies, setMovies] = useState([]);
   const [selectedMovieId, setSelectedMovieId] = useState(null);
   const [goToDetails, setGoToDetails] = useState(false);
@@ -24,29 +24,47 @@ const MoviesArea = ({ mode }) => {
   // setMode(mode);
   // console.log("API Key:", process.env.REACT_APP_TMDB_API_KEY);
   useEffect(() => {
-    if (mode === "popular") {
-      fetch(`http://localhost:5000/movies/popular`)
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          setMovies(data.results);
-        });
-    } else if (mode === "topRated") {
-      fetch(`http://localhost:5000/movies/top-rated`)
-        .then((res) => res.json())
-        .then((data) => {
-          // console.log(data);
-          setMovies(data.results);
-        });
-    } else if (mode === "popularTV") {
-      fetch(`http://localhost:5000/TV/popular`)
-        .then((res) => res.json())
-        .then((data) => {
-          // console.log(data);
-          setMovies(data.results);
-        });
+    if (type === "movie") {
+      if (mode === "popular") {
+        fetch(`http://localhost:5000/movies/popular`)
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            setMovies(data.results);
+          });
+      } else if (mode === "topRated") {
+        fetch(`http://localhost:5000/movies/top-rated`)
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data);
+            setMovies(data.results);
+          });
+      } else if (mode === "upcoming") {
+        fetch(`http://localhost:5000/movies/upcoming`)
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data);
+            setMovies(data.results);
+          });
+      }
+    } else if (type === "tv") {
+      if (mode === "popularTV") {
+        fetch(`http://localhost:5000/TV/popular`)
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data);
+            setMovies(data.results);
+          });
+      } else if (mode === "topRatedTV") {
+        fetch(`http://localhost:5000/tv/top-rated`)
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data);
+            setMovies(data.results);
+          });
+      }
     }
-  }, []);
+  }, [tab]);
 
   return (
     <>
@@ -70,8 +88,13 @@ const MoviesArea = ({ mode }) => {
           );
         })}
         {goToDetails && (
-          <DetailedView movieId={selectedMovieId} onClose={hideDetailedView} />
+          <DetailedView
+            movieId={selectedMovieId}
+            onClose={hideDetailedView}
+            type={type}
+          />
         )}
+        {console.log("type:", type)}
       </div>
     </>
   );

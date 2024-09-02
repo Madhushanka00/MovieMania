@@ -15,7 +15,7 @@ import Asistant from "./components/Asistant";
 import "./styles/home.css";
 
 const Home = () => {
-  const [tab, setTab] = useState("Movies");
+  const [tab, setTab] = useState("Home");
 
   const changeTab = (tab) => {
     console.log(tab);
@@ -23,46 +23,52 @@ const Home = () => {
   };
 
   const renderContent = () => {
-    switch (tab) {
-      case "Movies":
-        return (
-          <>
-            <h1>Most Popular</h1>
-            <div className="moviesArea">
-              <MoviesArea mode="popular" />
-            </div>
-            <h1>You might like</h1>
-            <div className="moviesArea">
-              <MoviesArea mode="topRated" />
-            </div>
-          </>
-        );
-      case "Series":
-        return (
-          <>
-            <h1>Popular TV Series</h1>
-            <div className="moviesArea">
-              <MoviesArea mode="popularTV" />
-            </div>
-          </>
-        );
-      case "Animation":
-        return (
-          <>
-            <h1>Animation</h1>
-          </>
-        );
-
-      case "Genres":
-        return <h1>Genres</h1>;
-      case "Ask AI":
-        return (
-          <>
-            <Asistant />
-          </>
-        );
-      default:
-        return <h1>Welcome</h1>;
+    if (tab == "Movies") {
+      return (
+        <>
+          <h1>Most Popular</h1>
+          <div className="moviesArea">
+            <MoviesArea mode="popular" tab={tab} type="movie" />
+          </div>
+          <h1>Upcoming Movies</h1>
+          <div className="moviesArea">
+            <MoviesArea mode="upcoming" tab={tab} type="movie" />
+          </div>
+          <h1>Top rated Movies</h1>
+          <div className="moviesArea">
+            <MoviesArea mode="topRated" tab={tab} type="movie" />
+          </div>
+        </>
+      );
+    } else if (tab == "Series") {
+      return (
+        <>
+          <h1>Popular TV Series</h1>
+          <div className="moviesArea">
+            <MoviesArea mode="popularTV" tab={tab} type="tv" />
+          </div>
+          <h1>Top rated TV series</h1>
+          <div className="moviesArea">
+            <MoviesArea mode="topRatedTV" tab={tab} type="tv" />
+          </div>
+        </>
+      );
+    } else if (tab == "Animation") {
+      return (
+        <>
+          <h1>Animation</h1>
+        </>
+      );
+    } else if (tab == "Genres") {
+      return <h1>Genres</h1>;
+    } else if (tab == "Ask AI") {
+      return (
+        <>
+          <Asistant />
+        </>
+      );
+    } else {
+      return <h1>Welcome</h1>;
     }
   };
 

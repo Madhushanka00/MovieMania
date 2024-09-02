@@ -6,17 +6,17 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Rate } from "antd";
 import { yellow } from "@mui/material/colors";
 
-const DetailedView = ({ movieId, onClose }) => {
+const DetailedView = ({ movieId, onClose, type }) => {
   const [movie, setMovie] = useState("");
   const [isVisible, setIsVisible] = useState(true);
   // console.log("Movie ID:", movieId);
   // const movieId = 533535;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/getDetails?movieId=${movieId}`)
+    fetch(`http://localhost:5000/getDetails?movieId=${movieId}&type=${type}`)
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+        console.log(data);
         setMovie(data);
       })
       .catch((error) => {
@@ -46,7 +46,12 @@ const DetailedView = ({ movieId, onClose }) => {
             <div className="DetailsSection_">
               <CloseIcon className="close" onClick={onClose} />
               <div className="titleSection_">
-                <h3>{movie.title}</h3>
+                {type === "movie" ? (
+                  <h3>{movie.title}</h3>
+                ) : (
+                  <h3>{movie.original_name}</h3>
+                )}
+
                 <div className="releaseDate">
                   <h6>{movie.tagline}</h6>
                   <h6 className="date">{movie.release_date}</h6>
