@@ -49,6 +49,10 @@
                 color: white;
                 font-size: 1.0rem;
                 cursor: pointer;
+
+                :hover{
+                    color: #ff0000;
+                }
             }
             // flex: 1;
             padding-left: 20px;
@@ -172,11 +176,21 @@
                 & .stars{
                     // background-color: rgb(255, 255, 255);
                     padding: 5px;
+                    
                     // border: solid white 1px;
                     border-radius: 10px;
                     background-color: rgb(255, 255, 255);
                     box-shadow: 1px 1px 10px #f6f0f046;
-                    
+                    // color: '#00b96b'
+
+                    & svg{
+                        // color: #e02b2bfa;
+                        // stroke-width:77px !important ;
+                        // border: solid 1px #e02b2bfa;
+                    }
+                    :root {
+                        --ant-rate-star-color: #15de8a; /* Change this to your desired color */
+                      }
                 }
             }
             
@@ -187,3 +201,8 @@
 
     
 }
+// .stars .ant-rate-star-full .ant-rate-star-second,
+// .stars .ant-rate-star-half .ant-rate-star-second,
+// .stars .ant-rate-star-full .ant-rate-star-first {
+//   color: #00b96b; /* Change this to your desired color */
+// }

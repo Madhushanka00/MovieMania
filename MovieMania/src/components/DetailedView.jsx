@@ -9,8 +9,13 @@ import { yellow } from "@mui/material/colors";
 const DetailedView = ({ movieId, onClose, type }) => {
   const [movie, setMovie] = useState("");
   const [isVisible, setIsVisible] = useState(true);
+  const [rating, setRating] = useState(0);
   // console.log("Movie ID:", movieId);
   // const movieId = 533535;
+  const handleRateChange = (value) => {
+    console.log("Rating:", value);
+    setRating(value);
+  };
 
   useEffect(() => {
     fetch(
@@ -84,7 +89,13 @@ const DetailedView = ({ movieId, onClose, type }) => {
               </div>
               <div className="myRatings">
                 How much I like {"  "}
-                <Rate allowHalf className="stars" />
+                <Rate
+                  allowHalf
+                  className="stars"
+                  style={{ colorPrimary: yellow[500] }}
+                  onChange={handleRateChange}
+                  value={rating}
+                />
               </div>
               {/* Render other movie details here */}
             </div>
