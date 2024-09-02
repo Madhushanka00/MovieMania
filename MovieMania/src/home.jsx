@@ -83,12 +83,6 @@ const Home = () => {
           </div>
         </div>
       );
-    } else if (tab == "Animation") {
-      return (
-        <>
-          <h1>Animation</h1>
-        </>
-      );
     } else if (tab == "Genres") {
       return (
         <>

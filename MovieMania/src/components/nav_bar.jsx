@@ -45,15 +45,6 @@ const NavBar = ({ changeTab }) => {
           TV
         </div>
         <div
-          className={`tabs ${activeTab === "Animation" ? "active" : ""}`}
-          onClick={() => {
-            changeTab("Animation");
-            handleClick("Animation");
-          }}
-        >
-          Animation
-        </div>
-        <div
           className={`tabs ${activeTab === "Genres" ? "active" : ""}`}
           onClick={() => {
             changeTab("Genres");
