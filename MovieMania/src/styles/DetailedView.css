@@ -126,7 +126,7 @@
 }
 .glass .Construction .DetailsSection_ .myRatings {
   position: absolute;
-  bottom: 20px;
+  bottom: 7%;
   right: 5%;
   font-size: medium;
   color: aliceblue;
@@ -134,6 +134,6 @@
 .glass .Construction .DetailsSection_ .myRatings .stars {
   padding: 5px;
   border-radius: 10px;
-  background-color: rgba(240, 248, 255, 0.382);
+  background-color: rgb(255, 255, 255);
   box-shadow: 1px 1px 10px rgba(246, 240, 240, 0.2745098039);
 }/*# sourceMappingURL=DetailedView.css.map */
