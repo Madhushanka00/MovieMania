@@ -7,12 +7,17 @@ import { TypeAnimation } from "react-type-animation";
 import ChatRecomends from "./chatrecomends";
 import MovieCard from "./MovieCard";
 import axios from "axios";
+import DetailedView from "./DetailedView";
+
+const endpointAddr = "https://dspndkpg-5000.asse.devtunnels.ms/";
 
 const Asistant = () => {
   const chatref = useRef();
   const msgRef = useRef();
   const [msg, setMsg] = useState("");
   const [movies, setMovies] = useState([]);
+  const [goToDetails, setGoToDetails] = useState(false);
+  const [selectedMovieId, setSelectedMovieId] = useState(null);
   const [messages, setMessages] = useState([
     {
       text: `**FilmSeeker**:  
@@ -29,6 +34,16 @@ Let’s explore the world of movies together! 🍿🎥`,
       sender: "bot",
     },
   ]);
+
+  const handleClick = (id) => {
+    console.log("Clicked");
+    setGoToDetails(true);
+    setSelectedMovieId(id);
+  };
+
+  const hideDetailedView = () => {
+    setGoToDetails(false);
+  };
 
   // useEffect(() => {
   //   setMessages[
@@ -50,7 +65,7 @@ Let’s explore the world of movies together! 🍿🎥`,
 
     // Fetch the bot response
     fetch(
-      `http://127.0.0.1:5000/chatagent/ask?query=${encodeURIComponent(
+      `https://dspndkpg-5000.asse.devtunnels.ms/chatagent/ask?query=${encodeURIComponent(
         userMessage
       )}`
     )
@@ -71,7 +86,7 @@ Let’s explore the world of movies together! 🍿🎥`,
     if (chatref.current) {
       chatref.current.scrollTop = chatref.current.scrollHeight;
     }
-    fetch("http://localhost:5000/requestIds")
+    fetch("https://dspndkpg-5000.asse.devtunnels.ms/requestIds")
       .then((res) => res.text())
       .then((data) => {
         console.log(data);
@@ -79,7 +94,7 @@ Let’s explore the world of movies together! 🍿🎥`,
           console.log("no movies");
         } else {
           axios
-            .get("http://localhost:5000/chatMovieDetails")
+            .get("https://dspndkpg-5000.asse.devtunnels.ms/chatMovieDetails")
             .then((response) => {
               console.log(response.data); // Access the data in the response
               setMovies(response.data);
@@ -145,25 +160,29 @@ Let’s explore the world of movies together! 🍿🎥`,
       <div className="moviesSugest">
         <div className="moviesArea_next">
           {movies && movies.length > 0 ? (
-            movies.map((movie) => {
+            movies.map((movie, index) => {
               return (
-                <>
-                  <div onClick={() => handleClick(movie.id)}>
-                    <MovieCard
-                      key={movie.id}
-                      movie={{
-                        title: movie.title,
-                        ratings: movie.ratings,
-                        posterUrl: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-                        id: movie.id,
-                      }}
-                    />
-                  </div>
-                </>
+                <div onClick={() => handleClick(movie.id)} key={index}>
+                  <MovieCard
+                    key={movie.id}
+                    movie={{
+                      title: movie.title,
+                      ratings: movie.ratings,
+                      posterUrl: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                      id: movie.id,
+                    }}
+                  />
+                </div>
               );
             })
           ) : (
-            <p>No movies available</p>
+            <p>OOps! No movies found.</p>
+          )}
+          {goToDetails && (
+            <DetailedView
+              movieId={selectedMovieId}
+              onClose={hideDetailedView}
+            />
           )}
         </div>
       </div>
