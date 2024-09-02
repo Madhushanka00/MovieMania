@@ -71,6 +71,7 @@ body, html, #root {
         }
 
         & .section{
+
             overflow-y: scroll;
             scroll-behavior: smooth; 
             &::-webkit-scrollbar {
@@ -82,14 +83,19 @@ body, html, #root {
                         // Hide scrollbar for Firefox
             scrollbar-width: none;
 
+            & .mainWrapper{
+                margin-top: 9vh;
+            }
+
             & h1{
                 color: azure;
                 margin-top: 20px;
                 font-size: 25px;
                 margin-left: 25px;
             }
-
-            & .typeSelect{
+            & .typemainSection{
+                margin-top: 10vh;
+              & .typeSelect{
                 display: flex;
                 // background-color: #377c7c;
                 height: 5vh;
@@ -116,6 +122,7 @@ body, html, #root {
                     
             &.active{
                 scale: 1.1;
+               
                 // background-color: #191a1a;
                 // background: linear-gradient(0deg, #191a1a 0%, rgba(25,26,26,1) 100%);
                 border-radius: 10px 10px 0px 0px;
@@ -133,7 +140,38 @@ body, html, #root {
             }
 
                 }
+            }  
             }
+
+            
+            & .genresArea{
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                // padding-left: 1%;
+                overflow-y: scroll;
+            scroll-behavior: smooth; 
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            
+                & .movieGenreSugestArea{
+                // background-color: #411616;
+                display: grid ;
+                // flex-direction: row;
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                // grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+                 /* Adjust minmax value to fit more columns */
+                // display: grid;
+                gap: 10px; /* Adjust the gap between cards */
+                padding: 15px;
+                // overflow: hidden;
+                
+            }
+            }
+
+            
 
 
             & .moviesArea{

@@ -5,14 +5,14 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.419); /* Adjust opacity to control dimming */
-    z-index: 1; /* Ensure the overlay is below the highlighted content */
+    z-index: 1001; /* Ensure the overlay is below the highlighted content */
     backdrop-filter: blur(2px);
 }
 
 
 .glass{
     position: absolute;
-    z-index: 2;
+    z-index:1002;
     color: white;
     left:15%;
     top: 5vh;

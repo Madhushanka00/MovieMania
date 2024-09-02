@@ -2,9 +2,12 @@
   display: flex;
   background-color: #191a1a;
   height: 8vh;
+  position: fixed;
+  width: 96%;
   color: white;
   align-items: center;
   display: flex;
+  z-index: 1000;
   flex-direction: row;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.1);
 }
