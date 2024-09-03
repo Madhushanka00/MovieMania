@@ -5,12 +5,14 @@ import Autocomplete from "@mui/material/Autocomplete";
 import { InputBase } from "@mui/material";
 import "../styles/searchbar.css";
 import SearchIcon from "@mui/icons-material/Search";
-export default function SearchBar() {
+
+export default function SearchBar({ changeTab }) {
   const [query, setQuery] = useState("");
 
   const handleSearchClick = () => {
     if (query != "") {
       console.log(query);
+      changeTab("home");
     }
   };
   const handleKeyDown = (event) => {

@@ -64,7 +64,7 @@ const NavBar = ({ changeTab }) => {
         </div>
       </div>
       <div className="mid">
-        <SearchBar />
+        <SearchBar changeTab={changeTab} />
       </div>
 
       <div className="right">

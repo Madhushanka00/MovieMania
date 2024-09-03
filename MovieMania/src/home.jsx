@@ -141,7 +141,11 @@ const Home = () => {
         </>
       );
     } else {
-      return <h1>Welcome</h1>;
+      return (
+        <div className="HomeMain">
+          <h1>Welcome</h1>
+        </div>
+      );
     }
   };
 

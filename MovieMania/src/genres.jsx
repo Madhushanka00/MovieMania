@@ -34,7 +34,7 @@ const Genres = ({ media_type, genre_ID }) => {
       {movies.map((movie) => {
         return (
           <>
-            <div onClick={() => handleClick(movie)}>
+            <div onClick={() => handleClick(movie)} key={movie.id}>
               <MovieCard
                 key={movie.id}
                 movie={{

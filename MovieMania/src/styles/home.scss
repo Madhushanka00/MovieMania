@@ -169,10 +169,13 @@ body, html, #root {
                 // overflow: hidden;
                 
             }
-            }
+            }  
 
             
-
+   & .HomeMain{
+    background-color: #f1f1f1;
+    top: 10vh;
+   }
 
             & .moviesArea{
                 display: flex;
