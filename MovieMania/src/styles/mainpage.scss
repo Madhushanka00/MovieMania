@@ -66,38 +66,54 @@
 
             
 
-            & .searchedMovie{
-                flex: 1;
-                padding-left: 1%;
-                background-color: #D0677D;
-                // box-shadow: #ffffff;
-                & .moveara{
-                    background-color: #e49090;
-                    flex: 5;
-                    align-items: start;
-                    overflow-y: scroll;
-                    scroll-behavior: smooth; 
-                    &::-webkit-scrollbar {
-                        display: none;
-                    }
-                    
-                    & .moviesArea_next{
-                        display: flex;
-                    flex-direction: column;
-                    flex-wrap: wrap;
-                    justify-content: space-between;
-                    height: 45vh;
-                    // overflow: scroll;
-                    // scroll-behavior: smooth;
-                    padding: 5px 20px;} 
-                    }  
-
-            }
             
-
-        }
         
 
+        & .subtitle{
+            font-size: 1.3rem;
+            color: rgb(233, 233, 233);
+        }
+        
+    }
+}
+    & .Searchresults{
+        // background-color: #AB6EB3;
+
+        & .searchedMovie{
+            flex: 1;
+            padding-left: 1%;
+            // background-color: #D0677D;
+            // box-shadow: #ffffff;
+        }
+        & .moviesArea_next{
+                // background-color: #e49090 !important;
+                flex: 5;
+                align-items: start;
+                overflow-y: scroll;
+                scroll-behavior: smooth; 
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+                
+                // & .moviesArea_next{
+                //     display: flex;
+                // flex-direction: column;
+                // flex-wrap: wrap;
+                // justify-content: space-between;
+                // height: 45vh;
+                // // overflow: scroll;
+                // // scroll-behavior: smooth;
+                // padding: 5px 20px;} 
+                }  
+
+       
+        
+
+    }
+        
+        
+    
+    & .recommendations{
         & .subtitle{
             font-size: 1.3rem;
             color: rgb(233, 233, 233);

@@ -53,39 +53,33 @@
   display: flex;
   flex-direction: row;
 }
-.HomeMain .Searchresults .searcharea .searchedMovie, .HomeMain .recommendations .searcharea .searchedMovie {
+.HomeMain .Searchresults .searcharea .subtitle, .HomeMain .recommendations .searcharea .subtitle {
+  font-size: 1.3rem;
+  color: rgb(233, 233, 233);
+}
+.HomeMain .Searchresults .searchedMovie {
   flex: 1;
   padding-left: 1%;
-  background-color: #D0677D;
 }
-.HomeMain .Searchresults .searcharea .searchedMovie .moveara, .HomeMain .recommendations .searcharea .searchedMovie .moveara {
-  background-color: #e49090;
+.HomeMain .Searchresults .moviesArea_next {
   flex: 5;
   align-items: start;
   overflow-y: scroll;
   scroll-behavior: smooth;
 }
-.HomeMain .Searchresults .searcharea .searchedMovie .moveara::-webkit-scrollbar, .HomeMain .recommendations .searcharea .searchedMovie .moveara::-webkit-scrollbar {
+.HomeMain .Searchresults .moviesArea_next::-webkit-scrollbar {
   display: none;
 }
-.HomeMain .Searchresults .searcharea .searchedMovie .moveara .moviesArea_next, .HomeMain .recommendations .searcharea .searchedMovie .moveara .moviesArea_next {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  height: 45vh;
-  padding: 5px 20px;
-}
-.HomeMain .Searchresults .subtitle, .HomeMain .recommendations .subtitle {
+.HomeMain .recommendations .subtitle {
   font-size: 1.3rem;
   color: rgb(233, 233, 233);
 }
-.HomeMain .Searchresults .moveara, .HomeMain .recommendations .moveara {
+.HomeMain .recommendations .moveara {
   align-items: start;
   overflow-y: scroll;
   scroll-behavior: smooth;
 }
-.HomeMain .Searchresults .moveara::-webkit-scrollbar, .HomeMain .recommendations .moveara::-webkit-scrollbar {
+.HomeMain .recommendations .moveara::-webkit-scrollbar {
   display: none;
 }
 
