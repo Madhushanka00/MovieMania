@@ -28,10 +28,19 @@
   
   .movie-details {
     // background: black;
-    // height: 20%;
+    max-height: 10vh;
     margin-top: 10px;
     color:antiquewhite;
     cursor: pointer;
+    align-items: center;
+    & h3{
+      display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limits to 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    }
+    
   }
   
   

@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=New+Amsterdam&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=New+Amsterdam&family=SUSE:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=New+Amsterdam&family=SUSE:wght@100..800&display=swap');
+
+.HomeMain{
+    display: flex;
+    flex-direction: column;
+    // background-color: #f1f1f1;
+    margin-top: 9vh;
+    align-items: left;
+    & .titlebox{
+
+        padding-left: 2%;
+        & .mainTitle{
+            height: auto;
+            display: inline-block;
+            font-family: "Inter", sans-serif;
+            // background: linear-gradient(90deg, #FF5F6D, #FFC371, #47E8B6, #5F72FF);
+            background: linear-gradient(90deg, #4C83EF, #AB6EB3, #D0677D, #D46677);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            // -webkit-text-stroke: .5px rgba(255, 255, 255, 0.8);
+            font-weight: bold;
+            font-size: 2.7em;
+            // animation: gradientAnimation 5s ease-in-out ;
+            // letter-spacing: 1px;
+            font-weight: 800;
+        }
+        & h2{
+            // top: 110px;
+        color: rgb(171, 171, 171);
+        font-family: "SUSE", sans-serif;
+        font-style: italic;
+        justify-content: left;
+        font-size: 1.2rem;
+        }
+    }
+    & .Searchresults , .recommendations{
+        margin-top: 2%;
+        display:flex;
+        flex-direction: column;
+        padding-left: 2% ;
+        & .devider{
+            display:flex;
+            flex-direction: row;
+
+            & .subtitle1{
+                flex:1;
+                font-size: 1.3rem;
+                color: rgb(233, 233, 233);
+
+            }
+            & .subtitle2{
+                flex:3;
+                font-size: 1.3rem;
+                color: rgb(233, 233, 233);
+            }
+            
+        }
+
+        & .searcharea{
+            display: flex;
+            flex-direction: row;
+            // background-color: #D0677D;
+
+            
+
+            & .searchedMovie{
+                flex: 1;
+                
+                // width: 1vw;
+
+            }
+            & .moveara{
+            flex: 3;
+            align-items: start;
+            overflow-y: scroll;
+            scroll-behavior: smooth; 
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            }
+        }
+        
+
+        & .subtitle{
+            font-size: 1.3rem;
+            color: rgb(233, 233, 233);
+        }
+        & .moveara{
+            // background: #4C83EF;
+            align-items: start;
+            overflow-y: scroll;
+            scroll-behavior: smooth; 
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    }
+    
+}
+
+    
+@keyframes gradientAnimation {
+    0% {
+        background: linear-gradient(90deg, #D46677, #D0677D, #AB6EB3, #4C83EF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        
+    }
+    
+    100% {
+        background: linear-gradient(90deg, #4C83EF, #AB6EB3, #D0677D, #D46677);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    
+}

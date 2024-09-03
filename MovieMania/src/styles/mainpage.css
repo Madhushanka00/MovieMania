@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=New+Amsterdam&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=New+Amsterdam&family=SUSE:wght@100..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=New+Amsterdam&family=SUSE:wght@100..800&display=swap");
+.HomeMain {
+  display: flex;
+  flex-direction: column;
+  margin-top: 9vh;
+  align-items: left;
+}
+.HomeMain .titlebox {
+  padding-left: 2%;
+}
+.HomeMain .titlebox .mainTitle {
+  height: auto;
+  display: inline-block;
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(90deg, #4C83EF, #AB6EB3, #D0677D, #D46677);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  font-size: 2.7em;
+  font-weight: 800;
+}
+.HomeMain .titlebox h2 {
+  color: rgb(171, 171, 171);
+  font-family: "SUSE", sans-serif;
+  font-style: italic;
+  justify-content: left;
+  font-size: 1.2rem;
+}
+.HomeMain .Searchresults, .HomeMain .recommendations {
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 2%;
+}
+.HomeMain .Searchresults .devider, .HomeMain .recommendations .devider {
+  display: flex;
+  flex-direction: row;
+}
+.HomeMain .Searchresults .devider .subtitle1, .HomeMain .recommendations .devider .subtitle1 {
+  flex: 1;
+  font-size: 1.3rem;
+  color: rgb(233, 233, 233);
+}
+.HomeMain .Searchresults .devider .subtitle2, .HomeMain .recommendations .devider .subtitle2 {
+  flex: 3;
+  font-size: 1.3rem;
+  color: rgb(233, 233, 233);
+}
+.HomeMain .Searchresults .searcharea, .HomeMain .recommendations .searcharea {
+  display: flex;
+  flex-direction: row;
+}
+.HomeMain .Searchresults .searcharea .searchedMovie, .HomeMain .recommendations .searcharea .searchedMovie {
+  flex: 1;
+}
+.HomeMain .Searchresults .searcharea .moveara, .HomeMain .recommendations .searcharea .moveara {
+  flex: 3;
+  align-items: start;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+.HomeMain .Searchresults .searcharea .moveara::-webkit-scrollbar, .HomeMain .recommendations .searcharea .moveara::-webkit-scrollbar {
+  display: none;
+}
+.HomeMain .Searchresults .subtitle, .HomeMain .recommendations .subtitle {
+  font-size: 1.3rem;
+  color: rgb(233, 233, 233);
+}
+.HomeMain .Searchresults .moveara, .HomeMain .recommendations .moveara {
+  align-items: start;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+.HomeMain .Searchresults .moveara::-webkit-scrollbar, .HomeMain .recommendations .moveara::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background: linear-gradient(90deg, #D46677, #D0677D, #AB6EB3, #4C83EF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  100% {
+    background: linear-gradient(90deg, #4C83EF, #AB6EB3, #D0677D, #D46677);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}/*# sourceMappingURL=mainpage.css.map */

@@ -6,13 +6,14 @@ import { InputBase } from "@mui/material";
 import "../styles/searchbar.css";
 import SearchIcon from "@mui/icons-material/Search";
 
-export default function SearchBar({ changeTab }) {
+export default function SearchBar({ changeTab, setActiveTab }) {
   const [query, setQuery] = useState("");
 
   const handleSearchClick = () => {
     if (query != "") {
       console.log(query);
       changeTab("home");
+      setActiveTab("Home");
     }
   };
   const handleKeyDown = (event) => {

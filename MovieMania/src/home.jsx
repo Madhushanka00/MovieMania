@@ -10,6 +10,7 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import MoviesArea from "./components/MovieArea";
 import DetailedView from "./components/DetailedView";
+import MainPage from "./mainpage";
 import Asistant from "./components/Asistant";
 import Genres from "./genres";
 // import
@@ -48,7 +49,6 @@ const Home = () => {
   };
 
   const changeTab = (tab) => {
-    // console.log(tab);
     setTab(tab);
   };
 
@@ -142,9 +142,9 @@ const Home = () => {
       );
     } else {
       return (
-        <div className="HomeMain">
-          <h1>Welcome</h1>
-        </div>
+        <>
+          <MainPage />
+        </>
       );
     }
   };

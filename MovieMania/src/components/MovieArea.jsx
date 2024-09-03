@@ -87,7 +87,6 @@ const MoviesArea = ({ mode, tab, type }) => {
                   }}
                 />
               </div>
-              ;
             </>
           );
         })}
