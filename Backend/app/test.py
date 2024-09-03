@@ -262,7 +262,23 @@ def get_chatagent_movielist():
     else:
         return jsonify({"error": "No movies to fetch details for"}), 400  
     
+@app.route('/searchmovies', methods=['GET'])
+def search_movies():
+    # Get the search query from the query parameters
+    search_query = request.args.get('query')
     
+    # Check if the search query is provided
+    if not search_query:
+        return jsonify({"error": "query is required"}), 400
+    
+    # Get the TMDB API key from the configuration
+    api_key = current_app.config['TMDB_API_KEY']
+    
+    # Make the API request to TMDB to search for movies
+    response = requests.get(f'https://api.themoviedb.org/3/search/movie?api_key={api_key}&query={search_query}&language=en-US&page=1')
+    
+    # Return the results from TMDB API as JSON
+    return jsonify(response.json())
 
 
 app.run(port=5000, debug=True , host="0.0.0.0")
