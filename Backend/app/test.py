@@ -275,10 +275,33 @@ def search_movies():
     api_key = current_app.config['TMDB_API_KEY']
     
     # Make the API request to TMDB to search for movies
-    response = requests.get(f'https://api.themoviedb.org/3/search/movie?api_key={api_key}&query={search_query}&language=en-US&page=1')
+    response = requests.get(f'https://api.themoviedb.org/3/search/multi?api_key={api_key}&query={search_query}&language=en-US&page=1')
+    # responseTV = requests.get(f'https://api.themoviedb.org/3/search/tv?api_key={api_key}&query={search_query}&language=en-US&page=1')
     
+    # print("responceMovies",(responseMovie))
+    # print("responseTV",(responseTV))
+    # response=[respondedmovies]
     # Return the results from TMDB API as JSON
     return jsonify(response.json())
+
+@app.route('/similar', methods=['GET'])
+def get_similar_movies():
+    mediatype = request.args.get('type')
+    movie_id = request.args.get('id')
+
+    # Check if the movieId is provided
+    if not movie_id:
+        return jsonify({"error": "movieId is required"}), 400
+    
+    # Get the TMDB API key from the configuration
+    api_key = current_app.config['TMDB_API_KEY']
+    if (mediatype == 'movie'):
+        response = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id}/similar?api_key={api_key}&language=en-US&page=1')
+    else:
+        response = requests.get(f'https://api.themoviedb.org/3/tv/{movie_id}/similar?api_key={api_key}&language=en-US&page=1')
+    print(response)
+    return jsonify(response.json())
+
 
 
 app.run(port=5000, debug=True , host="0.0.0.0")

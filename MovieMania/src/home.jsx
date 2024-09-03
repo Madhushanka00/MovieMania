@@ -1,4 +1,4 @@
-import React, { act, useEffect } from "react";
+import React, { act, useEffect, useContext } from "react";
 import { useState } from "react";
 import NavBar from "./components/nav_bar";
 import LeftBar from "./components/leftBar";
@@ -13,6 +13,7 @@ import DetailedView from "./components/DetailedView";
 import MainPage from "./mainpage";
 import Asistant from "./components/Asistant";
 import Genres from "./genres";
+import MovieContext from "./components/movieContext";
 // import
 import "./styles/home.css";
 
@@ -23,6 +24,11 @@ const Home = () => {
   const [activeGenre, setActiveGenre] = useState("");
   const [movietype, setMovieType] = useState("");
   const [tab, setTab] = useState("Home");
+  const [selectItem, setSelectItem] = useState(null);
+
+  useEffect(() => {
+    console.log("Selected Item:", selectItem);
+  }, [selectItem]);
 
   useEffect(() => {
     console.log("Movie Type:", movietype);
@@ -150,19 +156,25 @@ const Home = () => {
   };
 
   return (
-    <div className="mainlayout">
-      <div className="drawer">
-        <AcUnitIcon className="mainicon" />
-        <StarOutlinedIcon className="Icons" />
-        <AccessTimeIcon className="Icons" />
-        <HelpOutlineIcon className="Icons" />
-        <SettingsOutlinedIcon className="Icons" />
-        <LogoutOutlinedIcon className="bottomIcon" />
-      </div>
-      <div className="content">
-        <NavBar className="navSection" changeTab={changeTab} />
-        <div className="section">
-          {/* <h1>Most Popular</h1>
+    <MovieContext.Provider
+      value={{
+        selectItem,
+        setSelectItem,
+      }}
+    >
+      <div className="mainlayout">
+        <div className="drawer">
+          <AcUnitIcon className="mainicon" />
+          <StarOutlinedIcon className="Icons" />
+          <AccessTimeIcon className="Icons" />
+          <HelpOutlineIcon className="Icons" />
+          <SettingsOutlinedIcon className="Icons" />
+          <LogoutOutlinedIcon className="bottomIcon" />
+        </div>
+        <div className="content">
+          <NavBar className="navSection" changeTab={changeTab} />
+          <div className="section">
+            {/* <h1>Most Popular</h1>
           // <div className="moviesArea">
           //   <MoviesArea mode="popular" />
           // </div>
@@ -170,10 +182,11 @@ const Home = () => {
           // <div className="moviesArea">
           //   <MoviesArea mode="topRated" />
           </div> */}
-          {renderContent()}
+            {renderContent()}
+          </div>
         </div>
       </div>
-    </div>
+    </MovieContext.Provider>
   );
 };
 export default Home;

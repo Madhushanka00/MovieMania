@@ -46,12 +46,13 @@
 
             & .subtitle1{
                 flex:1;
+                padding-left: 2%;
                 font-size: 1.3rem;
                 color: rgb(233, 233, 233);
 
             }
             & .subtitle2{
-                flex:3;
+                flex:5;
                 font-size: 1.3rem;
                 color: rgb(233, 233, 233);
             }
@@ -67,19 +68,33 @@
 
             & .searchedMovie{
                 flex: 1;
-                
-                // width: 1vw;
+                padding-left: 1%;
+                background-color: #D0677D;
+                // box-shadow: #ffffff;
+                & .moveara{
+                    background-color: #e49090;
+                    flex: 5;
+                    align-items: start;
+                    overflow-y: scroll;
+                    scroll-behavior: smooth; 
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
+                    
+                    & .moviesArea_next{
+                        display: flex;
+                    flex-direction: column;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    height: 45vh;
+                    // overflow: scroll;
+                    // scroll-behavior: smooth;
+                    padding: 5px 20px;} 
+                    }  
 
             }
-            & .moveara{
-            flex: 3;
-            align-items: start;
-            overflow-y: scroll;
-            scroll-behavior: smooth; 
-            &::-webkit-scrollbar {
-                display: none;
-            }
-            }
+            
+
         }
         
 

@@ -40,11 +40,12 @@
 }
 .HomeMain .Searchresults .devider .subtitle1, .HomeMain .recommendations .devider .subtitle1 {
   flex: 1;
+  padding-left: 2%;
   font-size: 1.3rem;
   color: rgb(233, 233, 233);
 }
 .HomeMain .Searchresults .devider .subtitle2, .HomeMain .recommendations .devider .subtitle2 {
-  flex: 3;
+  flex: 5;
   font-size: 1.3rem;
   color: rgb(233, 233, 233);
 }
@@ -54,15 +55,26 @@
 }
 .HomeMain .Searchresults .searcharea .searchedMovie, .HomeMain .recommendations .searcharea .searchedMovie {
   flex: 1;
+  padding-left: 1%;
+  background-color: #D0677D;
 }
-.HomeMain .Searchresults .searcharea .moveara, .HomeMain .recommendations .searcharea .moveara {
-  flex: 3;
+.HomeMain .Searchresults .searcharea .searchedMovie .moveara, .HomeMain .recommendations .searcharea .searchedMovie .moveara {
+  background-color: #e49090;
+  flex: 5;
   align-items: start;
   overflow-y: scroll;
   scroll-behavior: smooth;
 }
-.HomeMain .Searchresults .searcharea .moveara::-webkit-scrollbar, .HomeMain .recommendations .searcharea .moveara::-webkit-scrollbar {
+.HomeMain .Searchresults .searcharea .searchedMovie .moveara::-webkit-scrollbar, .HomeMain .recommendations .searcharea .searchedMovie .moveara::-webkit-scrollbar {
   display: none;
+}
+.HomeMain .Searchresults .searcharea .searchedMovie .moveara .moviesArea_next, .HomeMain .recommendations .searcharea .searchedMovie .moveara .moviesArea_next {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: 45vh;
+  padding: 5px 20px;
 }
 .HomeMain .Searchresults .subtitle, .HomeMain .recommendations .subtitle {
   font-size: 1.3rem;
