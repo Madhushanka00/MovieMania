@@ -16,10 +16,13 @@ load_dotenv()
 
 file_path = os.path.join(os.path.dirname(__file__), 'MLmodels', 'Exports', 'movie_list.pkl')
 
-with open('d:\MovieMania\MovieMania\MLmodels\Exports\movie_list.pkl', 'rb') as file:
+with open('d:/MovieMania/MovieMania/MLmodels/Exports/movie_list.pkl', 'rb') as file:
     # Backend\Assistant.ipynb
     # MLmodels\Exports
     new_df = pickle.load(file)
+
+with open('d:/MovieMania/MovieMania/MLmodels/Exports/similarity_list.pkl', 'rb') as file:
+    similarity = pickle.load(file)
 
 # print(new_df)
 
@@ -231,21 +234,6 @@ def get_chatagent_movies():
 def get_chatagent_movielist():
     currentList =[]
     global respondedmovies 
-    # if len(respondedmovies):
-    #     api_key = current_app.config['TMDB_API_KEY']
-    #     for movies in respondedmovies:
-    #         response = requests.get(f'https://api.themoviedb.org/3/search/movie?query={movies}&api_key={api_key}&include_adult=false&language=en-US&page=1')
-    #         if response.status_code == 200:
-    #             print(response)
-    #             moviedetails= jsonify(response.json())
-    #             print(moviedetails)
-    #             currentList.append(moviedetails)
-    #         else:
-    #             print (jsonify({"error": "Unable to fetch movie details"}), response.status_code)
-    #     return currentList
-
-    # else:
-    #     return jsonify({"error": "Unable to fetch movie details"}), response.status_code
     if len(respondedmovies):  # Assuming respondedmovies is defined elsewhere
         api_key = current_app.config['TMDB_API_KEY']
         # print(api_key)
@@ -286,12 +274,7 @@ def search_movies():
     
     # Make the API request to TMDB to search for movies
     response = requests.get(f'https://api.themoviedb.org/3/search/multi?api_key={api_key}&query={search_query}&language=en-US&page=1')
-    # responseTV = requests.get(f'https://api.themoviedb.org/3/search/tv?api_key={api_key}&query={search_query}&language=en-US&page=1')
-    
-    # print("responceMovies",(responseMovie))
-    # print("responseTV",(responseTV))
-    # response=[respondedmovies]
-    # Return the results from TMDB API as JSON
+
     return jsonify(response.json())
 
 @app.route('/similar', methods=['GET'])
