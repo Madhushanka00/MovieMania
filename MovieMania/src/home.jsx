@@ -25,6 +25,8 @@ const Home = () => {
   const [movietype, setMovieType] = useState("");
   const [tab, setTab] = useState("Home");
   const [selectItem, setSelectItem] = useState(null);
+  const [clickedItem, SetClickedItem] = useState(null);
+  const [similarMovies, setSimilarMovies] = useState([]);
 
   useEffect(() => {
     console.log("Selected Item:", selectItem);
@@ -160,6 +162,10 @@ const Home = () => {
       value={{
         selectItem,
         setSelectItem,
+        clickedItem,
+        SetClickedItem,
+        similarMovies,
+        setSimilarMovies,
       }}
     >
       <div className="mainlayout">

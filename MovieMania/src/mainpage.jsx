@@ -6,36 +6,61 @@ import MovieCard from "./components/MovieCard";
 import axios from "axios";
 
 const MainPage = () => {
-  const { selectItem, setSelectItem } = useContext(MovieContext);
+  const {
+    selectItem,
+    setSelectItem,
+    clickedItem,
+    SetClickedItem,
+    similarMovies,
+    setSimilarMovies,
+  } = useContext(MovieContext);
   const [type, setType] = useState(null);
   const [movieTitle, setMovieTitle] = useState(null);
   const [movies, setMovies] = useState([]);
+  const [title, setTitle] = useState(null);
   console.log("Selected Item:", selectItem);
+  const [fakeState, setFakeState] = useState(0);
+
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setFakeState((prev) => prev + 1); // Update fake state every second
+  //   }, 1000);
+
+  //   return () => clearInterval(interval); // Clean up on unmount
+  // }, []);
 
   useEffect(() => {
     if (selectItem) {
       if (selectItem.title) {
         setType("movie");
+        setTitle(selectItem.title);
       } else {
         setType("tv");
+        setTitle(selectItem.original_name);
       }
       setMovieTitle(
         selectItem.title ? selectItem.title : selectItem.original_name
       );
-      axios
-        .get(
-          `https://dspndkpg-5000.asse.devtunnels.ms/similar?type=${selectItem.media_type}&id=${selectItem.id}`
-        )
-        .then((response) => {
-          // console.log(response.data); // Access the data in the response
-          setMovies(response.data.results);
-          console.log("similar,", response.data);
-        })
-        .catch((error) => {
-          console.error("Error fetching similar details:", error);
-        });
+      console.log("Movies:", movies);
+      // axios
+      //   .get(
+      //     `https://dspndkpg-5000.asse.devtunnels.ms/sililarNew?type=${selectItem.media_type}&id=${selectItem.id}&movie=${title}`
+      //   )
+      //   .then((response) => {
+      //     // console.log(response.data); // Access the data in the response
+      //     setMovies(response.data.results);
+      //     console.log("similar,", response.data);
+      //   })
+      //   .catch((error) => {
+      //     console.error("Error fetching similar details:", error);
+      //   });
     }
   }, [selectItem]);
+
+  useEffect(() => {
+    console.log("similar movies recieved:", similarMovies);
+    setMovies(similarMovies);
+  }, [similarMovies]);
 
   return (
     <div className="HomeMain">
