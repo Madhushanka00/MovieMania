@@ -1,10 +1,8 @@
-from flask_socketio import emit
-from . import socketio
+import pickle
 
-@socketio.on('connect')
-def handle_connect():
-    emit('response', {'message': 'Connected to the server!'})
+with open('../MLmodels/Exports/movie_list.pkl', 'rb') as file:
+    # Backend\Assistant.ipynb
+    # MLmodels\Exports
+    new_df = pickle.load(file)
 
-@socketio.on('get_movies')
-def handle_get_movies():
-    emit('response', {'message': 'Here are the movies...'})
+print(new_df.head())

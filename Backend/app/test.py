@@ -5,6 +5,8 @@ import os
 from dotenv import load_dotenv
 import re
 import json
+import pickle
+ 
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -12,6 +14,14 @@ app = Flask(__name__)
 CORS(app)
 load_dotenv()
 
+file_path = os.path.join(os.path.dirname(__file__), 'MLmodels', 'Exports', 'movie_list.pkl')
+
+with open('d:\MovieMania\MovieMania\MLmodels\Exports\movie_list.pkl', 'rb') as file:
+    # Backend\Assistant.ipynb
+    # MLmodels\Exports
+    new_df = pickle.load(file)
+
+# print(new_df)
 
 messages = ['']
 moviesrowtext =''
