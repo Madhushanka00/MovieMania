@@ -21,7 +21,7 @@ with open('d:/MovieMania/MovieMania/MLmodels/Exports/movie_list.pkl', 'rb') as f
     # MLmodels\Exports
     new_df = pickle.load(file)
 
-with open('d:/MovieMania/MovieMania/MLmodels/Exports/similarity_list.pkl', 'rb') as file:
+with open('d:/MovieMania/similarity_list.pkl', 'rb') as file:
     similarity = pickle.load(file)
 
 # print(new_df)
