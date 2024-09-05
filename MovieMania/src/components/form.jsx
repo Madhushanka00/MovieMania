@@ -3,13 +3,17 @@ import GoogleIcon from "@mui/icons-material/Google";
 import Movieroll from "../../public/movieroll.svg";
 import { useNavigate } from "react-router-dom";
 
-export default function Form() {
+export default function Form({ setIsLogin }) {
   const navigate = useNavigate();
   const handleSignIn = () => {
     // Perform any form validation or API calls here
 
     // After successful sign-in, navigate to the home page
-    navigate("/");
+    navigate("/home");
+  };
+
+  const gotoSignup = () => {
+    setIsLogin(false);
   };
 
   return (
@@ -68,7 +72,10 @@ export default function Form() {
           <p className="text-sm font-medium text-gray-400">
             Don't have an account?
           </p>
-          <button className="text-violet-500 text-sm font-medium ml-2">
+          <button
+            className="text-violet-500 text-sm font-medium ml-2"
+            onClick={gotoSignup}
+          >
             Sign up
           </button>
         </div>
