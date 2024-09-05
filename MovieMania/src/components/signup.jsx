@@ -1,14 +1,72 @@
 import * as React from "react";
+import { useRef, useState, useEffect } from "react";
 import GoogleIcon from "@mui/icons-material/Google";
 import Movieroll from "../../public/movieroll.svg";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+// import { set } from "mongoose";
 
 export default function Signup({ setIsLogin }) {
   const navigate = useNavigate();
+  const [validatecode, setValidateCode] = useState(false);
+
+  const userNameRef = useRef("");
+  const emailRef = useRef("");
+  const passwordRef = useRef("");
+  const confirmPasswordRef = useRef("");
+
+  useEffect(() => {
+    console.log("validatecode", validatecode);
+    validatecode ? navigate("/home") : console.log("error");
+  }, [validatecode]);
 
   const handleSignUp = () => {
     // Perform any form validation or API calls here
-    navigate("/home");
+    if (
+      userNameRef.current.value === "" ||
+      emailRef.current.value === "" ||
+      passwordRef.current.value === "" ||
+      confirmPasswordRef.current.value === ""
+    ) {
+      alert("Please fill all the fields");
+      return;
+    }
+    if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+      alert("Passwords do not match");
+      return;
+    }
+    fetch(
+      `http://localhost:3000/register/${userNameRef.current.value}/${emailRef.current.value}/${passwordRef.current.value}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: userNameRef.current.value,
+          password: passwordRef.current.value,
+          email: emailRef.current.value,
+        }),
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.message === "User registered successfully") {
+          setValidateCode(true);
+        } else {
+          setValidateCode(false);
+          alert("User already exists, try different username");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        setValidateCode(false);
+      });
+    // {
+    //   validatecode ? navigate("/home") : console.log("error");
+    // }
+    // // navigate("/home");
   };
   const gotoSignin = () => {
     setIsLogin(true);
@@ -22,12 +80,11 @@ export default function Signup({ setIsLogin }) {
       </p>
       <div className="mt-5">
         <div className="mb-4">
-          <label className="text-base font-semibold text-white">
-            Full Name
-          </label>
+          <label className="text-base font-semibold text-white">Username</label>
           <input
             className="w-full border-2 border-gray-700 rounded-xl p-2 mt-1 bg-gray-900 text-white"
-            placeholder="Enter your full name"
+            placeholder="Enter your user name"
+            ref={userNameRef}
           />
         </div>
         <div className="mb-4">
@@ -35,6 +92,7 @@ export default function Signup({ setIsLogin }) {
           <input
             className="w-full border-2 border-gray-700 rounded-xl p-2 mt-1 bg-gray-900 text-white"
             placeholder="Enter your email"
+            ref={emailRef}
           />
         </div>
         <div className="mb-4">
@@ -43,6 +101,7 @@ export default function Signup({ setIsLogin }) {
             className="w-full border-2 border-gray-700 rounded-xl p-2 mt-1 bg-gray-900 text-white"
             placeholder="Enter your password"
             type="password"
+            ref={passwordRef}
           />
         </div>
         <div className="mb-4">
@@ -53,6 +112,7 @@ export default function Signup({ setIsLogin }) {
             className="w-full border-2 border-gray-700 rounded-xl p-2 mt-1 bg-gray-900 text-white"
             placeholder="Confirm your password"
             type="password"
+            ref={confirmPasswordRef}
           />
         </div>
         <div className="mt-6 flex flex-col gap-y-2">

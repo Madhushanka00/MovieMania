@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import GoogleIcon from "@mui/icons-material/Google";
 import Movieroll from "../../public/movieroll.svg";
 import { useNavigate } from "react-router-dom";
@@ -7,12 +7,16 @@ import axios from "axios";
 
 export default function Form({ setIsLogin }) {
   const navigate = useNavigate();
+  const [validateUser, setValidateUser] = useState(false);
 
   const userRef = useRef("");
   const passRef = useRef("");
 
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+  useEffect(() => {
+    // console.log("validateUser", validateUser);
+    validateUser ? navigate("/home") : console.log("error login");
+  }, [validateUser]);
+
   const handleSignIn = () => {
     // Perform any form validation or API calls here
     console.log(userRef.current.value);
@@ -25,23 +29,25 @@ export default function Form({ setIsLogin }) {
     //   .then((res) => {
     //     console.log(res.data);
     //   });
-
-    fetch(
-      `http://localhost:3000/register/${userRef.current.value}/${passRef.current.value}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: userRef.current.value,
-          password: passRef.current.value,
-        }),
-      }
-    )
+    fetch("http://localhost:3000/validateUser", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        usernameOrEmail: userRef.current.value, // Can be either username or email
+        password: passRef.current.value,
+      }),
+    })
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+        if (data.message === "User validated successfully") {
+          setValidateUser(true);
+        } else {
+          setValidateUser(false);
+          alert("Invalid username or password");
+        }
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -62,10 +68,12 @@ export default function Form({ setIsLogin }) {
       </p>
       <div className="mt-6">
         <div>
-          <label className="text-base font-semibold text-white">Email</label>
+          <label className="text-base font-semibold text-white">
+            Email or UserName
+          </label>
           <input
             className="w-full border-2 border-gray-700 rounded-xl p-3 mt-1 bg-gray-900 text-white"
-            placeholder="Enter your email"
+            placeholder="Enter your email/username"
             ref={userRef}
           />
         </div>
