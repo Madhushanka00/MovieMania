@@ -1,4 +1,5 @@
 import React, { act, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import NavBar from "./components/nav_bar";
 import LeftBar from "./components/leftBar";
@@ -28,6 +29,8 @@ const Home = () => {
   const [clickedItem, SetClickedItem] = useState(null);
   const [similarMovies, setSimilarMovies] = useState([]);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     console.log("Selected Item:", selectItem);
   }, [selectItem]);
@@ -48,6 +51,10 @@ const Home = () => {
     // console.log(type);
     setMovieType(type);
     setActiveType(type);
+  };
+
+  const handleLogout = () => {
+    navigate("/");
   };
 
   const selectGenre = (id, name) => {
@@ -175,7 +182,7 @@ const Home = () => {
           <AccessTimeIcon className="Icons" />
           <HelpOutlineIcon className="Icons" />
           <SettingsOutlinedIcon className="Icons" />
-          <LogoutOutlinedIcon className="bottomIcon" />
+          <LogoutOutlinedIcon className="bottomIcon" onClick={handleLogout} />
         </div>
         <div className="content">
           <NavBar className="navSection" changeTab={changeTab} />
