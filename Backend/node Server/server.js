@@ -11,8 +11,7 @@ const uri = "mongodb+srv://Mahesha:Tg%23078DB@cluster0.wgivi.mongodb.net/?retryW
 
 
 const app = express();
-app.use(CORS);
-// app.use(bodyParser.json());
+app.use(cors()); 
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {

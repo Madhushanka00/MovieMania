@@ -10,8 +10,8 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = "mongodb+srv://Mahesha:Tg%23078DB@cluster0.wgivi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 const app = express();
-// app.use(CORS);
-// app.use(bodyParser.json());
+app.use(CORS()); 
+app.use(bodyParser.json());
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -41,15 +41,17 @@ app.get('/', (req, res) => {
 });
 
 // POST endpoint to store username and password
-app.post('/register', async (req, res) => {
-    // const { username, password } = req.body;
-    console.log(req.body);
+app.post('/register/:username/:password', async (req, res) => {
+    const { username, password } = req.params;
+    console.log(req.params);
 
     try {
         // Check if username already exists
         const existingUser = await mdb.collection('users').findOne({ username });
         if (existingUser) {
+            console.log("Username already exists",username );
             return res.status(400).json({ message: 'Username already exists' });
+            
         }
 
         // Hash the password

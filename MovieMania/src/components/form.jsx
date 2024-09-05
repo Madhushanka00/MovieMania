@@ -1,15 +1,53 @@
 import * as React from "react";
+import { useState, useRef } from "react";
 import GoogleIcon from "@mui/icons-material/Google";
 import Movieroll from "../../public/movieroll.svg";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Form({ setIsLogin }) {
   const navigate = useNavigate();
+
+  const userRef = useRef("");
+  const passRef = useRef("");
+
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
   const handleSignIn = () => {
     // Perform any form validation or API calls here
+    console.log(userRef.current.value);
+    console.log(passRef.current.value);
+    // axios
+    //   .post("http://localhost:3000/register", {
+    //     username: userRef.current.value,
+    //     password: passRef.current.value,
+    //   })
+    //   .then((res) => {
+    //     console.log(res.data);
+    //   });
 
+    fetch(
+      `http://localhost:3000/register/${userRef.current.value}/${passRef.current.value}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: userRef.current.value,
+          password: passRef.current.value,
+        }),
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
     // After successful sign-in, navigate to the home page
-    navigate("/home");
+    // navigate("/home");
   };
 
   const gotoSignup = () => {
@@ -28,6 +66,7 @@ export default function Form({ setIsLogin }) {
           <input
             className="w-full border-2 border-gray-700 rounded-xl p-3 mt-1 bg-gray-900 text-white"
             placeholder="Enter your email"
+            ref={userRef}
           />
         </div>
         <div>
@@ -36,6 +75,7 @@ export default function Form({ setIsLogin }) {
             className="w-full border-2 border-gray-700 rounded-xl p-3 mt-1 bg-gray-900 text-white"
             placeholder="Enter your password"
             type="password"
+            ref={passRef}
           />
         </div>
         <div className="flex justify-between mt-8 items-center">
