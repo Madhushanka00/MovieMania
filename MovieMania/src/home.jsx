@@ -13,6 +13,7 @@ import MoviesArea from "./components/MovieArea";
 import DetailedView from "./components/DetailedView";
 import MainPage from "./mainpage";
 import Asistant from "./components/Asistant";
+import logo from "../public/movimanialogoTransp.png";
 import Genres from "./genres";
 import MovieContext from "./components/movieContext";
 // import
@@ -190,7 +191,7 @@ const Home = () => {
     >
       <div className="mainlayout">
         <div className="drawer">
-          <AcUnitIcon className="mainicon" />
+          <img src="../public/logo-02.svg" className="mainicon" />
           <StarOutlinedIcon className="Icons" />
           <AccessTimeIcon className="Icons" />
           <HelpOutlineIcon className="Icons" />

@@ -19,10 +19,10 @@ body, html, #root {
 }
 .mainlayout .drawer .mainicon {
   color: white;
-  width: 120%;
-  font-size: 30px;
+  width: 55%;
   margin-top: 20px;
   margin-bottom: 60px;
+  cursor: pointer;
 }
 .mainlayout .drawer .Icons {
   color: white;
@@ -30,6 +30,7 @@ body, html, #root {
   font-size: 30px;
   margin-top: 10px;
   margin-bottom: 30px;
+  cursor: pointer;
   /* Additional subtle right-side shadow */
 }
 .mainlayout .drawer .bottomIcon {
@@ -38,6 +39,10 @@ body, html, #root {
   width: 120%;
   font-size: 30px;
   bottom: 30px;
+  cursor: pointer;
+}
+.mainlayout .drawer .bottomIcon:hover {
+  color: #767676;
 }
 .mainlayout .content {
   width: 95%;
@@ -77,6 +82,11 @@ body, html, #root {
   margin-left: 1%;
   align-items: center;
   font-size: 0.9rem;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+.mainlayout .content .section .typemainSection .typeSelect::-webkit-scrollbar {
+  display: none;
 }
 .mainlayout .content .section .typemainSection .typeSelect .typeButton {
   margin-left: 0.5%;
