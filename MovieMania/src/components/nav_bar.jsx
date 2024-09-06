@@ -7,6 +7,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SearchBar from "./SearchBar";
 import MovieContext from "./movieContext";
 import { InputBase } from "@mui/material";
+import axios from "axios";
 
 const NavBar = ({ changeTab }) => {
   const [activeTab, setActiveTab] = useState("Home");
@@ -19,6 +20,14 @@ const NavBar = ({ changeTab }) => {
 
   const ShowProfile = () => {
     console.log("Current User ID:", currentUserId);
+    axios
+      .get(`http://localhost:3000/getUserData?userId=${currentUserId}`)
+      .then((res) => {
+        const { user } = res.data;
+        const { username, email } = user;
+        console.log("Username:", username);
+        console.log("Email:", email);
+      });
   };
 
   return (
