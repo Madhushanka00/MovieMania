@@ -103,7 +103,7 @@ app.get('/getUserData', async (req, res) => {
 
 app.post('/addHistory', async (req, res) => {
     const { userId, movieId, movieTitle, media_type } = req.body;
-    console.log("req.body",req.body);
+    // console.log("req.body",req.body);
 
     try {
 
@@ -133,7 +133,7 @@ app.post('/addHistory', async (req, res) => {
 
 app.post('/addratings', async (req, res) => {
     const { userId, movieId, movieTitle, media_type, rating } = req.body;
-    console.log("req.body",req.body);
+    // console.log("req.body",req.body);
     try {
 
             const result = await mdb.collection('ratings').updateOne(
@@ -165,7 +165,7 @@ app.post('/addratings', async (req, res) => {
 // POST endpoint to store username and password
 app.post('/register/:username/:email/:password', async (req, res) => {
     const { username, password, email } = req.params;
-    console.log(req.params);
+    // console.log(req.params);
 
     try {
         // Check if username already exists
