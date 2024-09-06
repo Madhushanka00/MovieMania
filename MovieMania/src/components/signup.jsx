@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 // import { set } from "mongoose";
 
-export default function Signup({ setIsLogin }) {
+export default function Signup({ setIsLogin, userId, setUserId }) {
   const navigate = useNavigate();
   const [validatecode, setValidateCode] = useState(false);
 
@@ -17,7 +17,9 @@ export default function Signup({ setIsLogin }) {
 
   useEffect(() => {
     console.log("validatecode", validatecode);
-    validatecode ? navigate("/home") : console.log("error");
+    validatecode
+      ? navigate("/home", { state: { userId } })
+      : console.log("error");
   }, [validatecode]);
 
   const handleSignUp = () => {
@@ -54,6 +56,7 @@ export default function Signup({ setIsLogin }) {
         console.log(data);
         if (data.message === "User registered successfully") {
           setValidateCode(true);
+          setUserId(data.userId);
         } else {
           setValidateCode(false);
           alert("User already exists, try different username");

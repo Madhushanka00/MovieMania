@@ -5,7 +5,7 @@ import Movieroll from "../../public/movieroll.svg";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-export default function Form({ setIsLogin }) {
+export default function Form({ setIsLogin, userId, setUserId }) {
   const navigate = useNavigate();
   const [validateUser, setValidateUser] = useState(false);
 
@@ -14,7 +14,9 @@ export default function Form({ setIsLogin }) {
 
   useEffect(() => {
     // console.log("validateUser", validateUser);
-    validateUser ? navigate("/home") : console.log("error login");
+    validateUser
+      ? navigate("/home", { state: { userId } })
+      : console.log("error login");
   }, [validateUser]);
 
   const handleSignIn = () => {
@@ -44,6 +46,7 @@ export default function Form({ setIsLogin }) {
         console.log(data);
         if (data.message === "User validated successfully") {
           setValidateUser(true);
+          setUserId(data.userId);
         } else {
           setValidateUser(false);
           alert("Invalid username or password");

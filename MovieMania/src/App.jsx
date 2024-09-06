@@ -9,6 +9,7 @@ import Movieroll from "../public/movieroll.svg";
 
 function App() {
   const [isLogin, setIsLogin] = useState(true);
+  const [userId, setUserId] = useState("");
 
   return (
     // <div className="flex w-full h-screen">
@@ -27,9 +28,13 @@ function App() {
     <div className="flex w-full h-screen bg-gray-900">
       <div className="w-full flex items-center justify-center lg:w-1/2">
         {isLogin ? (
-          <Form setIsLogin={setIsLogin} />
+          <Form setIsLogin={setIsLogin} userId={userId} setUserId={setUserId} />
         ) : (
-          <Signup setIsLogin={setIsLogin} />
+          <Signup
+            setIsLogin={setIsLogin}
+            userId={userId}
+            setUserId={setUserId}
+          />
         )}
       </div>
       <div className="hidden relative lg:flex h-full w-1/2 bg-gray-800 items-center justify-center">
