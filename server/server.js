@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const CORS = require('cors');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const e = require('express');
+const { ObjectId } = require('mongodb');
 // const app = express();
 
 const uri = "mongodb+srv://Mahesha:Tg%23078DB@cluster0.wgivi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
@@ -112,12 +113,13 @@ app.post('/validateUser', async (req, res) => {
     }
 });
 
-app.get('/getUserData/:userId', async (req, res) => {
-    const { userId } = req.params;
-
+app.get('/getUserData', async (req, res) => {
+    const { userId } = req.query;
+    // console.log("userId",userId);
     try {
         // Find the user by userId
-        const user = await mdb.collection('users').findOne({ _id: userId });
+        const user = await mdb.collection('users').findOne({ _id: new ObjectId(userId) });
+        
         if (!user) {
             console.log("User not found", userId);
             return res.status(404).json({ message: 'User not found' });
@@ -126,6 +128,7 @@ app.get('/getUserData/:userId', async (req, res) => {
         console.log("User found", user.username, user.email);
         res.status(200).json({ user });
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: 'Failed to get user data', error });
     }
 });
@@ -144,7 +147,7 @@ app.post('/register/:username/:email/:password', async (req, res) => {
             return res.status(400).json({ message: 'Username already exists' });
             
         }
-
+        // Check if email already exists
         // Hash the password
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
