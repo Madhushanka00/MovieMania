@@ -42,38 +42,6 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-// app.post('/validateUser/:username/:password', async (req, res) => {
-//     const { username, password } = req.params;
-//     const email = username;
-//     console.log(req.params);
-
-//     try {
-//         // Check if username exists
-//         const existingUser = await mdb.collection('users').findOne({ username });
-//         const existingEmail = await mdb.collection('users').findOne({ email});
-//         if (!existingUser || !existingEmail) {
-//             console.log("Username or email does not exist",username );
-//             return res.status(400).json({ message: 'Username does not exist' });
-//         }
-//         let validPassword;
-//         // Check if password is correct
-//         if (existingUser){
-//             validPassword = await bcrypt.compare(password, existingUser.password);
-//         }else if( existingEmail){
-//             validPassword = await bcrypt.compare(password, existingEmail.password);
-//         }
-        
-//         if (!validPassword) {
-//             console.log("Invalid password",username );
-//             return res.status(400).json({ message: 'Invalid password' });
-//         }
-
-//         console.log("User validated successfully",username );
-//         res.status(200).json({ message: 'User validated successfully', userId: existingUser._id });
-//     } catch (error) {
-//         res.status(500).json({ message: 'Failed to validate user', error });
-//     }
-// });
 
 app.post('/validateUser', async (req, res) => {
     const { usernameOrEmail, password } = req.body;
@@ -138,14 +106,9 @@ app.post('/addHistory', async (req, res) => {
     console.log("req.body",req.body);
 
     try {
-          // Validate ObjectId formats
-            // if (!ObjectId.isValid(userId) || !ObjectId.isValid(movieId)) {
-            //     return res.status(400).json({ message: 'Invalid userId or movieId format' });
-            // }
-    
-            // Update or insert the history document
+
             const result = await mdb.collection('history').updateOne(
-                { userId: new ObjectId(userId), movieId: new ObjectId(movieId) , movieTitle: movieTitle, media_type: media_type},
+                { userId: userId, movieId: movieId , movieTitle: movieTitle, media_type: media_type},
                 {
                     $set: {
                         userId: userId,
@@ -167,6 +130,37 @@ app.post('/addHistory', async (req, res) => {
     }
 });
 
+
+app.post('/addratings', async (req, res) => {
+    const { userId, movieId, movieTitle, media_type, rating } = req.body;
+    console.log("req.body",req.body);
+    try {
+
+            const result = await mdb.collection('ratings').updateOne(
+                { 
+                    userId: userId, // Match based on userId
+                    movieId: movieId // Match based on movieId
+                },
+                {
+                    $set: {
+
+                        movieTitle:movieTitle,
+                        media_type:media_type,
+                        rating: rating,
+
+                    }
+                },
+                { upsert: true } // Insert if no document matches the query
+            );
+        
+
+        console.log("Rating updated successfully", userId, movieId);
+        res.status(200).json({ message: 'Rating updated successfully', userId, movieId });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Failed to update rating', error });
+    }
+});
 
 // POST endpoint to store username and password
 app.post('/register/:username/:email/:password', async (req, res) => {

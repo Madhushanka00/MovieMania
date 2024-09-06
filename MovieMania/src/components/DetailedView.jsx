@@ -1,12 +1,15 @@
 import react from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "../styles/DetailedView.css";
 import StarIcon from "@mui/icons-material/Star";
 import CloseIcon from "@mui/icons-material/Close";
 import { Rate } from "antd";
 import { yellow } from "@mui/material/colors";
+import axios from "axios";
+import { MovieContext } from "./movieContext";
 
 const DetailedView = ({ movie, onClose, type }) => {
+  const { currentUserId } = useContext(MovieContext);
   const genreDetails = [
     {
       id: 28,
@@ -125,8 +128,26 @@ const DetailedView = ({ movie, onClose, type }) => {
   const handleRateChange = (value) => {
     console.log("Rating:", value);
     setRating(value);
+    let title = movie.title ? movie.title : movie.original_name;
+    let media_type = movie.title ? "movie" : "tv";
+    const endpoint = "http://localhost:3000/addratings"; // Ensure the endpoint matches
+    const payload = {
+      userId: currentUserId, // Replace with actual user ID
+      movieId: movie.id, // Replace with actual movie ID
+      movieTitle: title, // Replace with actual movie title
+      media_type: media_type,
+      rating: value,
+    };
+    axios
+      .post(endpoint, payload)
+      .then((response) => {
+        console.log("Movie ratings updated successfully:");
+      })
+      .catch((error) => {
+        console.error("Error updating movie ratings:", error);
+      });
   };
-  console.log("genres check", movie);
+  // console.log("genres check", movie);
   // useEffect(() => {
   //   fetch(
   //     `https://dspndkpg-5000.asse.devtunnels.ms/getDetails?movieId=${movieId}&type=${type}`
