@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 const CORS = require('cors');
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const e = require('express');
+// const express = require('express');
 const { ObjectId } = require('mongodb');
 // const app = express();
 
@@ -130,6 +130,40 @@ app.get('/getUserData', async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: 'Failed to get user data', error });
+    }
+});
+
+app.post('/addHistory', async (req, res) => {
+    const { userId, movieId, movieTitle, media_type } = req.body;
+    console.log("req.body",req.body);
+
+    try {
+          // Validate ObjectId formats
+            // if (!ObjectId.isValid(userId) || !ObjectId.isValid(movieId)) {
+            //     return res.status(400).json({ message: 'Invalid userId or movieId format' });
+            // }
+    
+            // Update or insert the history document
+            const result = await mdb.collection('history').updateOne(
+                { userId: new ObjectId(userId), movieId: new ObjectId(movieId) , movieTitle: movieTitle, media_type: media_type},
+                {
+                    $set: {
+                        userId: userId,
+                        movieId: movieId,
+                        movieTitle: movieTitle,
+                        media_type: media_type,
+                        updatedAt: new Date()
+                    }
+                },
+                { upsert: true } // Insert if no document matches the query
+            );
+        
+
+        console.log("History updated successfully", userId, movieId);
+        res.status(200).json({ message: 'History updated successfully', userId, movieId });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Failed to update history', error });
     }
 });
 

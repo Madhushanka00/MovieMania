@@ -7,6 +7,7 @@ import axios from "axios";
 const SearchPopup = ({ searchResults, openPopup, setOpenPopup }) => {
   const [movies, setMovies] = useState([]);
   const [title, setTitle] = useState(null);
+  // const { currentUserId, setCurrentUserId } = useContext(MovieContext);
   //   const [selectItem, setSelectItem] = useState(null);
   //   const [isFound, setIsFound] = useState(true);
 
@@ -17,6 +18,8 @@ const SearchPopup = ({ searchResults, openPopup, setOpenPopup }) => {
     SetClickedItem,
     similarMovies,
     setSimilarMovies,
+    currentUserId,
+    setCurrentUserId,
   } = useContext(MovieContext);
 
   const searchForSimilar = (movie) => {
@@ -40,9 +43,29 @@ const SearchPopup = ({ searchResults, openPopup, setOpenPopup }) => {
     return () => {
       setSelectItem(movie);
       SetClickedItem(movie);
+
       setOpenPopup(false);
       console.log("Selected Movie:", movie);
       searchForSimilar(movie);
+      if (movie) {
+        let title = movie.title ? movie.title : movie.original_name;
+        const endpoint = "http://localhost:3000/addHistory"; // Ensure the endpoint matches
+        const payload = {
+          userId: currentUserId, // Replace with actual user ID
+          movieId: movie.id, // Replace with actual movie ID
+          movieTitle: title, // Replace with actual movie title
+          media_type: movie.media_type,
+        };
+
+        axios
+          .post(endpoint, payload)
+          .then((response) => {
+            console.log("Movie history updated successfully:");
+          })
+          .catch((error) => {
+            console.error("Error updating movie history:", error);
+          });
+      }
     };
   };
   useEffect(() => {

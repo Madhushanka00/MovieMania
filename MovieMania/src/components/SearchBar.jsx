@@ -1,5 +1,6 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import MovieContext from "./movieContext";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { InputBase } from "@mui/material";
@@ -12,6 +13,7 @@ export default function SearchBar({ changeTab, setActiveTab }) {
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [openPopup, setOpenPopup] = useState(false);
+  const { currentUserId, setCurrentUserId } = useContext(MovieContext);
 
   const handleSearchClick = () => {
     if (query != "") {
