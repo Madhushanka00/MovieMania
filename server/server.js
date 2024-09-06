@@ -112,7 +112,23 @@ app.post('/validateUser', async (req, res) => {
     }
 });
 
+app.get('/getUserData/:userId', async (req, res) => {
+    const { userId } = req.params;
 
+    try {
+        // Find the user by userId
+        const user = await mdb.collection('users').findOne({ _id: userId });
+        if (!user) {
+            console.log("User not found", userId);
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        console.log("User found", user.username, user.email);
+        res.status(200).json({ user });
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to get user data', error });
+    }
+});
 
 
 // POST endpoint to store username and password
