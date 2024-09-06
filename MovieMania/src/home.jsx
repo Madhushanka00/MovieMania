@@ -1,5 +1,5 @@
 import React, { act, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import NavBar from "./components/nav_bar";
 import LeftBar from "./components/leftBar";
@@ -28,8 +28,19 @@ const Home = () => {
   const [selectItem, setSelectItem] = useState(null);
   const [clickedItem, SetClickedItem] = useState(null);
   const [similarMovies, setSimilarMovies] = useState([]);
+  const [currentUserId, setCurrentUserId] = useState(null);
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const userId = location.state?.userId; // Access the userId from state
+
+  useEffect(() => {
+    if (userId) {
+      console.log("User ID:", userId);
+      setCurrentUserId(userId);
+      // Perform any operations with userId here
+    }
+  }, [userId]);
 
   useEffect(() => {
     console.log("Selected Item:", selectItem);
@@ -173,6 +184,8 @@ const Home = () => {
         SetClickedItem,
         similarMovies,
         setSimilarMovies,
+        currentUserId,
+        setCurrentUserId,
       }}
     >
       <div className="mainlayout">

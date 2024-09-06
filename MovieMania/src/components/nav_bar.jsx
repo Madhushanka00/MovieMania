@@ -1,17 +1,24 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import "../styles/nacBar.css";
 import AppsIcon from "@mui/icons-material/Apps";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SearchBar from "./SearchBar";
+import MovieContext from "./movieContext";
 import { InputBase } from "@mui/material";
 
 const NavBar = ({ changeTab }) => {
   const [activeTab, setActiveTab] = useState("Home");
+  const { currentUserId, setCurrentUserId } = useContext(MovieContext);
+
   const handleClick = (content) => {
     // console.log(content);
     setActiveTab(content);
+  };
+
+  const ShowProfile = () => {
+    console.log("Current User ID:", currentUserId);
   };
 
   return (
@@ -68,7 +75,7 @@ const NavBar = ({ changeTab }) => {
       </div>
 
       <div className="right">
-        <AccountCircleIcon className="apps" />
+        <AccountCircleIcon className="apps" onClick={ShowProfile} />
         <AppsIcon className="apps" />
         <NotificationsIcon className="apps" />
       </div>
