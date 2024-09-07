@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState, useRef, useEffect } from "react";
 import "../styles/profile.css";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const Profile = ({ details, setProfile, profile }) => {
   console.log("Details:", details);
@@ -24,26 +25,22 @@ const Profile = ({ details, setProfile, profile }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  //   // Monitor changes in `profile` prop to trigger slide out and delay removal
-  //   useEffect(() => {
-  //     if (profile) {
-  //       setIsVisible(true); // Show profile (slide-in)
-  //     } else {
-  //       setTimeout(() => setIsVisible(false), 500); // Delay hiding profile to allow slide-out animation to finish
-  //     }
-  //   }, [profile]);
-
-  //   if (!isVisible) {
-  //     return null; // Remove the component from the DOM when the animation completes
-  //   }
 
   return (
     <div
       ref={profileRef}
       className={`ProfileArea ${isVisible ? "slide-in" : "slide-out"}`}
     >
-      <h1>Profile</h1>
-      <h2>UserId: {details.userId}</h2>
+      <div className="title">
+        <h1>My Profile</h1>
+
+        <AccountCircleIcon className="avatar" />
+      </div>
+      <div className="details">
+        <h2>Username: {details.username}</h2>
+        <h2>Email: {details.email}</h2>
+        <h2>UserId: {details.currentUserId}</h2>
+      </div>
     </div>
   );
 };
