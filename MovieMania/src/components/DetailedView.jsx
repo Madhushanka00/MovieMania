@@ -1,5 +1,5 @@
 import react from "react";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import "../styles/DetailedView.css";
 import StarIcon from "@mui/icons-material/Star";
 import CloseIcon from "@mui/icons-material/Close";
@@ -9,6 +9,7 @@ import axios from "axios";
 import { MovieContext } from "./movieContext";
 
 const DetailedView = ({ movie, onClose, type }) => {
+  const detailsRef = useRef(null);
   const { currentUserId } = useContext(MovieContext);
   const genreDetails = [
     {
@@ -120,6 +121,20 @@ const DetailedView = ({ movie, onClose, type }) => {
       name: "War & Politics",
     },
   ];
+  const handleClickOutside = (event) => {
+    if (detailsRef.current && !detailsRef.current.contains(event.target)) {
+      onClose();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   // const [movie, setMovie] = useState("");
   const [isVisible, setIsVisible] = useState(true);
   const [rating, setRating] = useState(0);
@@ -147,20 +162,6 @@ const DetailedView = ({ movie, onClose, type }) => {
         console.error("Error updating movie ratings:", error);
       });
   };
-  // console.log("genres check", movie);
-  // useEffect(() => {
-  //   fetch(
-  //     `https://dspndkpg-5000.asse.devtunnels.ms/getDetails?movieId=${movieId}&type=${type}`
-  //   )
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setMovie(data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching movie details:", error);
-  //     });
-  // }, [movieId]);
 
   const handleClose = () => {
     setIsVisible(false); // Hide DetailedView when CloseIcon is clicked
@@ -173,7 +174,7 @@ const DetailedView = ({ movie, onClose, type }) => {
   return (
     <>
       <div className="overlay"></div>
-      <div className="glass">
+      <div ref={detailsRef} className="glass">
         {movie ? (
           <div className="Construction">
             <img
