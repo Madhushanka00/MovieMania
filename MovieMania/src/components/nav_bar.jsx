@@ -8,10 +8,13 @@ import SearchBar from "./SearchBar";
 import MovieContext from "./movieContext";
 import { InputBase } from "@mui/material";
 import axios from "axios";
+import Profile from "./profile";
 
 const NavBar = ({ changeTab }) => {
   const [activeTab, setActiveTab] = useState("Home");
   const { currentUserId, setCurrentUserId } = useContext(MovieContext);
+  const [profile, setProfile] = useState(false);
+  const [details, setDetails] = useState({});
 
   const handleClick = (content) => {
     // console.log(content);
@@ -27,7 +30,9 @@ const NavBar = ({ changeTab }) => {
         const { username, email } = user;
         console.log("Username:", username);
         console.log("Email:", email);
+        setDetails({ username, email, currentUserId });
       });
+    setProfile(true);
   };
 
   return (
@@ -88,6 +93,9 @@ const NavBar = ({ changeTab }) => {
         <AppsIcon className="apps" />
         <NotificationsIcon className="apps" />
       </div>
+      {profile && (
+        <Profile details={details} setProfile={setProfile} profile={profile} />
+      )}
     </div>
   );
 };
