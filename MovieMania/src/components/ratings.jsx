@@ -40,7 +40,9 @@ const Ratings = ({ setRatingRender, ratingRender }) => {
 
   return (
     <div
-      className={`ratingsWindow ${isVisible ? "slide-in" : "slide-out"}`}
+      className={`ratingsWindow ${
+        isVisible ? "slide-inrate" : "slide-outrate"
+      }`}
       ref={rateRef}
     >
       <h1>My Ratings</h1>

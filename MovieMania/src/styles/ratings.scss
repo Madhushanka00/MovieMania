@@ -13,7 +13,7 @@
     background: #333333cd;
     backdrop-filter: blur(5px);
     // transform: translateY(-50%);
-    transition: right 0.5s ease-in-out;
+    transition: left 0.5s ease-in-out;
     box-shadow: 0 1px 8px rgba(167, 167, 167, 0.285);
     border: 1px solid #afafaf5e;
     padding-bottom: 5vh;
@@ -74,15 +74,15 @@
            
     }}
 }
-.slide-in {
-    animation: slideIn 0.5s forwards ease-in-out;
+.slide-inrate {
+    animation: slideinrate 0.5s forwards ease-in-out;
   }
   
-  .slide-out {
-    animation: slideOut 0.5s forwards ease-in-out;
+  .slide-outrate {
+    animation: slideoutrate 0.5s forwards ease-in-out;
   }
   
-@keyframes slideIn {
+@keyframes slideinrate {
     from {
         left: -20%;
     }
@@ -91,7 +91,7 @@
     }
 }
 
-@keyframes slideOut {
+@keyframes slideoutrate {
     from {
         left: 5.2%;
     }

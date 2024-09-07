@@ -13,7 +13,7 @@
     backdrop-filter: blur(5px);
     // transform: translateY(-50%);
     transition: right 0.5s ease-in-out;
-    box-shadow: 0 1px 8px rgba(167, 167, 167, 0.285);
+    box-shadow: 0 1px 8px rgba(167, 167, 167, 0.449);
     border: 1px solid #afafaf5e;
 
 
@@ -57,14 +57,14 @@
 }
 }
 .slide-in {
-    animation: slideIn 0.5s forwards ease-in-out;
+    animation: slideInProfile 0.5s forwards ease-in-out !important;
   }
   
   .slide-out {
-    animation: slideOut 0.5s forwards ease-in-out;
+    animation: slideOutProfile 0.5s forwards ease-in-out !important;
   }
   
-@keyframes slideIn {
+@keyframes slideInProfile {
     from {
         right: -20vw;
     }
@@ -73,7 +73,7 @@
     }
 }
 
-@keyframes slideOut {
+@keyframes slideOutProfile {
     from {
         right: 1.2vw;
     }
