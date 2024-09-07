@@ -101,6 +101,47 @@ app.get('/getUserData', async (req, res) => {
     }
 });
 
+app.get('/getHistory', async (req, res) => {
+    const { userId } = req.query;
+    // console.log("userId",userId);
+    try {
+        // Find the user by userId
+        const history = await mdb.collection('history').find({ userId: userId }).toArray();
+        
+        if (!history) {
+            console.log("History not found", userId);
+            return res.status(404).json({ message: 'History not found' });
+        }
+
+        console.log("History found", history);
+        res.status(200).json({ history });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Failed to get history', error });
+    }
+});
+
+app.get('/getRatings', async (req, res) => {
+    const {userId} = req.query;
+    // console.log("userId",userId);
+    try {
+        // Find the user by userId
+        const ratings = await mdb.collection('ratings').find({ userId: userId }).toArray();
+
+        if (!ratings) {
+            console.log("Ratings not found", userId);
+            return res.status(404).json({ message: 'Ratings not found' });
+        }
+        console.log("Ratings found", ratings);
+        res.status(200).json({ ratings });
+    }catch (error) {
+            console.log(error);
+            res.status(500).json({ message: 'Failed to get ratings', error });
+        }
+    
+});
+
+
 app.post('/addHistory', async (req, res) => {
     const { userId, movieId, movieTitle, media_type } = req.body;
     // console.log("req.body",req.body);
