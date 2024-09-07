@@ -16,6 +16,7 @@ import Asistant from "./components/Asistant";
 import logo from "../public/movimanialogoTransp.png";
 import Genres from "./genres";
 import MovieContext from "./components/movieContext";
+import Ratings from "./components/ratings";
 // import
 import "./styles/home.css";
 
@@ -30,10 +31,15 @@ const Home = () => {
   const [clickedItem, SetClickedItem] = useState(null);
   const [similarMovies, setSimilarMovies] = useState([]);
   const [currentUserId, setCurrentUserId] = useState(null);
+  const [rating, setRating] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
   const userId = location.state?.userId; // Access the userId from state
+
+  const gotoRatings = () => {
+    setRating(true);
+  };
 
   useEffect(() => {
     if (userId) {
@@ -192,12 +198,13 @@ const Home = () => {
       <div className="mainlayout">
         <div className="drawer">
           <img src="../public/logo-02.svg" className="mainicon" />
-          <StarOutlinedIcon className="Icons" />
+          <StarOutlinedIcon className="Icons" onClick={gotoRatings} />
           <AccessTimeIcon className="Icons" />
           <HelpOutlineIcon className="Icons" />
           <SettingsOutlinedIcon className="Icons" />
           <LogoutOutlinedIcon className="bottomIcon" onClick={handleLogout} />
         </div>
+        {rating ? <Ratings /> : ""}
         <div className="content">
           <NavBar className="navSection" changeTab={changeTab} />
           <div className="section">
