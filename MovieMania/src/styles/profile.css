@@ -12,9 +12,28 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(175, 175, 175, 0.368627451);
 }
-.ProfileArea .slide-in {
-  right: 0; /* Fully visible when sliding in */
+
+.slide-in {
+  animation: slideIn 0.5s forwards ease-in-out;
 }
-.ProfileArea .slide-out {
-  right: -20vw; /* Fully visible when sliding in */
+
+.slide-out {
+  animation: slideOut 0.5s forwards ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    right: -20vw;
+  }
+  to {
+    right: 1vw;
+  }
+}
+@keyframes slideOut {
+  from {
+    right: 1vw;
+  }
+  to {
+    right: -20vw;
+  }
 }/*# sourceMappingURL=profile.css.map */
