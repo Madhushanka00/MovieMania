@@ -31,14 +31,14 @@ const Home = () => {
   const [clickedItem, SetClickedItem] = useState(null);
   const [similarMovies, setSimilarMovies] = useState([]);
   const [currentUserId, setCurrentUserId] = useState(null);
-  const [rating, setRating] = useState(false);
+  const [ratingRender, setRatingRender] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
   const userId = location.state?.userId; // Access the userId from state
 
   const gotoRatings = () => {
-    setRating(true);
+    setRatingRender(true);
   };
 
   useEffect(() => {
@@ -204,7 +204,14 @@ const Home = () => {
           <SettingsOutlinedIcon className="Icons" />
           <LogoutOutlinedIcon className="bottomIcon" onClick={handleLogout} />
         </div>
-        {rating ? <Ratings /> : ""}
+        {ratingRender ? (
+          <Ratings
+            setRatingRender={setRatingRender}
+            ratingRender={ratingRender}
+          />
+        ) : (
+          ""
+        )}
         <div className="content">
           <NavBar className="navSection" changeTab={changeTab} />
           <div className="section">

@@ -5,7 +5,7 @@
   align-items: center;
   top: 15vh;
   left: 5.2%;
-  height: 10vh;
+  height: inline-box;
   width: 25vw;
   border-radius: 20px;
   background: rgba(51, 51, 51, 0.8039215686);
@@ -14,8 +14,78 @@
   transition: right 0.5s ease-in-out;
   box-shadow: 0 1px 8px rgba(167, 167, 167, 0.285);
   border: 1px solid rgba(175, 175, 175, 0.368627451);
+  padding-bottom: 5vh;
+  padding-top: 2vh;
+  z-index: 1;
 }
 .ratingsWindow h1 {
   color: white;
   margin-top: 1vh;
+  font-size: 1.1rem;
+  margin-bottom: 2vh;
+}
+.ratingsWindow .ratings {
+  display: flex;
+  flex-direction: column;
+  max-height: 65vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+.ratingsWindow .ratings::-webkit-scrollbar {
+  display: none;
+}
+.ratingsWindow .ratings .rating {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  margin-top: 1vh;
+}
+.ratingsWindow .ratings .rating h3 {
+  flex: 1;
+  font-style: italic;
+  color: rgb(171, 171, 171);
+  font-size: 0.8rem;
+  padding-left: 1vw;
+}
+.ratingsWindow .ratings .rating .title {
+  flex: 8;
+  place-items: left;
+  font-size: 0.9rem;
+}
+.ratingsWindow .ratings .rating .starsratings {
+  flex: 2;
+  display: flex;
+  justify-content: space-around;
+  padding-left: 1vw;
+  font-size: 0.9rem;
+  padding-right: 1vw;
+}
+.ratingsWindow .ratings .rating .starsratings .star {
+  color: #f1c40f;
+  font-size: 1.2rem;
+}
+
+.slide-in {
+  animation: slideIn 0.5s forwards ease-in-out;
+}
+
+.slide-out {
+  animation: slideOut 0.5s forwards ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    left: -20%;
+  }
+  to {
+    left: 5.2%;
+  }
+}
+@keyframes slideOut {
+  from {
+    left: 5.2%;
+  }
+  to {
+    left: -20%;
+  }
 }/*# sourceMappingURL=ratings.css.map */
