@@ -3,6 +3,7 @@ import { MovieContext } from "./movieContext";
 import { useState, useEffect, useRef, useContext } from "react";
 import axios from "axios";
 import "../styles/ratings.css";
+import { formatDistanceToNow } from "date-fns";
 
 const History = ({ setHistoryRender, historyRender }) => {
   const histRef = useRef(null);
@@ -15,7 +16,7 @@ const History = ({ setHistoryRender, historyRender }) => {
       .get(`http://localhost:3000/getHistory?userId=${currentUserId}`)
       .then((res) => {
         console.log(res.data);
-        setHistory(res.data.ratings);
+        setHistory(res.data.history);
       });
   }, []);
 
@@ -37,8 +38,29 @@ const History = ({ setHistoryRender, historyRender }) => {
   }, []);
 
   return (
-    <div className="ratingsWindow" ref={histRef}>
-      <h1>History</h1>
+    <div
+      className={`ratingsWindow ${
+        isVisible ? "slide-inrate" : "slide-outrate"
+      }`}
+      ref={histRef}
+    >
+      <h1>Search History</h1>
+      <div className="ratings">
+        {history
+          .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
+          .map((rating, index) => (
+            <div className="history" key={index}>
+              <h3>{index + 1}.</h3>
+              <div className="title">{rating.movieTitle}</div>
+              <div className="historyDetails">
+                {/* <h3>{rating.media_type}</h3> */}
+                {formatDistanceToNow(new Date(rating.updatedAt), {
+                  addSuffix: true,
+                })}
+              </div>
+            </div>
+          ))}
+      </div>
     </div>
   );
 };

@@ -37,7 +37,6 @@ body, html, #root {
 .mainlayout .drawer .bottomIcon {
   position: absolute;
   color: white;
-  width: 120%;
   font-size: 30px;
   bottom: 30px;
   cursor: pointer;

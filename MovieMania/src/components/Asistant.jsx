@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import "../styles/assistant.css";
 import ArrowCircleUpTwoToneIcon from "@mui/icons-material/ArrowCircleUpTwoTone";
-import { TypeAnimation } from "react-type-animation";
+// import { TypeAnimation } from "react-type-animation";
 import ChatRecomends from "./chatrecomends";
 import MovieCard from "./MovieCard";
 import axios from "axios";
