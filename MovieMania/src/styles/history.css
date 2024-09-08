@@ -1,1 +1,87 @@
-/*# sourceMappingURL=history.css.map */
+.historyWindow {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 15vh;
+  left: 5.2%;
+  height: inline-box;
+  width: 25vw;
+  border-radius: 20px;
+  background: rgba(51, 51, 51, 0.8039215686);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  transition: left 0.5s ease-in-out;
+  box-shadow: 0 1px 8px rgba(167, 167, 167, 0.285);
+  border: 1px solid rgba(175, 175, 175, 0.368627451);
+  padding-bottom: 5vh;
+  padding-top: 2vh;
+  z-index: 1;
+}
+.historyWindow h1 {
+  color: white;
+  margin-top: 1vh;
+  font-size: 1.1rem;
+  margin-bottom: 2vh;
+}
+.historyWindow .ratings {
+  display: flex;
+  width: 100%;
+  padding-right: 1vh;
+  flex-direction: column;
+  max-height: 65vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+.historyWindow .ratings::-webkit-scrollbar {
+  display: none;
+}
+.historyWindow .ratings .history {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  margin-top: 1vh;
+}
+.historyWindow .ratings .history h3 {
+  flex: 1;
+  font-style: italic;
+  color: rgb(171, 171, 171);
+  font-size: 0.8rem;
+  padding-left: 1vw;
+}
+.historyWindow .ratings .history .title {
+  flex: 8;
+  place-items: left;
+  font-size: 0.9rem;
+}
+.historyWindow .ratings .history .historyDetails {
+  font-style: italic;
+  color: rgb(171, 171, 171);
+  font-size: 0.8rem;
+  padding-right: 1vw;
+}
+
+.slide-inrate {
+  animation: slideinrate 0.5s forwards ease-in-out;
+}
+
+.slide-outrate {
+  animation: slideoutrate 0.5s forwards ease-in-out;
+}
+
+@keyframes slideinrate {
+  from {
+    left: -20%;
+  }
+  to {
+    left: 5.2%;
+  }
+}
+@keyframes slideoutrate {
+  from {
+    left: 5.2%;
+  }
+  to {
+    left: -20%;
+  }
+}/*# sourceMappingURL=history.css.map */

@@ -2,7 +2,7 @@ import React from "react";
 import { MovieContext } from "./movieContext";
 import { useState, useEffect, useRef, useContext } from "react";
 import axios from "axios";
-import "../styles/ratings.css";
+import "../styles/history.css";
 import { formatDistanceToNow } from "date-fns";
 
 const History = ({ setHistoryRender, historyRender }) => {
@@ -39,7 +39,7 @@ const History = ({ setHistoryRender, historyRender }) => {
 
   return (
     <div
-      className={`ratingsWindow ${
+      className={`historyWindow ${
         isVisible ? "slide-inrate" : "slide-outrate"
       }`}
       ref={histRef}
@@ -53,7 +53,6 @@ const History = ({ setHistoryRender, historyRender }) => {
               <h3>{index + 1}.</h3>
               <div className="title">{rating.movieTitle}</div>
               <div className="historyDetails">
-                {/* <h3>{rating.media_type}</h3> */}
                 {formatDistanceToNow(new Date(rating.updatedAt), {
                   addSuffix: true,
                 })}
