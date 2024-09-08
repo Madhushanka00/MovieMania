@@ -17,6 +17,7 @@ import logo from "../public/movimanialogoTransp.png";
 import Genres from "./genres";
 import MovieContext from "./components/movieContext";
 import Ratings from "./components/ratings";
+import History from "./components/history";
 // import
 import "./styles/home.css";
 
@@ -32,6 +33,7 @@ const Home = () => {
   const [similarMovies, setSimilarMovies] = useState([]);
   const [currentUserId, setCurrentUserId] = useState(null);
   const [ratingRender, setRatingRender] = useState(false);
+  const [historyRender, setHistoryRender] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -39,6 +41,12 @@ const Home = () => {
 
   const gotoRatings = () => {
     setRatingRender(true);
+    setHistoryRender(false);
+  };
+
+  const gotoHistory = () => {
+    setHistoryRender(true);
+    setRatingRender(false);
   };
 
   useEffect(() => {
@@ -199,7 +207,7 @@ const Home = () => {
         <div className="drawer">
           <img src="../public/logo-02.svg" className="mainicon" />
           <StarOutlinedIcon className="Icons" onClick={gotoRatings} />
-          <AccessTimeIcon className="Icons" />
+          <AccessTimeIcon className="Icons" onClick={gotoHistory} />
           <HelpOutlineIcon className="Icons" />
           <SettingsOutlinedIcon className="Icons" />
           <LogoutOutlinedIcon className="bottomIcon" onClick={handleLogout} />
@@ -208,6 +216,14 @@ const Home = () => {
           <Ratings
             setRatingRender={setRatingRender}
             ratingRender={ratingRender}
+          />
+        ) : (
+          ""
+        )}
+        {historyRender ? (
+          <History
+            setHistoryRender={setHistoryRender}
+            historyRender={historyRender}
           />
         ) : (
           ""
