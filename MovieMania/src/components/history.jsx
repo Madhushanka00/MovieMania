@@ -13,7 +13,9 @@ const History = ({ setHistoryRender, historyRender }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/getHistory?userId=${currentUserId}`)
+      .get(
+        `https://dspndkpg-3000.asse.devtunnels.ms/getHistory?userId=${currentUserId}`
+      )
       .then((res) => {
         console.log(res.data);
         setHistory(res.data.history);

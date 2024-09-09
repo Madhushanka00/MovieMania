@@ -183,7 +183,7 @@ const DetailedView = ({ movie, onClose, type }) => {
     setRating(value);
     let title = movie.title ? movie.title : movie.original_name;
     let media_type = movie.title ? "movie" : "tv";
-    const endpoint = "http://localhost:3000/addratings"; // Ensure the endpoint matches
+    const endpoint = "https://dspndkpg-3000.asse.devtunnels.ms/addratings"; // Ensure the endpoint matches
     const payload = {
       userId: currentUserId, // Replace with actual user ID
       movieId: movie.id, // Replace with actual movie ID

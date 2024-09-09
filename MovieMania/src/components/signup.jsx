@@ -38,7 +38,7 @@ export default function Signup({ setIsLogin, userId, setUserId }) {
       return;
     }
     fetch(
-      `http://localhost:3000/register/${userNameRef.current.value}/${emailRef.current.value}/${passwordRef.current.value}`,
+      `https://dspndkpg-3000.asse.devtunnels.ms/register/${userNameRef.current.value}/${emailRef.current.value}/${passwordRef.current.value}`,
       {
         method: "POST",
         headers: {

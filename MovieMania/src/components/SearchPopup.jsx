@@ -49,7 +49,7 @@ const SearchPopup = ({ searchResults, openPopup, setOpenPopup }) => {
       searchForSimilar(movie);
       if (movie) {
         let title = movie.title ? movie.title : movie.original_name;
-        const endpoint = "http://localhost:3000/addHistory"; // Ensure the endpoint matches
+        const endpoint = "https://dspndkpg-3000.asse.devtunnels.ms/addHistory"; // Ensure the endpoint matches
         const payload = {
           userId: currentUserId, // Replace with actual user ID
           movieId: movie.id, // Replace with actual movie ID

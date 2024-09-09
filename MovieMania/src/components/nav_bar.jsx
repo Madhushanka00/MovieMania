@@ -24,7 +24,9 @@ const NavBar = ({ changeTab }) => {
   const ShowProfile = () => {
     console.log("Current User ID:", currentUserId);
     axios
-      .get(`http://localhost:3000/getUserData?userId=${currentUserId}`)
+      .get(
+        `https://dspndkpg-3000.asse.devtunnels.ms/getUserData?userId=${currentUserId}`
+      )
       .then((res) => {
         const { user } = res.data;
         const { username, email } = user;

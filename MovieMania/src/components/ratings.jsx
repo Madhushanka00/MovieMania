@@ -14,7 +14,9 @@ const Ratings = ({ setRatingRender, ratingRender }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/getRatings?userId=${currentUserId}`)
+      .get(
+        `https://dspndkpg-3000.asse.devtunnels.ms/getRatings?userId=${currentUserId}`
+      )
       .then((res) => {
         console.log(res.data);
         setRatings(res.data.ratings);

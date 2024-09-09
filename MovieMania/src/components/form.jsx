@@ -24,14 +24,14 @@ export default function Form({ setIsLogin, userId, setUserId }) {
     console.log(userRef.current.value);
     console.log(passRef.current.value);
     // axios
-    //   .post("http://localhost:3000/register", {
+    //   .post("https://dspndkpg-3000.asse.devtunnels.ms/register", {
     //     username: userRef.current.value,
     //     password: passRef.current.value,
     //   })
     //   .then((res) => {
     //     console.log(res.data);
     //   });
-    fetch("http://localhost:3000/validateUser", {
+    fetch("https://dspndkpg-3000.asse.devtunnels.ms/validateUser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
