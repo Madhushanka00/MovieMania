@@ -8,6 +8,10 @@
   align-items: left;
 }
 .HomeMain .titlebox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding-left: 2%;
 }
 .HomeMain .titlebox .mainTitle {
@@ -42,10 +46,12 @@
   flex: 1;
   padding-left: 2%;
   font-size: 1.3rem;
+  font-weight: 600;
   color: rgb(233, 233, 233);
 }
 .HomeMain .Searchresults .devider .subtitle2, .HomeMain .recommendations .devider .subtitle2 {
   flex: 5;
+  font-weight: 600;
   font-size: 1.3rem;
   color: rgb(233, 233, 233);
 }

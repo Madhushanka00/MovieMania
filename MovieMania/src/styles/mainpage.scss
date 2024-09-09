@@ -9,6 +9,10 @@
     margin-top: 9vh;
     align-items: left;
     & .titlebox{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
         padding-left: 2%;
         & .mainTitle{
@@ -48,11 +52,13 @@
                 flex:1;
                 padding-left: 2%;
                 font-size: 1.3rem;
+                font-weight: 600;
                 color: rgb(233, 233, 233);
 
             }
             & .subtitle2{
                 flex:5;
+                font-weight: 600;
                 font-size: 1.3rem;
                 color: rgb(233, 233, 233);
             }
