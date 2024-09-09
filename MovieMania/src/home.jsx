@@ -18,6 +18,7 @@ import Genres from "./genres";
 import MovieContext from "./components/movieContext";
 import Ratings from "./components/ratings";
 import History from "./components/history";
+import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 // import
 import "./styles/home.css";
 
@@ -208,7 +209,7 @@ const Home = () => {
           <img src="../public/logo-02.svg" className="mainicon" />
           <StarOutlinedIcon className="Icons" onClick={gotoRatings} />
           <AccessTimeIcon className="Icons" onClick={gotoHistory} />
-          <HelpOutlineIcon className="Icons" />
+          <BookmarkAddIcon className="Icons" />
           <SettingsOutlinedIcon className="Icons" />
           <LogoutOutlinedIcon className="bottomIcon" onClick={handleLogout} />
         </div>
