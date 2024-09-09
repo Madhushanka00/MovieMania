@@ -11,6 +11,7 @@ import { MovieContext } from "./movieContext";
 const DetailedView = ({ movie, onClose, type }) => {
   const detailsRef = useRef(null);
   const { currentUserId } = useContext(MovieContext);
+  const [torrents, setTorrents] = useState([]);
   const genreDetails = [
     {
       id: 28,
@@ -127,6 +128,21 @@ const DetailedView = ({ movie, onClose, type }) => {
     }
   };
 
+  const searchForTorrent = () => {
+    // console.log("Searching for torrent");
+    let title = movie.title ? movie.title : movie.original_name;
+    console.log("Searching for torrent", title);
+    axios
+      .get(`http://localhost:5000/getTorrentLinks?movie_title=${title}`)
+      .then((res) => {
+        console.log("Torrent links:", res.data);
+        setTorrents(res.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching torrent links:", err);
+      });
+  };
+
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
 
@@ -221,6 +237,35 @@ const DetailedView = ({ movie, onClose, type }) => {
                 <h3 className="ttle">Overview</h3>
                 <p>{movie.overview}</p>
               </div>
+              <button className="watchlist">Add to Watchlist</button>
+              <button className="Download" onClick={searchForTorrent}>
+                Download Torrent
+              </button>
+              {torrents && torrents.length > 0 ? (
+                <>
+                  <h3>Available Torrents</h3>
+                  <div className="Torrents">
+                    {torrents.map((torrent, index) => {
+                      return (
+                        <div
+                          className="torrents"
+                          key={index}
+                          href={torrent.url}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <p>{torrent.type}</p>
+                          <p>{torrent.quality}</p>
+                          <p>{torrent.size}</p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </>
+              ) : (
+                ""
+              )}
+
               <div className="myRatings">
                 How much I like {"  "}
                 <Rate

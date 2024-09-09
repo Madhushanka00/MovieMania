@@ -32,9 +32,9 @@
 }
 .glass .Construction {
   display: flex;
+  flex: 1;
 }
 .glass .Construction .movie-backdrop {
-  flex: 1;
   border-radius: 20px 0 0 20px;
   position: relative;
   height: 89.5vh;
@@ -113,6 +113,11 @@
   font-style: italic;
   font-size: 1rem;
 }
+.glass .Construction .DetailsSection_ .Overview {
+  max-height: 30vh;
+  padding-bottom: 5vh;
+  overflow: hidden;
+}
 .glass .Construction .DetailsSection_ .Overview .ttle {
   font-size: 1.2rem;
   color: beige;
@@ -127,6 +132,33 @@
   font-size: 0.9rem;
   text-align: left !important;
 }
+.glass .Construction .DetailsSection_ .watchlist, .glass .Construction .DetailsSection_ .Download {
+  background-color: #4A5568;
+  box-shadow: 0 4px 8px rgba(77, 77, 77, 0.5);
+  margin-right: 1vh;
+  border: none;
+  border-radius: 5px;
+  color: #fff; /* Text color */
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+.glass .Construction .DetailsSection_ .watchlist:hover, .glass .Construction .DetailsSection_ .Download:hover {
+  background-color: #2d3748;
+}
+.glass .Construction .DetailsSection_ .Torrents {
+  display: flex;
+  flex-direction: row;
+  background-color: #15de8a;
+}
+.glass .Construction .DetailsSection_ .Torrents .torrents {
+  display: flex;
+  flex-direction: column;
+  background-color: #ff0000;
+}
 .glass .Construction .DetailsSection_ .myRatings {
   position: absolute;
   bottom: 7%;
@@ -137,7 +169,7 @@
 .glass .Construction .DetailsSection_ .myRatings .stars {
   padding: 5px;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.327);
+  background-color: #ffffff;
   box-shadow: 1px 1px 10px rgba(246, 240, 240, 0.2745098039);
 }
 .glass .Construction .DetailsSection_ .myRatings .stars :root {
