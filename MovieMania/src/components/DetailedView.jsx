@@ -12,6 +12,7 @@ const DetailedView = ({ movie, onClose, type }) => {
   const detailsRef = useRef(null);
   const { currentUserId } = useContext(MovieContext);
   const [torrents, setTorrents] = useState([]);
+  const [selectUrl, setSelectUrl] = useState("");
   const genreDetails = [
     {
       id: 28,
@@ -127,6 +128,27 @@ const DetailedView = ({ movie, onClose, type }) => {
       onClose();
     }
   };
+  useEffect(() => {
+    if (selectUrl) {
+      console.log("Downloading torrent link:", selectUrl);
+
+      // Create an anchor element
+      const link = document.createElement("a");
+      link.href = selectUrl;
+
+      // Set the download attribute (optional, you can specify a filename here if needed)
+      link.setAttribute("download", "");
+
+      // Append the link to the body (necessary for some browsers)
+      document.body.appendChild(link);
+
+      // Programmatically trigger the click event on the link to download the file
+      link.click();
+
+      // Remove the link from the document
+      document.body.removeChild(link);
+    }
+  }, [selectUrl]);
 
   const searchForTorrent = () => {
     // console.log("Searching for torrent");
@@ -200,42 +222,44 @@ const DetailedView = ({ movie, onClose, type }) => {
             />
             <div className="DetailsSection_">
               <CloseIcon className="close" onClick={onClose} />
-              <div className="titleSection_">
-                <h3>{movie.title ? movie.title : movie.original_name}</h3>
+              <div className="WholeSection">
+                <div className="titleSection_">
+                  <h3>{movie.title ? movie.title : movie.original_name}</h3>
 
-                <div className="releaseDate">
-                  <h6>{movie.tagline}</h6>
-                  <h6 className="date">{movie.release_date}</h6>
+                  <div className="releaseDate">
+                    <h6>{movie.tagline}</h6>
+                    <h6 className="date">{movie.release_date}</h6>
+                  </div>
                 </div>
-              </div>
-              <div className="wrapAround">
-                <div className="ratingSection">
-                  <StarIcon className="star" />
-                  {"  "}
-                  {movie.vote_average}
+                <div className="wrapAround">
+                  <div className="ratingSection">
+                    <StarIcon className="star" />
+                    {"  "}
+                    {movie.vote_average}
+                  </div>
+                  <div className="genras">
+                    {console.log("genre_ids", movie.genre_ids)}
+                    {movie.genre_ids && movie.genre_ids.length > 0 ? (
+                      movie.genre_ids.map((genre, index) => {
+                        const genrename = genreDetails.find(
+                          (g) => g.id === genre
+                        );
+                        return (
+                          <span key={genrename.id} className="genre">
+                            {genrename.name}
+                            {index < movie.genre_ids.length - 1 && " | "}
+                          </span>
+                        );
+                      })
+                    ) : (
+                      <span>No genres available</span>
+                    )}
+                  </div>
                 </div>
-                <div className="genras">
-                  {console.log("genre_ids", movie.genre_ids)}
-                  {movie.genre_ids && movie.genre_ids.length > 0 ? (
-                    movie.genre_ids.map((genre, index) => {
-                      const genrename = genreDetails.find(
-                        (g) => g.id === genre
-                      );
-                      return (
-                        <span key={genrename.id} className="genre">
-                          {genrename.name}
-                          {index < movie.genre_ids.length - 1 && " | "}
-                        </span>
-                      );
-                    })
-                  ) : (
-                    <span>No genres available</span>
-                  )}
+                <div className="Overview">
+                  <h3 className="ttle">Overview</h3>
+                  <p>{movie.overview}</p>
                 </div>
-              </div>
-              <div className="Overview">
-                <h3 className="ttle">Overview</h3>
-                <p>{movie.overview}</p>
               </div>
               <button className="watchlist">Add to Watchlist</button>
               <button className="Download" onClick={searchForTorrent}>
@@ -243,7 +267,7 @@ const DetailedView = ({ movie, onClose, type }) => {
               </button>
               {torrents && torrents.length > 0 ? (
                 <>
-                  <h3>Available Torrents</h3>
+                  <h3 className="titletorents">Available Torrents</h3>
                   <div className="Torrents">
                     {torrents.map((torrent, index) => {
                       return (
@@ -253,10 +277,11 @@ const DetailedView = ({ movie, onClose, type }) => {
                           href={torrent.url}
                           target="_blank"
                           rel="noreferrer"
+                          onClick={() => setSelectUrl(torrent.url)}
                         >
-                          <p>{torrent.type}</p>
-                          <p>{torrent.quality}</p>
-                          <p>{torrent.size}</p>
+                          <div className="type">{torrent.type}</div>
+                          <div className="quality">{torrent.quality}</div>
+                          <div className="size">{torrent.size}</div>
                         </div>
                       );
                     })}
@@ -267,7 +292,7 @@ const DetailedView = ({ movie, onClose, type }) => {
               )}
 
               <div className="myRatings">
-                How much I like {"  "}
+                <div className="txt">How much I like {"  "}</div>
                 <Rate
                   allowHalf
                   className="stars"

@@ -56,7 +56,17 @@
 .glass .Construction .DetailsSection_ .close :hover {
   color: #ff0000;
 }
-.glass .Construction .DetailsSection_ .titleSection_ {
+.glass .Construction .DetailsSection_ .WholeSection {
+  max-height: 52vh;
+  min-height: 50vh;
+  margin-bottom: 2vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+.glass .Construction .DetailsSection_ .WholeSection::-webkit-scrollbar {
+  display: none;
+}
+.glass .Construction .DetailsSection_ .WholeSection .titleSection_ {
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -66,66 +76,65 @@
   justify-content: space-between;
   padding-bottom: 50px;
 }
-.glass .Construction .DetailsSection_ .titleSection_ h3 {
+.glass .Construction .DetailsSection_ .WholeSection .titleSection_ h3 {
   font-size: 2.9rem;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 700;
   text-align: left !important;
 }
-.glass .Construction .DetailsSection_ .titleSection_ .releaseDate {
+.glass .Construction .DetailsSection_ .WholeSection .titleSection_ .releaseDate {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.glass .Construction .DetailsSection_ .titleSection_ .releaseDate h6 {
+.glass .Construction .DetailsSection_ .WholeSection .titleSection_ .releaseDate h6 {
   padding-left: 10px;
   font-size: 1rem;
   font-style: italic;
   font-weight: 50;
 }
-.glass .Construction .DetailsSection_ .titleSection_ .releaseDate .date {
+.glass .Construction .DetailsSection_ .WholeSection .titleSection_ .releaseDate .date {
   font-family: sans-serif;
   font-size: 0.8rem;
 }
-.glass .Construction .DetailsSection_ .wrapAround {
+.glass .Construction .DetailsSection_ .WholeSection .wrapAround {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.glass .Construction .DetailsSection_ .wrapAround .ratingSection {
+.glass .Construction .DetailsSection_ .WholeSection .wrapAround .ratingSection {
   display: flex;
   font-size: 1rem;
   padding-left: 10px;
   padding-bottom: 30px;
   align-items: center;
 }
-.glass .Construction .DetailsSection_ .wrapAround .ratingSection .star {
+.glass .Construction .DetailsSection_ .WholeSection .wrapAround .ratingSection .star {
   position: relative;
   color: gold !important;
   font-size: 2rem;
   padding-right: 10px;
 }
-.glass .Construction .DetailsSection_ .wrapAround .genras {
+.glass .Construction .DetailsSection_ .WholeSection .wrapAround .genras {
   display: flex;
 }
-.glass .Construction .DetailsSection_ .wrapAround .genras .genre {
+.glass .Construction .DetailsSection_ .WholeSection .wrapAround .genras .genre {
   padding: 2px 2px;
   font-style: italic;
   font-size: 1rem;
 }
-.glass .Construction .DetailsSection_ .Overview {
-  max-height: 30vh;
+.glass .Construction .DetailsSection_ .WholeSection .Overview {
+  max-height: 25vh;
   padding-bottom: 5vh;
-  overflow: hidden;
 }
-.glass .Construction .DetailsSection_ .Overview .ttle {
+.glass .Construction .DetailsSection_ .WholeSection .Overview .ttle {
   font-size: 1.2rem;
   color: beige;
   font-weight: 300;
   padding-bottom: 10px;
   text-align: left !important;
 }
-.glass .Construction .DetailsSection_ .Overview p {
+.glass .Construction .DetailsSection_ .WholeSection .Overview p {
   font-family: system-ui;
   padding-left: 10px;
   letter-spacing: 1px;
@@ -134,7 +143,7 @@
 }
 .glass .Construction .DetailsSection_ .watchlist, .glass .Construction .DetailsSection_ .Download {
   background-color: #4A5568;
-  box-shadow: 0 4px 8px rgba(77, 77, 77, 0.5);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   margin-right: 1vh;
   border: none;
   border-radius: 5px;
@@ -149,28 +158,65 @@
 .glass .Construction .DetailsSection_ .watchlist:hover, .glass .Construction .DetailsSection_ .Download:hover {
   background-color: #2d3748;
 }
+.glass .Construction .DetailsSection_ .titletorents {
+  padding-top: 2vh;
+  padding-left: 2vh;
+  font-size: 0.8rem;
+  color: #b9b9b9;
+}
 .glass .Construction .DetailsSection_ .Torrents {
   display: flex;
   flex-direction: row;
-  background-color: #15de8a;
 }
 .glass .Construction .DetailsSection_ .Torrents .torrents {
   display: flex;
+  justify-content: center;
+  cursor: pointer;
+  align-items: center;
+  padding: 10px;
   flex-direction: column;
-  background-color: #ff0000;
+  margin-left: 10px;
+  border-radius: 10px;
+  background-color: #2d3748;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+  /* Zoom effect on hover */
+}
+.glass .Construction .DetailsSection_ .Torrents .torrents:hover {
+  transform: scale(1.1); /* Zoom-in effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7); /* Increase shadow for a popping effect */
+}
+.glass .Construction .DetailsSection_ .Torrents .torrents .type {
+  color: #15de8a;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+.glass .Construction .DetailsSection_ .Torrents .torrents .quality {
+  color: #bee3f8;
+  font-size: 0.8rem;
+}
+.glass .Construction .DetailsSection_ .Torrents .torrents .size {
+  font-size: 0.7rem;
+  color: #D6BCFA;
 }
 .glass .Construction .DetailsSection_ .myRatings {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   position: absolute;
-  bottom: 7%;
+  bottom: 5%;
   right: 5%;
-  font-size: medium;
-  color: aliceblue;
+  font-size: 0.8rem;
+  color: #b9b9b9;
+}
+.glass .Construction .DetailsSection_ .myRatings .txt {
+  padding-right: 10px;
 }
 .glass .Construction .DetailsSection_ .myRatings .stars {
-  padding: 5px;
+  padding: 2px;
   border-radius: 10px;
-  background-color: #ffffff;
-  box-shadow: 1px 1px 10px rgba(246, 240, 240, 0.2745098039);
+  background-color: #b9b9b9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 .glass .Construction .DetailsSection_ .myRatings .stars :root {
   --ant-rate-star-color: #15de8a; /* Change this to your desired color */
