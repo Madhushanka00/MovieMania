@@ -356,4 +356,27 @@ def  get_similatFrom_ML():
     # return jsonify(recommended_movies)
 
 
+@app.route('/getTorrentLinks', methods=['GET'])
+def get_torrent_links():
+    movie_title = request.args.get('movie_title')
+    # Check if the movie title is provided
+    if not movie_title:
+        return jsonify({"error": "movie_title is required"}), 400
+    
+    # Search for the movie on YTS.mx
+    response = requests.get(f'https://yts.mx/api/v2/list_movies.json?query_term={movie_title}')
+    
+    if response.status_code == 200:
+        data = response.json()
+        
+        # Check if the 'movies' field is present and contains data
+        if 'movies' in data['data'] and data['data']['movies']:
+            movie = data['data']['movies'][0]  # Assuming you only care about the first movie in the list
+            torrents = movie.get('torrents', [])  # Get the 'torrents' list or return an empty list if not present
+            return jsonify(torrents)  # Return only the torrent details
+        else:
+            return jsonify({"error": "No movies found"}), 404
+    else:
+        return jsonify({"error": "Unable to fetch torrent links"}), response.status_code
+
 app.run(port=5000, debug=True , host="0.0.0.0")
