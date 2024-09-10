@@ -55,18 +55,6 @@ const MainPage = () => {
         selectItem.title ? selectItem.title : selectItem.original_name
       );
       console.log("Movies:", movies);
-      // axios
-      //   .get(
-      //     `https://dspndkpg-5000.asse.devtunnels.ms/sililarNew?type=${selectItem.media_type}&id=${selectItem.id}&movie=${title}`
-      //   )
-      //   .then((response) => {
-      //     // console.log(response.data); // Access the data in the response
-      //     setMovies(response.data.results);
-      //     console.log("similar,", response.data);
-      //   })
-      //   .catch((error) => {
-      //     console.error("Error fetching similar details:", error);
-      //   });
     }
   }, [selectItem]);
 
