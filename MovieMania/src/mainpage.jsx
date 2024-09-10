@@ -4,7 +4,7 @@ import MoviesArea from "./components/MovieArea";
 import { MovieContext } from "./components/movieContext";
 import MovieCard from "./components/MovieCard";
 import axios from "axios";
-
+import DetailedView from "./components/DetailedView";
 const MainPage = () => {
   const {
     selectItem,
@@ -20,6 +20,19 @@ const MainPage = () => {
   const [title, setTitle] = useState(null);
   console.log("Selected Item:", selectItem);
   const [fakeState, setFakeState] = useState(0);
+  const [goToDetails, setGoToDetails] = useState(false);
+  const [selectedMovieDetails, setSelectedMovieDetails] = useState(null);
+
+  const handleClick = (details) => {
+    console.log("Clicked");
+    setGoToDetails(true);
+    console.log("Details:", details);
+    setSelectedMovieDetails(details);
+    // console.log("Selected Movie Details:", selectedMovieDetails);
+  };
+  const hideDetailedView = () => {
+    setGoToDetails(false);
+  };
 
   // useEffect(() => {
   //   const interval = setInterval(() => {
@@ -80,16 +93,27 @@ const MainPage = () => {
         <div className="searcharea">
           <div className="searchedMovie">
             {selectItem && (
-              <MovieCard
-                key={selectItem.id}
-                movie={{
-                  title: selectItem.title
-                    ? selectItem.title
-                    : selectItem.original_name,
-                  ratings: selectItem.ratings,
-                  posterUrl: `https://image.tmdb.org/t/p/w500${selectItem.poster_path}`,
-                  id: selectItem.id,
-                }}
+              <>
+                <div onClick={() => handleClick(selectItem)}>
+                  <MovieCard
+                    key={selectItem.id}
+                    movie={{
+                      title: selectItem.title
+                        ? selectItem.title
+                        : selectItem.original_name,
+                      ratings: selectItem.ratings,
+                      posterUrl: `https://image.tmdb.org/t/p/w500${selectItem.poster_path}`,
+                      id: selectItem.id,
+                    }}
+                  />
+                </div>
+              </>
+            )}
+            {goToDetails && (
+              <DetailedView
+                movie={selectedMovieDetails}
+                onClose={hideDetailedView}
+                type={type}
               />
             )}
           </div>
@@ -99,7 +123,7 @@ const MainPage = () => {
             {/* {movies && */}
             {movies.map((movie) => {
               return (
-                <div key={movie.id}>
+                <div key={movie.id} onClick={() => handleClick(movie)}>
                   <MovieCard
                     key={movie.id}
                     movie={{
