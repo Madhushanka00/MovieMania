@@ -74,8 +74,8 @@
   align-items: center;
   width: 3vw;
   font-size: 2.5rem;
-  text-shadow: #AB6EB3;
   color: white;
+  text-shadow: 1px 4px 16px rgba(7, 7, 7, 0.849);
   border: none;
   padding: 10px;
   cursor: pointer;

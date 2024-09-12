@@ -27,15 +27,15 @@
   }
   
   .movie-details {
-    // background: black;
-    max-height: 10vh;
+    min-height: 8vh;
+    // max-height: 10vh;
     margin-top: 10px;
     color:antiquewhite;
     cursor: pointer;
     align-items: center;
     & h3{
       display: -webkit-box;
-    -webkit-line-clamp: 3; /* Limits to 3 lines */
+    -webkit-line-clamp: 2; /* Limits to 3 lines */
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
