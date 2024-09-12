@@ -1,10 +1,12 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import "./styles/mainpage.css";
 import MoviesArea from "./components/MovieArea";
 import { MovieContext } from "./components/movieContext";
 import MovieCard from "./components/MovieCard";
 import axios from "axios";
 import DetailedView from "./components/DetailedView";
+import "react-multi-carousel/lib/styles.css";
+
 const MainPage = () => {
   const {
     selectItem,
@@ -14,6 +16,7 @@ const MainPage = () => {
     similarMovies,
     setSimilarMovies,
   } = useContext(MovieContext);
+
   const [type, setType] = useState(null);
   const [movieTitle, setMovieTitle] = useState(null);
   const [movies, setMovies] = useState([]);
@@ -34,13 +37,15 @@ const MainPage = () => {
     setGoToDetails(false);
   };
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setFakeState((prev) => prev + 1); // Update fake state every second
-  //   }, 1000);
+  const carouselRef = useRef(null);
 
-  //   return () => clearInterval(interval); // Clean up on unmount
-  // }, []);
+  const scrollLeft = () => {
+    carouselRef.current.scrollBy({ left: -800, behavior: "smooth" });
+  };
+
+  const scrollRight = () => {
+    carouselRef.current.scrollBy({ left: 800, behavior: "smooth" });
+  };
 
   useEffect(() => {
     if (selectItem) {
@@ -62,6 +67,33 @@ const MainPage = () => {
     console.log("similar movies recieved:", similarMovies);
     setMovies(similarMovies);
   }, [similarMovies]);
+
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 5,
+  };
 
   return (
     <div className="HomeMain">
@@ -105,10 +137,14 @@ const MainPage = () => {
               />
             )}
           </div>
-          <div className="moviesArea_next">
+          {/* <Slider {...settings}> */}
+          <button className="carousel-btn left" onClick={scrollLeft}>
+            &#8249;
+          </button>
+          <div className="moviesArea_next" ref={carouselRef}>
             {console.log("Movies:", movies)}
             {console.log("Type:", type)}
-            {/* {movies && */}
+
             {movies.map((movie) => {
               return (
                 <div key={movie.id} onClick={() => handleClick(movie)}>
@@ -124,7 +160,12 @@ const MainPage = () => {
                 </div>
               );
             })}
+            {/* </Slider> */}
           </div>
+          <button className="carousel-btn right" onClick={scrollRight}>
+            &#8250;
+          </button>
+          {/* </Slider> */}
         </div>
       </div>
       <div className="recommendations">
