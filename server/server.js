@@ -141,6 +141,25 @@ app.get('/getRatings', async (req, res) => {
     
 });
 
+app.get('/getRating', async (req, res) => {
+    const {userId, movieId} = req.query;
+    try {
+        // Find the user by userId
+        const rating = await mdb.collection('ratings').findOne({ userId: userId, movieId: parseInt(movieId, 10)});
+
+        if (!rating) {
+            console.log("Rating not found", userId ," ", movieId);
+            return res.status(404).json({ message: 'Rating not found' });
+        }
+        console.log("Rating found", rating);
+        res.status(200).json({ rating });
+    }catch (error) {
+            console.log(error);
+            res.status(500).json({ message: 'Failed to get rating', error });
+        }
+    
+});
+
 
 app.post('/addHistory', async (req, res) => {
     const { userId, movieId, movieTitle, media_type } = req.body;

@@ -13,6 +13,7 @@ const DetailedView = ({ movie, onClose, type }) => {
   const { currentUserId } = useContext(MovieContext);
   const [torrents, setTorrents] = useState([]);
   const [selectUrl, setSelectUrl] = useState("");
+  const [initialRating, setInitialRating] = useState(0);
   const genreDetails = [
     {
       id: 28,
@@ -200,6 +201,22 @@ const DetailedView = ({ movie, onClose, type }) => {
         console.error("Error updating movie ratings:", error);
       });
   };
+  console.log("Current User ID:", currentUserId);
+  console.log("Movie ID:", movie.id);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://dspndkpg-3000.asse.devtunnels.ms/getRating?userId=${currentUserId}&movieId=${movie.id}`
+      )
+      .then((response) => {
+        console.log("rating details here :", response.data.rating.rating);
+        setRating(response.data.rating.rating);
+      })
+      .catch((error) => {
+        console.error("Error fetching movie details:", error);
+      });
+  }, []);
 
   const handleClose = () => {
     setIsVisible(false); // Hide DetailedView when CloseIcon is clicked
