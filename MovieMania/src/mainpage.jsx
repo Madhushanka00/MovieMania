@@ -141,7 +141,7 @@ const MainPage = () => {
           <button className="carousel-btn left" onClick={scrollLeft}>
             &#8249;
           </button>
-          <div className="moviesArea_next" ref={carouselRef}>
+          <div className="moviesArea_Mainpage" ref={carouselRef}>
             {console.log("Movies:", movies)}
             {console.log("Type:", type)}
 

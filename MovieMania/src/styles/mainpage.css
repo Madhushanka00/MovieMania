@@ -91,13 +91,15 @@
 .HomeMain .Searchresults .carousel-btn:hover {
   transform: scale(1.5);
 }
-.HomeMain .Searchresults .moviesArea_next {
+.HomeMain .Searchresults .moviesArea_Mainpage {
   flex: 5;
+  display: flex;
+  flex-direction: row;
   align-items: start;
   overflow-y: scroll;
   scroll-behavior: smooth;
 }
-.HomeMain .Searchresults .moviesArea_next::-webkit-scrollbar {
+.HomeMain .Searchresults .moviesArea_Mainpage::-webkit-scrollbar {
   display: none;
 }
 .HomeMain .recommendations .subtitle {
