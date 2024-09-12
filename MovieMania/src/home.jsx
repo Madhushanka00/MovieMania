@@ -1,4 +1,4 @@
-import React, { act, useEffect, useContext } from "react";
+import React, { act, useEffect, useContext, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import NavBar from "./components/nav_bar";
@@ -35,6 +35,18 @@ const Home = () => {
   const [currentUserId, setCurrentUserId] = useState(null);
   const [ratingRender, setRatingRender] = useState(false);
   const [historyRender, setHistoryRender] = useState(false);
+
+  const popularRef = useRef(null);
+  const upcomingRef = useRef(null);
+  const topRatedRef = useRef(null);
+
+  const scrollLeft = () => {
+    popularRef.current.scrollBy({ left: -800, behavior: "smooth" });
+  };
+
+  const scrollRight = () => {
+    popularRef.current.scrollBy({ left: 800, behavior: "smooth" });
+  };
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -99,9 +111,22 @@ const Home = () => {
       return (
         <div className="mainWrapper">
           <h1>Most Popular</h1>
-          <div className="moviesArea">
-            <MoviesArea mode="popular" tab={tab} type="movie" />
+
+          <div className="moviesArea" ref={popularRef}>
+            {/* <button className="carousel-btn left" onClick={scrollLeft}>
+              &#8249;
+            </button> */}
+            <MoviesArea
+              mode="popular"
+              tab={tab}
+              type="movie"
+              className="moviesArea_next"
+            />
+            {/* <button className="carousel-btn right" onClick={scrollRight}>
+              &#8250;
+            </button> */}
           </div>
+
           <h1>Upcoming Movies</h1>
           <div className="moviesArea">
             <MoviesArea mode="upcoming" tab={tab} type="movie" />

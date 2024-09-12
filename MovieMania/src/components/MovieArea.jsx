@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 // import dotenv from "dotenv";
 import MovieCard from "./MovieCard"; // import your MovieCard component
@@ -10,6 +10,16 @@ const MoviesArea = ({ mode, tab, type }) => {
   const [selectedMovieDetails, setSelectedMovieDetails] = useState(null);
   const [selectedGenras, setSelectedGenres] = useState(null);
   const [goToDetails, setGoToDetails] = useState(false);
+
+  const carouselRef = useRef(null);
+
+  const scrollLeft = () => {
+    carouselRef.current.scrollBy({ left: -800, behavior: "smooth" });
+  };
+
+  const scrollRight = () => {
+    carouselRef.current.scrollBy({ left: 800, behavior: "smooth" });
+  };
 
   const handleClick = (details) => {
     console.log("Clicked");
@@ -71,25 +81,34 @@ const MoviesArea = ({ mode, tab, type }) => {
 
   return (
     <>
-      <div className="moviesArea_next">
-        {movies.map((movie) => {
-          // console.log("Movie:", movie);
-          return (
-            <>
-              <div onClick={() => handleClick(movie)}>
-                <MovieCard
-                  key={movie.id}
-                  movie={{
-                    title: type === "movie" ? movie.title : movie.original_name,
-                    ratings: movie.ratings,
-                    posterUrl: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-                    id: movie.id,
-                  }}
-                />
-              </div>
-            </>
-          );
-        })}
+      <div className="allWrap">
+        <button className="carousel-btn left" onClick={scrollLeft}>
+          &#8249;
+        </button>
+        <div className="moviesArea_next" ref={carouselRef}>
+          {movies.map((movie) => {
+            // console.log("Movie:", movie);
+            return (
+              <>
+                <div onClick={() => handleClick(movie)}>
+                  <MovieCard
+                    key={movie.id}
+                    movie={{
+                      title:
+                        type === "movie" ? movie.title : movie.original_name,
+                      ratings: movie.ratings,
+                      posterUrl: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                      id: movie.id,
+                    }}
+                  />
+                </div>
+              </>
+            );
+          })}
+        </div>
+        <button className="carousel-btn right" onClick={scrollRight}>
+          &#8250;
+        </button>
         {goToDetails && (
           <DetailedView
             movie={selectedMovieDetails}

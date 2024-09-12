@@ -186,26 +186,37 @@ body, html, #root {
                 
             }       
             }  
-
-            
-            
+           
             & .moviesArea{
+                // background: #f1f1f1;
                 display: flex;
                 // flex-direction: column;
                 height: auto;
                 // overflow: hidden;
+                
+                & .moviesArea_next{
+                padding: 0px !important;
+                // background-color: #494949;
                 overflow-x: scroll; 
                 // overflow-y: none;
                 scroll-behavior: smooth; 
                 &::-webkit-scrollbar {
-                            display: none;
-                        }
-                        // Hide scrollbar for Internet Explorer and Edge
-                        -ms-overflow-style: none;
-                        
-                        // Hide scrollbar for Firefox
-                        scrollbar-width: none;
+                    display: none;
                 }
+                }
+                & .carousel-btn{
+                    // position: absolute;
+                    font-size: 2.5rem;
+                    color: white;
+                    padding: 1%;
+                    cursor: pointer;
+                    z-index: 1;
+
+
+                }
+                           
+                }
+            
     }
     &::-webkit-scrollbar {
         display: none;

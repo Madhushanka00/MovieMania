@@ -1,4 +1,10 @@
-.moviesArea_next {
+.allWrap{
+  display: flex;
+  flex-direction: row;
+
+
+
+  & .moviesArea_next {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -12,3 +18,35 @@
     //   }
     // overflow-y: auto;
   }
+  & .carousel-btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3vw;
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: 1px 4px 16px rgba(7, 7, 7, 0.849);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+ 
+    transition: transform 0.3s ease-in-out;
+
+    & .left{
+        padding-left: 1%;
+        
+    }
+    & .right{
+        margin-right: 1%;
+    }
+    &:hover{
+        transform: scale(1.5);
+    }
+
+  }
+}
+
+
+
+

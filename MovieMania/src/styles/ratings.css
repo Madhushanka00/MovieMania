@@ -16,7 +16,7 @@
   border: 1px solid rgba(175, 175, 175, 0.368627451);
   padding-bottom: 5vh;
   padding-top: 2vh;
-  z-index: 1;
+  z-index: 10;
 }
 .ratingsWindow h1 {
   color: white;

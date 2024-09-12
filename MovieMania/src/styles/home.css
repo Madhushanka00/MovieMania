@@ -131,13 +131,21 @@ body, html, #root {
 .mainlayout .content .section .moviesArea {
   display: flex;
   height: auto;
+}
+.mainlayout .content .section .moviesArea .moviesArea_next {
+  padding: 0px !important;
   overflow-x: scroll;
   scroll-behavior: smooth;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
-.mainlayout .content .section .moviesArea::-webkit-scrollbar {
+.mainlayout .content .section .moviesArea .moviesArea_next::-webkit-scrollbar {
   display: none;
+}
+.mainlayout .content .section .moviesArea .carousel-btn {
+  font-size: 2.5rem;
+  color: white;
+  padding: 1%;
+  cursor: pointer;
+  z-index: 1;
 }
 .mainlayout .content::-webkit-scrollbar {
   display: none;
