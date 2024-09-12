@@ -9,11 +9,12 @@ import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 import SearchPopup from "./SearchPopup";
 
-export default function SearchBar({ changeTab, setActiveTab }) {
+export default function SearchBar({ changeTab, setActiveTab, activeTab }) {
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [openPopup, setOpenPopup] = useState(false);
   const { currentUserId, setCurrentUserId } = useContext(MovieContext);
+  // console.log("activetab", activeTab);
 
   const handleSearchClick = () => {
     if (query != "") {

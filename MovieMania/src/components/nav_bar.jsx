@@ -1,4 +1,4 @@
-import React from "react";
+import React, { act } from "react";
 import { useState, useEffect, useContext } from "react";
 import "../styles/nacBar.css";
 import AppsIcon from "@mui/icons-material/Apps";
@@ -86,8 +86,18 @@ const NavBar = ({ changeTab }) => {
           Ask AI
         </div>
       </div>
-      <div className="mid">
-        <SearchBar changeTab={changeTab} setActiveTab={setActiveTab} />
+      <div
+        className="mid"
+        onClick={() => {
+          changeTab("Home");
+          handleClick("Home");
+        }}
+      >
+        <SearchBar
+          changeTab={changeTab}
+          setActiveTab={setActiveTab}
+          activeTab={activeTab}
+        />
       </div>
 
       <div className="right">
