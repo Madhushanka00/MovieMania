@@ -5,7 +5,6 @@ import { MovieContext } from "./components/movieContext";
 import MovieCard from "./components/MovieCard";
 import axios from "axios";
 import DetailedView from "./components/DetailedView";
-import "react-multi-carousel/lib/styles.css";
 
 const MainPage = () => {
   const {
