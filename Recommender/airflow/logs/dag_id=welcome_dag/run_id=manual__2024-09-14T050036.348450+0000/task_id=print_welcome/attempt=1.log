@@ -1,0 +1,18 @@
+[2024-09-14T05:00:39.529+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-09-14T05:00:39.542+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: welcome_dag.print_welcome manual__2024-09-14T05:00:36.348450+00:00 [queued]>
+[2024-09-14T05:00:39.552+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: welcome_dag.print_welcome manual__2024-09-14T05:00:36.348450+00:00 [queued]>
+[2024-09-14T05:00:39.552+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 1
+[2024-09-14T05:00:39.582+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): print_welcome> on 2024-09-14 05:00:36.348450+00:00
+[2024-09-14T05:00:39.585+0000] {standard_task_runner.py:72} INFO - Started process 122 to run task
+[2024-09-14T05:00:39.587+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'welcome_dag', 'print_welcome', 'manual__2024-09-14T05:00:36.348450+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/welcome_dag.py', '--cfg-path', '/tmp/tmp2dgqlc_2']
+[2024-09-14T05:00:39.592+0000] {standard_task_runner.py:105} INFO - Job 11: Subtask print_welcome
+[2024-09-14T05:00:39.650+0000] {task_command.py:467} INFO - Running <TaskInstance: welcome_dag.print_welcome manual__2024-09-14T05:00:36.348450+00:00 [running]> on host e4d7a2966481
+[2024-09-14T05:00:39.748+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='welcome_dag' AIRFLOW_CTX_TASK_ID='print_welcome' AIRFLOW_CTX_EXECUTION_DATE='2024-09-14T05:00:36.348450+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-09-14T05:00:36.348450+00:00'
+[2024-09-14T05:00:39.749+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-09-14T05:00:39.776+0000] {logging_mixin.py:190} INFO - Welcome to Airflow!
+[2024-09-14T05:00:39.777+0000] {python.py:240} INFO - Done. Returned value was: None
+[2024-09-14T05:00:39.811+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-09-14T05:00:39.812+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=welcome_dag, task_id=print_welcome, run_id=manual__2024-09-14T05:00:36.348450+00:00, execution_date=20240914T050036, start_date=20240914T050039, end_date=20240914T050039
+[2024-09-14T05:00:39.881+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2024-09-14T05:00:39.913+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-09-14T05:00:39.924+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
