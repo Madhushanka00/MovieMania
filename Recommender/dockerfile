@@ -17,6 +17,9 @@ RUN pip install --no-cache-dir \
     ipykernel \
     papermill \
     tensorflow \
+    tensorflow-recommenders \
+    tensorflow-datasets \
+    scann \
     requests
 
 EXPOSE 8080

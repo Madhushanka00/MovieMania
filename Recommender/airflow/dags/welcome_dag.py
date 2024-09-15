@@ -26,7 +26,7 @@ def print_random_quote():
 dag = DAG(
     'welcome_dag',
     default_args={'start_date': days_ago(1)},
-    schedule_interval='0 23 * * *',
+    schedule_interval='30 17 * * *',
     catchup=False
 )
 
