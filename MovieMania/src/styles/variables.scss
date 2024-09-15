@@ -1,0 +1,28 @@
+
+
+// add breakpoints
+@mixin breakpoints ($points){
+    @if $points == 'md'{
+        @media (min-width: 768px){
+            @content;
+        }
+    }
+    @else if $points == 'lg'{
+        @media (min-width: 992px){
+            @content;
+        }
+    }
+    @else if $points == 'xl'{
+        @media (min-width: 1200px){
+            @content;
+        }
+    }
+    @else if $points == 'xxl'{
+        @media (min-width: 1400px){
+            @content;
+        }
+    }
+    @else{
+        @content;
+    }
+}

@@ -9,12 +9,14 @@ import MovieContext from "./movieContext";
 import { InputBase } from "@mui/material";
 import axios from "axios";
 import Profile from "./profile";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const NavBar = ({ changeTab }) => {
   const [activeTab, setActiveTab] = useState("Home");
   const { currentUserId, setCurrentUserId } = useContext(MovieContext);
   const [profile, setProfile] = useState(false);
   const [details, setDetails] = useState({});
+  const [menuOpen, setMenuOpen] = useState(false); // State for handling the menu
 
   const handleClick = (content) => {
     // console.log(content);
@@ -35,6 +37,9 @@ const NavBar = ({ changeTab }) => {
         setDetails({ username, email, currentUserId });
       });
     setProfile(true);
+  };
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
   };
 
   return (
