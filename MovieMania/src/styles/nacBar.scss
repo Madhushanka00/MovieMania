@@ -50,6 +50,10 @@
          }
 
     }
+    & .hamburger{
+        display: none;
+    }
+
     & .mid{
         width: 40%;
         justify-content: left;
@@ -75,5 +79,81 @@
             margin-right:20px
         }
     }
+ // Media Queries for Mobile
+ @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 10px 0;
+
+    // Tabs will be hidden on mobile
+    & .left {
+      display: none;
+    }
+
+    // Show a hamburger icon instead of tabs
+    .hamburger {
+      display: block;
+      cursor: pointer;
+      font-size: 24px;
+      margin-left: 10px;
+      color: white;
+    }
+
+    // Toggle menu for tabs
+    .menu {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .menu.open {
+      display: flex;
+    }
+
+    // Search Bar for mobile
+    & .mid {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+    }
+
+    // Right icons for mobile
+    & .right {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: auto;
+    }
+  }
+
+  // For even smaller screens (e.g., phones)
+  @media (max-width: 480px) {
+    & .mid {
+      width: 100%;
+      justify-content: center;
+    }
+
+    & .right {
+      width: auto;
+      justify-content: space-between;
+      margin-right: 10px;
+    }
+  }
+  // For large screens, hide hamburger and ensure tabs are visible
+  @media (min-width: 768px) {
+    .hamburger {
+      display: none; /* Hide hamburger on large screens */
+    }
+
+    .menu {
+      display: none; /* Hide menu on large screens */
+    }
+
+    .left {
+      display: flex; /* Ensure the tabs are visible on large screens */
+    }
+  }
 
 }

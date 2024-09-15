@@ -37,6 +37,9 @@
   transform: scale(1.05);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+.ribbon .hamburger {
+  display: none;
+}
 .ribbon .mid {
   width: 40%;
   justify-content: left;
@@ -55,4 +58,64 @@
 .ribbon .right .apps {
   position: relative;
   margin-right: 20px;
+}
+@media (max-width: 768px) {
+  .ribbon {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 10px 0;
+  }
+  .ribbon .left {
+    display: none;
+  }
+  .ribbon .hamburger {
+    display: block;
+    cursor: pointer;
+    font-size: 24px;
+    margin-left: 10px;
+    color: white;
+  }
+  .ribbon .menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+  .ribbon .menu.open {
+    display: flex;
+  }
+  .ribbon .mid {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+  }
+  .ribbon .right {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: auto;
+  }
+}
+@media (max-width: 480px) {
+  .ribbon .mid {
+    width: 100%;
+    justify-content: center;
+  }
+  .ribbon .right {
+    width: auto;
+    justify-content: space-between;
+    margin-right: 10px;
+  }
+}
+@media (min-width: 768px) {
+  .ribbon .hamburger {
+    display: none; /* Hide hamburger on large screens */
+  }
+  .ribbon .menu {
+    display: none; /* Hide menu on large screens */
+  }
+  .ribbon .left {
+    display: flex; /* Ensure the tabs are visible on large screens */
+  }
 }/*# sourceMappingURL=nacBar.css.map */

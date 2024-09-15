@@ -91,6 +91,61 @@ const NavBar = ({ changeTab }) => {
           Ask AI
         </div>
       </div>
+      {/* Hamburger icon for mobile */}
+      <MenuIcon className="hamburger" onClick={toggleMenu} />
+      <div className={`menu ${menuOpen ? "open" : ""}`}>
+        <div
+          className={`tabs ${activeTab === "Home" ? "active" : ""}`}
+          onClick={() => {
+            changeTab("Home");
+            handleClick("Home");
+            setMenuOpen(false); // Close the menu after selecting
+          }}
+        >
+          Home
+        </div>
+        <div
+          className={`tabs ${activeTab === "Movies" ? "active" : ""}`}
+          onClick={() => {
+            changeTab("Movies");
+            handleClick("Movies");
+            setMenuOpen(false); // Close the menu after selecting
+          }}
+        >
+          Movies
+        </div>
+        <div
+          className={`tabs ${activeTab === "Series" ? "active" : ""}`}
+          onClick={() => {
+            changeTab("Series");
+            handleClick("Series");
+            setMenuOpen(false); // Close the menu after selecting
+          }}
+        >
+          TV
+        </div>
+        <div
+          className={`tabs ${activeTab === "Genres" ? "active" : ""}`}
+          onClick={() => {
+            changeTab("Genres");
+            handleClick("Genres");
+            setMenuOpen(false); // Close the menu after selecting
+          }}
+        >
+          Genres
+        </div>
+        <div
+          className={`tabs ${activeTab === "Ask AI" ? "active" : ""}`}
+          onClick={() => {
+            changeTab("Ask AI");
+            handleClick("Ask AI");
+            setMenuOpen(false); // Close the menu after selecting
+          }}
+        >
+          Ask AI
+        </div>
+      </div>
+
       <div
         className="mid"
         onClick={() => {
