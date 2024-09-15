@@ -1,2 +1,7 @@
 # Ignore virtual environment
 .venv/
+
+# Other files you may want to ignore
+*.log
+*.pyc
+__pycache__/

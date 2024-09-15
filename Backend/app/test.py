@@ -6,13 +6,41 @@ from dotenv import load_dotenv
 import re
 import json
 import pickle
- 
+
+
+from typing import Dict, Text
+import pandas as pd
+import numpy as np
+import tensorflow as tf
 from flask_cors import CORS
 
 app = Flask(__name__)
 
 CORS(app)
 load_dotenv()
+
+# path = 'd:/MovieMania/'
+# pathRetrival  = os.path.join(path, "model")
+# pathRank = os.path.join(path,"modelRank")
+
+
+# loaded = tf.saved_model.load(pathRetrival)
+# loadedRank = tf.saved_model.load(pathRank)
+
+
+# try:
+    
+#     print("--------------------------------/models loaded successfully/--------------------------------")
+# except FileNotFoundError as e:
+#     print(f"--------------------------------/FileNotFoundError: {e}/--------------------------------")
+# except OSError as e:
+#     print(f"--------------------------------/OSError: {e}/--------------------------------")
+# except Exception as e:
+#     print(f"--------------------------------/Unexpected error: {e}/--------------------------------")
+
+
+# temp=loadedRank({"user_id": np.array(["66d9e483d572df24f50d71cb"]), "movie_title": ["The Jungle Book (2016)"]}).numpy()
+# print(temp[0])
 
 file_path = os.path.join(os.path.dirname(__file__), 'MLmodels', 'Exports', 'movie_list.pkl')
 
