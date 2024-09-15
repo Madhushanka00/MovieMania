@@ -1,7 +1,5 @@
 FROM apache/airflow:latest
 
-
-
 USER root
 
 RUN apt-get update && \
@@ -10,5 +8,11 @@ RUN apt-get update && \
 
     apt-get clean
 
-
 USER airflow
+
+# Install required Python packages
+RUN pip install --no-cache-dir \
+    papermill \
+    requests
+
+EXPOSE 8080

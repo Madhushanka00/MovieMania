@@ -3,6 +3,13 @@ from airflow.operators.python_operator import PythonOperator
 from airflow.utils.dates import days_ago
 from datetime import datetime
 import requests
+import papermill as pm
+
+# def run_notebook():
+#     pm.execute_notebook(
+#         'notebook.ipynb',
+#         'output.ipynb'
+#     )
 
 def print_welcome():
     print('Welcome to Airflow!')
@@ -41,6 +48,12 @@ print_date_task = PythonOperator(
     dag=dag
 
 )
+# Define the task
+# run_notebook_task = PythonOperator(
+#     task_id='run_jupyter_notebook',
+#     python_callable=run_notebook,
+#     dag=dag
+# )
 
 
 
