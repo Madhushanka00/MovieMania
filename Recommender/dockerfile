@@ -10,9 +10,13 @@ RUN apt-get update && \
 
 USER airflow
 
-# Install required Python packages
+
+# Install Jupyter and Python kernel
 RUN pip install --no-cache-dir \
+    jupyter \
+    ipykernel \
     papermill \
+    tensorflow \
     requests
 
 EXPOSE 8080

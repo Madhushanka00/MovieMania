@@ -5,11 +5,12 @@ from datetime import datetime
 import requests
 import papermill as pm
 
-# def run_notebook():
-#     pm.execute_notebook(
-#         'notebook.ipynb',
-#         'output.ipynb'
-#     )
+def run_notebook():
+    pm.execute_notebook(
+        '/opt/airflow/dags/notebook.ipynb',  # Path inside the container
+        '/opt/airflow/dags/output.ipynb'     # Output file inside the container
+
+    )
 
 def print_welcome():
     print('Welcome to Airflow!')
@@ -49,11 +50,11 @@ print_date_task = PythonOperator(
 
 )
 # Define the task
-# run_notebook_task = PythonOperator(
-#     task_id='run_jupyter_notebook',
-#     python_callable=run_notebook,
-#     dag=dag
-# )
+run_notebook_task = PythonOperator(
+    task_id='run_jupyter_notebook',
+    python_callable=run_notebook,
+    dag=dag
+)
 
 
 
@@ -71,4 +72,4 @@ print_random_quote = PythonOperator(
 
 # Set the dependencies between the tasks
 
-print_welcome_task >> print_date_task >> print_random_quote
+print_welcome_task >> print_date_task >> print_random_quote >> run_notebook_task
