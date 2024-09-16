@@ -4,7 +4,7 @@
   align-items: center;
 }
 .Searchbar .inputSearch {
-  width: 300px;
+  width: 80%;
   padding: 8px;
   border-radius: 50px !important; /* Correct syntax */
   background-color: #2a2e2e; /* Correct syntax */
@@ -16,4 +16,26 @@
   background-color: transparent;
   outline: none;
   border: none;
+}
+
+@media (max-width: 320px) {
+  .Searchbar {
+    left: 0px;
+    display: flex;
+    position: inherit;
+  }
+  .Searchbar .inputSearch {
+    width: 100%;
+    padding: 5px;
+  }
+  .Searchbar .inputSearch input {
+    width: 70%;
+    margin-left: 5px;
+  }
+  .Searchbar .inputSearch input ::-moz-placeholder {
+    display: none;
+  }
+  .Searchbar .inputSearch input ::placeholder {
+    display: none;
+  }
 }/*# sourceMappingURL=searchbar.css.map */

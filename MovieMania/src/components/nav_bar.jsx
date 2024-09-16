@@ -10,6 +10,7 @@ import { InputBase } from "@mui/material";
 import axios from "axios";
 import Profile from "./profile";
 import MenuIcon from "@mui/icons-material/Menu";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 const NavBar = ({ changeTab }) => {
   const [activeTab, setActiveTab] = useState("Home");
@@ -165,6 +166,13 @@ const NavBar = ({ changeTab }) => {
         <AppsIcon className="apps" />
         <NotificationsIcon className="apps" />
       </div>
+
+      <MoreVertIcon className="dots">
+        <AccountCircleIcon className="apps" onClick={ShowProfile} />
+        <AppsIcon className="apps" />
+        <NotificationsIcon className="apps" />
+      </MoreVertIcon>
+
       {profile && (
         <Profile details={details} setProfile={setProfile} profile={profile} />
       )}

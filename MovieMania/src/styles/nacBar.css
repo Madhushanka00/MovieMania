@@ -100,6 +100,9 @@
     right: 10px;
     width: auto;
   }
+  .ribbon .dots {
+    display: none;
+  }
 }
 @media (max-width: 320px) {
   .ribbon .hamburger {
@@ -137,11 +140,13 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
   .ribbon .mid {
-    width: 10%;
-    padding-left: 50%;
+    width: 70%;
   }
   .ribbon .right {
-    width: auto;
+    display: none;
+  }
+  .ribbon .dots {
+    background-color: #dadada;
     justify-content: space-between;
     margin-right: 10px;
   }

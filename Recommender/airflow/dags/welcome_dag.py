@@ -40,15 +40,15 @@ print_welcome_task = PythonOperator(
 
 
 
-print_date_task = PythonOperator(
+# print_date_task = PythonOperator(
 
-    task_id='print_date',
+#     task_id='print_date',
 
-    python_callable=print_date,
+#     python_callable=print_date,
 
-    dag=dag
+#     dag=dag
 
-)
+# )
 # Define the task
 run_notebook_task = PythonOperator(
     task_id='run_jupyter_notebook',
@@ -58,15 +58,15 @@ run_notebook_task = PythonOperator(
 
 
 
-print_random_quote = PythonOperator(
+# print_random_quote = PythonOperator(
 
-    task_id='print_random_quote',
+#     task_id='print_random_quote',
 
-    python_callable=print_random_quote,
+#     python_callable=print_random_quote,
 
-    dag=dag
+#     dag=dag
 
-)
+# )
 
 
 

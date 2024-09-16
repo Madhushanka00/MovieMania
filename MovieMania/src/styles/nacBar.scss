@@ -79,6 +79,9 @@
             margin-right:20px
         }
     }
+    // & .dots{
+    //     display: none;
+    // }
  // Media Queries for Mobile
  @media (max-width: 768px) {
     // flex-direction: column;
@@ -136,6 +139,9 @@
       right: 10px;
       width: auto;
     }
+    & .dots{
+        display: none;
+    }
 
   }
 
@@ -181,14 +187,17 @@
   }
 
     & .mid {
-      // background-color: beige;
+      // background-color: rgb(236, 236, 14);
       // display: none;
-      width: 10%;
-      padding-left: 50%;
+      width: 70%;
     }
 
     & .right {
-      width: auto;
+      display: none;
+    }
+    & .dots{
+      background-color: #dadada ;
+      // width: 100px;
       justify-content: space-between;
       margin-right: 10px;
     }

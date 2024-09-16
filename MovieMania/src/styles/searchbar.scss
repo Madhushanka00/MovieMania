@@ -5,7 +5,7 @@
     & .inputSearch{
         
         // padding: 10px;
-        width: 300px;
+        width: 80%;
         padding: 8px;
         // border: 1px solid white;
         border-radius: 50px !important; /* Correct syntax */
@@ -21,3 +21,27 @@
         }
     }
 }
+
+@media (max-width: 320px){
+    .Searchbar{
+        // background-color: rgb(10, 117, 210);
+        left: 0px;
+        // height: fixed;
+        display: flex;
+        position: inherit;
+        & .inputSearch{
+            width: 100%;
+            padding: 5px;
+            & input{
+                width: 70%;
+                margin-left: 5px;
+                ::placeholder{
+                    display: none;
+                }
+            }
+        }
+    }
+
+}
+   
+
