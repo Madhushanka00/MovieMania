@@ -6,6 +6,7 @@
         
         // padding: 10px;
         width: 80%;
+        max-width: 300px;
         padding: 8px;
         // border: 1px solid white;
         border-radius: 50px !important; /* Correct syntax */
@@ -13,7 +14,7 @@
         color: white;
 
         & input{
-            width: 80%;
+           
             margin-left: 10px;
             background-color: transparent;
             outline: none;
@@ -22,22 +23,22 @@
     }
 }
 
-@media (max-width: 320px){
+@media (max-width:768px){
     .Searchbar{
         // background-color: rgb(10, 117, 210);
         left: 0px;
         // height: fixed;
+        padding-left: 5vw;
         display: flex;
         position: inherit;
         & .inputSearch{
             width: 100%;
+            max-width: 300px;
             padding: 5px;
             & input{
                 width: 70%;
                 margin-left: 5px;
-                ::placeholder{
-                    display: none;
-                }
+               
             }
         }
     }

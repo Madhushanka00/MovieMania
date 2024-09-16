@@ -163,15 +163,15 @@ const NavBar = ({ changeTab }) => {
 
       <div className="right">
         <AccountCircleIcon className="apps" onClick={ShowProfile} />
-        <AppsIcon className="apps" />
-        <NotificationsIcon className="apps" />
+        <AppsIcon className="appsApps" />
+        <NotificationsIcon className="appsNotifi" />
+        <MoreVertIcon className="dots">
+          {/* <MoreVertIcon /> */}
+          <AccountCircleIcon className="dotsAp" onClick={ShowProfile} />
+          <AppsIcon className="dotsAp" />
+          <NotificationsIcon className="dotsAp" />
+        </MoreVertIcon>
       </div>
-
-      <MoreVertIcon className="dots">
-        <AccountCircleIcon className="apps" onClick={ShowProfile} />
-        <AppsIcon className="apps" />
-        <NotificationsIcon className="apps" />
-      </MoreVertIcon>
 
       {profile && (
         <Profile details={details} setProfile={setProfile} profile={profile} />

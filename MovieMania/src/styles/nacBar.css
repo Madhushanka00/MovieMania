@@ -40,6 +40,9 @@
 .ribbon .hamburger {
   display: none;
 }
+.ribbon .menu {
+  display: none;
+}
 .ribbon .mid {
   width: 40%;
   justify-content: left;
@@ -57,7 +60,9 @@
 }
 .ribbon .right .apps {
   position: relative;
-  margin-right: 20px;
+}
+.ribbon .right .dots {
+  display: none;
 }
 @media (max-width: 768px) {
   .ribbon {
@@ -74,14 +79,27 @@
     flex-direction: row;
     cursor: pointer;
     font-size: 24px;
-    margin-left: 10px;
+    margin-left: 5vw;
+    margin-right: 5vw;
     color: white;
   }
   .ribbon .menu {
     display: none;
     flex-direction: column;
-    width: 20%;
+    justify-content: space;
+    width: 40%;
+    align-items: center;
+    margin-top: 3%;
     margin-left: 10px;
+    border-radius: 10px;
+    background-color: rgba(25, 26, 26, 0.4941176471);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+    font-size: 1rem;
+    padding: 5%;
+    border: solid 1px #373737;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: all;
   }
   .ribbon .menu.open {
     display: flex;
@@ -90,21 +108,27 @@
   }
   .ribbon .mid {
     width: 50%;
-    padding-left: 10%;
     display: flex;
     justify-content: center;
   }
   .ribbon .right {
     position: absolute;
-    top: 10px;
+    top: 15px;
     right: 10px;
     width: auto;
   }
-  .ribbon .dots {
+  .ribbon .right .appsNotifi {
     display: none;
   }
+  .ribbon .right .appsApps {
+    display: none;
+  }
+  .ribbon .dots {
+    width: 1000px;
+    position: absolute;
+  }
 }
-@media (max-width: 320px) {
+@media (max-width: 375px) {
   .ribbon .hamburger {
     display: flex;
     flex-direction: row;
@@ -119,6 +143,7 @@
     justify-content: center;
     width: 40%;
     align-items: center;
+    background-color: antiquewhite !important;
     margin-top: 3%;
     margin-left: 10px;
     border-radius: 10px;
@@ -140,25 +165,24 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
   .ribbon .mid {
+    display: none;
     width: 70%;
   }
   .ribbon .right {
-    display: none;
+    display: flex;
+    flex-direction: row-reverse;
+    width: 20%;
+    flex-direction: row-reverse;
+    right: 10px !important;
+    margin-right: 5px;
   }
-  .ribbon .dots {
-    background-color: #dadada;
-    justify-content: space-between;
-    margin-right: 10px;
-  }
-}
-@media (min-width: 768px) {
-  .ribbon .hamburger {
-    display: none; /* Hide hamburger on large screens */
-  }
-  .ribbon .menu {
-    display: none; /* Hide menu on large screens */
-  }
-  .ribbon .left {
-    display: flex; /* Ensure the tabs are visible on large screens */
+  .ribbon .right .dots {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    color: white;
+    position: relative;
+    z-index: 1000;
+    margin-right: 5px;
   }
 }/*# sourceMappingURL=nacBar.css.map */

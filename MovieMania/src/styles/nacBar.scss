@@ -53,6 +53,9 @@
     & .hamburger{
         display: none;
     }
+    & .menu{
+        display: none;
+    }
 
     & .mid{
         width: 40%;
@@ -76,12 +79,15 @@
 
         & .apps{
             position: relative;
-            margin-right:20px
+            // margin-right:20px
         }
-    }
-    // & .dots{
-    //     display: none;
-    // }
+   & .dots{
+        display: none;
+        // right: 20px;
+
+    } 
+  }
+    
  // Media Queries for Mobile
  @media (max-width: 768px) {
     // flex-direction: column;
@@ -104,7 +110,8 @@
       flex-direction: row;
       cursor: pointer;
       font-size: 24px;
-      margin-left: 10px;
+      margin-left: 5vw;
+      margin-right: 5vw;
       color: white;
     }
 
@@ -112,9 +119,20 @@
     .menu {
       display: none;
       flex-direction: column;
-      width: 20%;
-      // background-color: antiquewhite;
+      justify-content: space;
+      width: 40%;
+      align-items: center;
+      // background-color: antiquewhite !important;
+      margin-top: 3%;
       margin-left: 10px;
+      border-radius: 10px;
+      background-color: #191a1a7e;
+      backdrop-filter: blur(10px);
+      font-size: 1rem;
+      padding: 5%;
+      border: solid 1px #373737;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      transition: all;
     }
 
     .menu.open {
@@ -125,8 +143,9 @@
 
     // Search Bar for mobile
     & .mid {
+      // background-color: rgb(236, 236, 14);
       width: 50%;
-      padding-left: 10%;
+      // padding-left: 10%;
       display: flex;
       justify-content: center;
     //   margin: 5px 0;
@@ -134,19 +153,31 @@
 
     // Right icons for mobile
     & .right {
+      // background-color: aliceblue;
       position: absolute;
-      top: 10px;
+      top: 15px;
       right: 10px;
       width: auto;
+
+      & .apps{
+        
+      }
+      & .appsNotifi{
+        display: none;
+      }
+      & .appsApps{
+        display: none;
+      }
     }
     & .dots{
-        display: none;
+        width: 1000px;
+        position: absolute;
     }
 
   }
 
   // For even smaller screens (e.g., phones)
-  @media (max-width: 320px) {
+  @media (max-width: 375px) {
     & .hamburger {
       // background-color: azure !important;
       display: flex;
@@ -164,7 +195,7 @@
       justify-content: center;
       width: 40%;
       align-items: center;
-      // background-color: antiquewhite;
+      background-color: antiquewhite !important;
       margin-top: 3%;
       margin-left: 10px;
       border-radius: 10px;
@@ -188,33 +219,32 @@
 
     & .mid {
       // background-color: rgb(236, 236, 14);
-      // display: none;
+      display: none;
       width: 70%;
     }
 
     & .right {
-      display: none;
-    }
-    & .dots{
-      background-color: #dadada ;
-      // width: 100px;
-      justify-content: space-between;
-      margin-right: 10px;
-    }
-  }
-  // For large screens, hide hamburger and ensure tabs are visible
-  @media (min-width: 768px) {
-    .hamburger {
-      display: none; /* Hide hamburger on large screens */
-    }
+      display: flex;
+      flex-direction: row-reverse;
+      width:20%;
+      flex-direction: row-reverse;
+      right:10px !important;
+      margin-right: 5px;
+        
+      
+       & .dots{
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        color: white;
+        position: relative;
+        z-index: 1000;
+        
+        margin-right: 5px;
 
-    .menu {
-      display: none; /* Hide menu on large screens */
     }
-
-    .left {
-      display: flex; /* Ensure the tabs are visible on large screens */
     }
+   
   }
 
 }
