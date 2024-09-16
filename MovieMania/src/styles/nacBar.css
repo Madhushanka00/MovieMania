@@ -61,8 +61,8 @@
 }
 @media (max-width: 768px) {
   .ribbon {
-    flex-direction: column;
-    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
     height: auto;
     padding: 10px 0;
   }
@@ -70,7 +70,8 @@
     display: none;
   }
   .ribbon .hamburger {
-    display: block;
+    display: flex;
+    flex-direction: row;
     cursor: pointer;
     font-size: 24px;
     margin-left: 10px;
@@ -79,16 +80,19 @@
   .ribbon .menu {
     display: none;
     flex-direction: column;
-    width: 100%;
+    width: 20%;
+    margin-left: 10px;
   }
   .ribbon .menu.open {
     display: flex;
+    position: absolute;
+    top: 40px;
   }
   .ribbon .mid {
-    width: 100%;
+    width: 50%;
+    padding-left: 10%;
     display: flex;
     justify-content: center;
-    margin: 10px 0;
   }
   .ribbon .right {
     position: absolute;
@@ -97,10 +101,44 @@
     width: auto;
   }
 }
-@media (max-width: 480px) {
-  .ribbon .mid {
-    width: 100%;
+@media (max-width: 320px) {
+  .ribbon .hamburger {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    font-size: 24px;
+    margin-left: 10px;
+    color: white;
+  }
+  .ribbon .menu {
+    display: none;
+    flex-direction: column;
     justify-content: center;
+    width: 40%;
+    align-items: center;
+    margin-top: 3%;
+    margin-left: 10px;
+    border-radius: 10px;
+    background-color: rgba(25, 26, 26, 0.4941176471);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+    font-size: 0.8rem;
+    padding: 5%;
+    border: solid 1px #373737;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: all;
+  }
+  .ribbon .menu .tabs {
+    margin: 5px 0;
+  }
+  .ribbon .menu .tabs :hover {
+    background-color: #dadada;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  .ribbon .mid {
+    width: 10%;
+    padding-left: 50%;
   }
   .ribbon .right {
     width: auto;

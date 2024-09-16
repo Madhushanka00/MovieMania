@@ -7,8 +7,8 @@ import papermill as pm
 
 def run_notebook():
     pm.execute_notebook(
-        '/opt/airflow/dags/notebook.ipynb',  # Path inside the container
-        '/opt/airflow/dags/output.ipynb'     # Output file inside the container
+        '/opt/airflow/dags/RetrivalModel_tfrs.ipynb',  # Path inside the container
+        '/opt/airflow/dags/RetrivalOutput.ipynb'     # Output file inside the container
 
     )
 
@@ -72,4 +72,4 @@ print_random_quote = PythonOperator(
 
 # Set the dependencies between the tasks
 
-print_welcome_task >> print_date_task >> print_random_quote >> run_notebook_task
+print_welcome_task >> run_notebook_task

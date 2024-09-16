@@ -18,6 +18,7 @@ RUN pip install --no-cache-dir \
     tensorflow-recommenders \
     tensorflow-datasets \
     scann \
+    tf_keras \
     requests
 
 EXPOSE 8080
