@@ -56,10 +56,19 @@
   width: 20%;
   flex-direction: row-reverse;
   right: 10px !important;
-  margin-right: 20px;
+  margin-right: 3vw;
 }
 .ribbon .right .apps {
-  position: relative;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.ribbon .right .appsNotifi {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.ribbon .right .appsApps {
+  margin-right: 5px;
+  margin-left: 5px;
 }
 .ribbon .right .dots {
   display: none;
@@ -113,12 +122,15 @@
   }
   .ribbon .right {
     position: absolute;
+    display: flex;
+    flex-direction: row-reverse;
     top: 15px;
     right: 10px;
     width: auto;
   }
-  .ribbon .right .appsNotifi {
-    display: none;
+  .ribbon .right .apps {
+    margin-right: 5px;
+    margin-left: 5px;
   }
   .ribbon .right .appsApps {
     display: none;

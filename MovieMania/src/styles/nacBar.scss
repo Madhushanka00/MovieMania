@@ -74,12 +74,22 @@
         width:20%;
         flex-direction: row-reverse;
         right:10px !important;
-        margin-right: 20px;
+        margin-right: 3vw;
         
 
         & .apps{
-            position: relative;
-            // margin-right:20px
+          
+          margin-right: 5px;
+          margin-left: 5px;
+          
+        }
+        & .appsNotifi{
+          margin-right: 5px;
+          margin-left: 5px;
+        }
+        & .appsApps{
+          margin-right: 5px;
+          margin-left: 5px;
         }
    & .dots{
         display: none;
@@ -155,16 +165,19 @@
     & .right {
       // background-color: aliceblue;
       position: absolute;
+      display: flex;
+      flex-direction: row-reverse;
       top: 15px;
       right: 10px;
       width: auto;
 
       & .apps{
-        
+        margin-right: 5px;
+        margin-left: 5px;
       }
-      & .appsNotifi{
-        display: none;
-      }
+      // & .appsNotifi{
+      //   display: none;
+      // }
       & .appsApps{
         display: none;
       }
@@ -245,6 +258,10 @@
     }
     }
    
+  }
+
+  @media (max-width: 1024px) {
+    
   }
 
 }
