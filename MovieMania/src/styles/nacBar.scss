@@ -145,18 +145,17 @@
       backdrop-filter: blur(10px);
       font-size: 1rem;
       padding: 5%;
+      position: absolute;
+      top: 40px;
+      opacity: 0;
       border: solid 1px #373737;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      transform: translateX(-100%); // Initially hidden
-      transition: transform 0.3s ease-in-out; // Animation for sliding
-      // transition: all;
+      transform: translateY(-100%); // Initially off the screen (up)
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
-      &.open{
-        display: flex;
-        position: absolute;
-        top: 40px;   
-        transform: translateX(0);
-      }
+      &.open {
+        opacity: 1;  // Make visible
+        transform: translateY(0);
 
     }
 
