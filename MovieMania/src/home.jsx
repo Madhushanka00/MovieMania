@@ -19,6 +19,7 @@ import MovieContext from "./components/movieContext";
 import Ratings from "./components/ratings";
 import History from "./components/history";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
+import NavigateNextRoundedIcon from "@mui/icons-material/NavigateNextRounded";
 // import
 import "./styles/home.css";
 
@@ -35,7 +36,7 @@ const Home = () => {
   const [currentUserId, setCurrentUserId] = useState(null);
   const [ratingRender, setRatingRender] = useState(false);
   const [historyRender, setHistoryRender] = useState(false);
-
+  const [draver, setDraver] = useState(false);
   const popularRef = useRef(null);
   const upcomingRef = useRef(null);
   const topRatedRef = useRef(null);
@@ -60,6 +61,10 @@ const Home = () => {
   const gotoHistory = () => {
     setHistoryRender(true);
     setRatingRender(false);
+  };
+  const toggleDrawer = () => {
+    setDraver(!draver);
+    console.log(draver);
   };
 
   useEffect(() => {
@@ -238,6 +243,19 @@ const Home = () => {
           <SettingsOutlinedIcon className="Icons" />
           <LogoutOutlinedIcon className="bottomIcon" onClick={handleLogout} />
         </div>
+        <NavigateNextRoundedIcon
+          className={`expandIcon ${draver ? "rotate" : ""}`}
+          onClick={toggleDrawer}
+        />
+        <div className={`drawermenu ${draver ? "open" : ""}`}>
+          <img src="../public/logo-02.svg" className="mainicon" />
+          <StarOutlinedIcon className="Icons" onClick={gotoRatings} />
+          <AccessTimeIcon className="Icons" onClick={gotoHistory} />
+          <BookmarkAddIcon className="Icons" />
+          <SettingsOutlinedIcon className="Icons" />
+          <LogoutOutlinedIcon className="bottomIcon" onClick={handleLogout} />
+        </div>
+
         {ratingRender ? (
           <Ratings
             setRatingRender={setRatingRender}

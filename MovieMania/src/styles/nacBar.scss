@@ -100,13 +100,12 @@
     
  // Media Queries for Mobile
  @media (max-width: 768px) {
-    // flex-direction: column;
-    // align-items: flex-start;
+ 
     display: flex;
     flex-direction: row;
     height: auto;
     padding: 10px 0;
-    // width: 100%;
+    width: 100vw;
     // background-color: antiquewhite !important;
     // Tabs will be hidden on mobile
     & .left {
@@ -120,14 +119,15 @@
       flex-direction: row;
       cursor: pointer;
       font-size: 24px;
-      margin-left: 5vw;
+      margin-left: 10vw;
       margin-right: 5vw;
       color: white;
     }
 
     // Toggle menu for tabs
     .menu {
-      display: none;
+      // display: none;
+     
       flex-direction: column;
       justify-content: space;
       width: 40%;
@@ -142,14 +142,20 @@
       padding: 5%;
       border: solid 1px #373737;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      transition: all;
+      transform: translateX(-100%); // Initially hidden
+      transition: transform 0.3s ease-in-out; // Animation for sliding
+      // transition: all;
+
+      &.open{
+        display: flex;
+        position: absolute;
+        top: 40px;   
+        transform: translateX(0);
+      }
+
     }
 
-    .menu.open {
-      display: flex;
-      position: absolute;
-        top: 40px;
-    }
+
 
     // Search Bar for mobile
     & .mid {
@@ -265,3 +271,4 @@
   }
 
 }
+
