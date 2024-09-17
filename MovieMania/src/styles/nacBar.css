@@ -92,6 +92,10 @@
     margin-left: 10vw;
     margin-right: 5vw;
     color: white;
+    transition: transform 0.3s ease-in-out;
+  }
+  .ribbon .hamburger.rotate {
+    transform: rotate(180deg);
   }
   .ribbon .menu {
     flex-direction: column;

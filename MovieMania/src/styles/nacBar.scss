@@ -122,6 +122,11 @@
       margin-left: 10vw;
       margin-right: 5vw;
       color: white;
+      transition: transform 0.3s ease-in-out; // Animation for rotating
+
+      &.rotate{
+        transform: rotate(180deg);
+      }
     }
 
     // Toggle menu for tabs

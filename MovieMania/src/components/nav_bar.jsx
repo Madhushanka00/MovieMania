@@ -93,7 +93,10 @@ const NavBar = ({ changeTab }) => {
         </div>
       </div>
       {/* Hamburger icon for mobile */}
-      <MenuIcon className="hamburger" onClick={toggleMenu} />
+      <MenuIcon
+        className={`hamburger ${menuOpen ? "rotate" : ""}`}
+        onClick={toggleMenu}
+      />
       <div className={`menu ${menuOpen ? "open" : ""}`}>
         <div
           className={`tabs ${activeTab === "Home" ? "active" : ""}`}
