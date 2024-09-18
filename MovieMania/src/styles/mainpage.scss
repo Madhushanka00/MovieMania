@@ -69,6 +69,12 @@
             display: flex;
             flex-direction: row;
             // background-color: #D0677D;
+            & .subtitle1_mobile{
+                display: none;
+            }
+            & .subtitle2_mobile{
+                display: none;
+            }
 
             
 
@@ -190,6 +196,11 @@
             text-align: center;
         }
     }
+
+    & .devider{
+        // background-color: #D46677;
+        display: none !important;
+    }
     & .searcharea{
         display: flex  ; 
         flex-direction: column !important;
@@ -197,6 +208,30 @@
         justify-content: center;
         align-items: center;
         
+        & .subtitle1_mobile{
+
+            display: flex !important;
+            flex-direction: row;
+            // flex:1;
+            padding-left: 5%;
+            align-self: flex-start ;
+            font-size: 1rem;
+            font-weight: 600;
+            color: rgb(233, 233, 233);
+            // background-color: #D46677;
+
+        }
+        & .subtitle2_mobile{
+            display: flex !important;
+            flex-direction: row;
+            align-self: flex-start ;
+            padding-left: 5%;
+            font-weight: 600;
+            font-size: 1rem;
+            color: rgb(233, 233, 233);
+            // background-color: #D46677;
+        }
+
 
         & .searchedMovie{
             flex: 1;
@@ -224,7 +259,7 @@
             display: none;
         }
         & .mobileSimilarmovies{
-            flex: 1;
+            // flex: 1;
             display: flex;
             flex-direction: row;
             // background-color: #D0677D;

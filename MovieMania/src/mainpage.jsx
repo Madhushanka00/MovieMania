@@ -110,6 +110,7 @@ const MainPage = () => {
         </div>
 
         <div className="searcharea">
+          <div className="subtitle1_mobile">Search Result</div>
           <div className="searchedMovie">
             {selectItem && (
               <>
@@ -165,6 +166,7 @@ const MainPage = () => {
           <button className="carousel-btn right" onClick={scrollRight}>
             &#8250;
           </button>
+          <div className="subtitle2_mobile">Similar Movies</div>
           <div className="mobileSimilarmovies">
             <div className="moviesArea_Mainpage" ref={carouselRef}>
               {console.log("Movies:", movies)}

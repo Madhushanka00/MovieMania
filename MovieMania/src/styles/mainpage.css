@@ -59,6 +59,12 @@
   display: flex;
   flex-direction: row;
 }
+.HomeMain .Searchresults .searcharea .subtitle1_mobile, .HomeMain .recommendations .searcharea .subtitle1_mobile {
+  display: none;
+}
+.HomeMain .Searchresults .searcharea .subtitle2_mobile, .HomeMain .recommendations .searcharea .subtitle2_mobile {
+  display: none;
+}
 .HomeMain .Searchresults .searcharea .subtitle, .HomeMain .recommendations .searcharea .subtitle {
   font-size: 1.3rem;
   color: rgb(233, 233, 233);
@@ -135,11 +141,32 @@
     align-items: center;
     text-align: center;
   }
+  .HomeMain .devider {
+    display: none !important;
+  }
   .HomeMain .searcharea {
     display: flex;
     flex-direction: column !important;
     justify-content: center;
     align-items: center;
+  }
+  .HomeMain .searcharea .subtitle1_mobile {
+    display: flex !important;
+    flex-direction: row;
+    padding-left: 5%;
+    align-self: flex-start;
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(233, 233, 233);
+  }
+  .HomeMain .searcharea .subtitle2_mobile {
+    display: flex !important;
+    flex-direction: row;
+    align-self: flex-start;
+    padding-left: 5%;
+    font-weight: 600;
+    font-size: 1rem;
+    color: rgb(233, 233, 233);
   }
   .HomeMain .searcharea .searchedMovie {
     flex: 1;
@@ -153,7 +180,6 @@
     display: none;
   }
   .HomeMain .searcharea .mobileSimilarmovies {
-    flex: 1;
     display: flex;
     flex-direction: row;
     width: 95%;
