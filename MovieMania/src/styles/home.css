@@ -170,7 +170,7 @@ body, html, #root {
     display: block;
     position: fixed;
     left: 0.5vh;
-    top: 2.5vh;
+    top: 2vh;
     color: rgb(253, 253, 253);
     z-index: 1006;
     font-size: 1.5rem;
@@ -222,5 +222,24 @@ body, html, #root {
     position: fixed;
     width: 100%;
     z-index: 1005;
+  }
+}
+@media (max-width: 430px) {
+  .mainlayout .drawermenu {
+    width: 15vw !important;
+  }
+  .mainlayout .mainicon {
+    width: 6vw;
+    padding-bottom: 4vw;
+  }
+  .mainlayout .Icons {
+    width: 6vw;
+    color: white;
+    margin-bottom: 2vh;
+  }
+  .mainlayout .bottomIcon {
+    color: white;
+    margin-bottom: 2vh;
+    margin-top: 5vh;
   }
 }/*# sourceMappingURL=home.css.map */

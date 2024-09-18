@@ -248,7 +248,7 @@ body, html, #root {
             display: block;
             position: fixed;
             left: .5vh;
-            top: 2.5vh;
+            top: 2vh;
             color: rgb(253, 253, 253);
             z-index: 1006;
             font-size: 1.5rem;
@@ -316,4 +316,30 @@ body, html, #root {
          }
         }
     }
+}
+@media (max-width:430px) {
+    .mainlayout{
+        & .drawermenu {
+                width: 15vw !important;
+            }
+
+            & .mainicon{
+                width: 6vw;
+                padding-bottom: 4vw;
+            }
+
+            & .Icons{
+                width: 6vw;
+                color: white;
+                margin-bottom: 2vh;
+
+            }
+
+            & .bottomIcon{
+                color: white;
+                margin-bottom: 2vh;
+                margin-top: 5vh;
+            }
+    }
+    
 }
