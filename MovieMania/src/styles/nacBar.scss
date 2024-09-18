@@ -150,12 +150,15 @@
       opacity: 0;
       border: solid 1px #373737;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      transform: translateY(-100%); // Initially off the screen (up)
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      transform: translateY(-100%); // Initially hidden
+      transition: opacity 0.3s ease-in-out; // Animation for sliding
+      // transition: all;
 
-      &.open {
-        opacity: 1;  // Make visible
-        transform: translateY(0);
+      &.open{
+        display: flex;
+        transform: translateY(0%);
+        opacity: 1;
+      }
 
     }
 

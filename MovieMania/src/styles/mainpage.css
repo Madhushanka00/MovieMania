@@ -102,6 +102,9 @@
 .HomeMain .Searchresults .moviesArea_Mainpage::-webkit-scrollbar {
   display: none;
 }
+.HomeMain .Searchresults .mobileSimilarmovies {
+  display: none;
+}
 .HomeMain .recommendations .subtitle {
   font-size: 1.3rem;
   color: rgb(233, 233, 233);
@@ -113,6 +116,84 @@
 }
 .HomeMain .recommendations .moveara::-webkit-scrollbar {
   display: none;
+}
+@media (max-width: 430px) {
+  .HomeMain .titlebox {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2%;
+    padding-top: 10px;
+    justify-content: center;
+    place-items: center;
+  }
+  .HomeMain .titlebox .mainTitle {
+    font-size: 1.7rem;
+    font-weight: 700;
+  }
+  .HomeMain .titlebox h2 {
+    font-size: 1rem;
+    align-items: center;
+    text-align: center;
+  }
+  .HomeMain .searcharea {
+    display: flex;
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
+  }
+  .HomeMain .searcharea .searchedMovie {
+    flex: 1;
+    padding-left: 1%;
+    box-shadow: #ffffff;
+  }
+  .HomeMain .searcharea .moviesArea_Mainpage {
+    display: none;
+  }
+  .HomeMain .searcharea .carousel-btn {
+    display: none;
+  }
+  .HomeMain .searcharea .mobileSimilarmovies {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+  }
+  .HomeMain .searcharea .mobileSimilarmovies .moviesArea_Mainpage {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
+  .HomeMain .searcharea .mobileSimilarmovies .moviesArea_Mainpage::-webkit-scrollbar {
+    display: none;
+  }
+  .HomeMain .searcharea .mobileSimilarmovies .carousel-btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3vw;
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: 1px 4px 16px rgba(7, 7, 7, 0.849);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+    transition: transform 0.3s ease-in-out;
+  }
+  .HomeMain .searcharea .mobileSimilarmovies .carousel-btn .left {
+    padding-left: 1%;
+  }
+  .HomeMain .searcharea .mobileSimilarmovies .carousel-btn .right {
+    margin-right: 1%;
+  }
+  .HomeMain .searcharea .mobileSimilarmovies .carousel-btn:hover {
+    transform: scale(1.5);
+  }
 }
 
 @keyframes gradientAnimation {

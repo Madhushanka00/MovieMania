@@ -136,6 +136,7 @@ const MainPage = () => {
               />
             )}
           </div>
+
           {/* <Slider {...settings}> */}
           <button className="carousel-btn left" onClick={scrollLeft}>
             &#8249;
@@ -164,6 +165,30 @@ const MainPage = () => {
           <button className="carousel-btn right" onClick={scrollRight}>
             &#8250;
           </button>
+          <div className="mobileSimilarmovies">
+            <div className="moviesArea_Mainpage" ref={carouselRef}>
+              {console.log("Movies:", movies)}
+              {console.log("Type:", type)}
+
+              {movies.map((movie) => {
+                return (
+                  <div key={movie.id} onClick={() => handleClick(movie)}>
+                    <MovieCard
+                      key={movie.id}
+                      movie={{
+                        title: movie.title ? movie.title : movie.original_name,
+                        ratings: movie.ratings,
+                        posterUrl: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                        id: movie.id,
+                      }}
+                    />
+                  </div>
+                );
+              })}
+              {/* </Slider> */}
+            </div>
+          </div>
+
           {/* </Slider> */}
         </div>
       </div>
