@@ -37,4 +37,66 @@
 .searchpopup .searchcard .search-details h6 {
   color: rgba(186, 186, 186, 0.9215686275);
   font-size: 0.9rem;
+}
+@media (max-width: 768px) {
+  .searchpopup {
+    width: 30vw !important;
+    top: 9vh;
+    left: 30%;
+  }
+  .searchpopup .searchcard {
+    display: flex;
+    flex-direction: row;
+    padding: 4%;
+    align-items: center;
+    cursor: pointer;
+  }
+  .searchpopup .searchcard .search-poster {
+    width: 10vw;
+    border-radius: 5px;
+  }
+  .searchpopup .searchcard .search-details {
+    padding-left: 5%;
+    justify-content: center;
+    align-items: center;
+  }
+  .searchpopup .searchcard .search-details h3 {
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .searchpopup .searchcard .search-details h6 {
+    color: rgba(186, 186, 186, 0.9215686275);
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 430px) {
+  .searchpopup {
+    width: 50vw !important;
+    top: 9vh;
+    left: 25%;
+  }
+  .searchpopup .searchcard {
+    display: flex;
+    flex-direction: row;
+    padding: 4%;
+    align-items: center;
+    cursor: pointer;
+  }
+  .searchpopup .searchcard .search-poster {
+    width: 15vw;
+    border-radius: 5px;
+  }
+  .searchpopup .searchcard .search-details {
+    padding-left: 5%;
+    justify-content: center;
+    align-items: center;
+  }
+  .searchpopup .searchcard .search-details h3 {
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .searchpopup .searchcard .search-details h6 {
+    color: rgba(186, 186, 186, 0.9215686275);
+    font-size: 0.8rem;
+  }
 }/*# sourceMappingURL=searchpop.css.map */
