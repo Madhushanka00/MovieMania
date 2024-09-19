@@ -14221,3 +14221,229 @@ File Path                         PID    Runtime      # DAGs    # Errors  Last R
 /opt/airflow/dags/welcome_dag.py                           1           0  0.50s           2024-09-19T17:31:06                      12
 /opt/airflow/dags/TrainModels.py                           0           0                                                            0
 ================================================================================
+[2024-09-19T17:31:37.430+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/welcome_dag.py                           1           0  0.51s           2024-09-19T17:31:37                      12
+/opt/airflow/dags/TrainModels.py                           0           1  0.31s           2024-09-19T17:31:33                       5
+================================================================================
+[2024-09-19T17:32:08.295+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/TrainModels.py                           0           1  0.50s           2024-09-19T17:32:04                       5
+/opt/airflow/dags/welcome_dag.py                           1           0  0.50s           2024-09-19T17:32:08                      12
+================================================================================
+[2024-09-19T17:32:39.167+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/welcome_dag.py                           1           0  0.50s           2024-09-19T17:32:39                      12
+/opt/airflow/dags/TrainModels.py                           0           1  0.40s           2024-09-19T17:32:35                       5
+================================================================================
+[2024-09-19T17:33:09.867+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/welcome_dag.py                           1           0  0.50s           2024-09-19T17:33:09                      12
+/opt/airflow/dags/TrainModels.py                           0           1  0.41s           2024-09-19T17:33:06                       5
+================================================================================
+[2024-09-19T17:33:40.663+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/welcome_dag.py                           1           0  0.51s           2024-09-19T17:33:40                      12
+/opt/airflow/dags/TrainModels.py                           0           1  0.40s           2024-09-19T17:33:36                       5
+================================================================================
+[2024-09-19T17:34:11.614+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/welcome_dag.py                           1           0  0.51s           2024-09-19T17:34:11                      12
+/opt/airflow/dags/TrainModels.py                           0           1  0.51s           2024-09-19T17:34:07                       5
+================================================================================
+[2024-09-19T17:34:42.650+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/TrainModels.py                           0           1  0.51s           2024-09-19T17:34:38                       5
+/opt/airflow/dags/welcome_dag.py                           1           0  0.50s           2024-09-19T17:34:42                      12
+================================================================================
+[2024-09-19T17:35:13.912+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/welcome_dag.py                           1           0  0.60s           2024-09-19T17:35:13                      12
+/opt/airflow/dags/TrainModels.py                           0           1  0.41s           2024-09-19T17:35:09                       5
+================================================================================
+[2024-09-19T17:35:44.594+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/TrainModels.py                           0           1  0.50s           2024-09-19T17:35:40                       5
+/opt/airflow/dags/welcome_dag.py                           1           0  0.50s           2024-09-19T17:35:44                      12
+================================================================================
+[2024-09-19T17:36:05.743+0000] {manager.py:832} INFO - Searching for files in /opt/airflow/dags
+[2024-09-19T17:36:05.830+0000] {manager.py:835} INFO - There are 2 files in /opt/airflow/dags
+[2024-09-19T17:36:15.449+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/welcome_dag.py                           1           0  0.50s           2024-09-19T17:36:15                      12
+/opt/airflow/dags/TrainModels.py                           0           1  0.40s           2024-09-19T17:36:11                       5
+================================================================================
+[2024-09-19T17:36:46.097+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/TrainModels.py                           0           1  0.51s           2024-09-19T17:36:42                       5
+/opt/airflow/dags/welcome_dag.py                           1           0  0.50s           2024-09-19T17:36:46                      12
+================================================================================
+[2024-09-19T17:37:16.773+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/welcome_dag.py                           1           0  0.51s           2024-09-19T17:37:16                      12
+/opt/airflow/dags/TrainModels.py                           0           1  0.41s           2024-09-19T17:37:12                       5
+================================================================================
+[2024-09-19T17:37:47.544+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/TrainModels.py                           0           1  0.51s           2024-09-19T17:37:43                       5
+/opt/airflow/dags/welcome_dag.py                           1           0  0.50s           2024-09-19T17:37:47                      12
+================================================================================
+[2024-09-19T17:38:18.314+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/TrainModels.py                           0           1  0.51s           2024-09-19T17:38:14                       5
+/opt/airflow/dags/welcome_dag.py                           1           0  0.50s           2024-09-19T17:38:18                      12
+================================================================================
+[2024-09-19T17:38:49.150+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/welcome_dag.py                           1           0  0.50s           2024-09-19T17:38:49                      12
+/opt/airflow/dags/TrainModels.py                           0           1  0.41s           2024-09-19T17:38:45                       5
+================================================================================
+[2024-09-19T17:39:19.966+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/TrainModels.py                           0           1  0.51s           2024-09-19T17:39:16                       5
+/opt/airflow/dags/welcome_dag.py                           1           0  0.50s           2024-09-19T17:39:19                      12
+================================================================================
+[2024-09-19T17:39:50.697+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/welcome_dag.py                           1           0  0.50s           2024-09-19T17:39:50                      12
+/opt/airflow/dags/TrainModels.py                           0           1  0.40s           2024-09-19T17:39:46                       5
+================================================================================
+[2024-09-19T17:40:21.453+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/TrainModels.py                           0           1  0.50s           2024-09-19T17:40:17                       5
+/opt/airflow/dags/welcome_dag.py                           1           0  0.50s           2024-09-19T17:40:21                      12
+================================================================================
+[2024-09-19T17:40:51.688+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/welcome_dag.py                           1           0  0.70s           2024-09-19T17:40:34                      34
+/opt/airflow/dags/TrainModels.py                           0           1  0.51s           2024-09-19T17:40:48                       5
+================================================================================
+[2024-09-19T17:41:06.378+0000] {manager.py:832} INFO - Searching for files in /opt/airflow/dags
+[2024-09-19T17:41:06.455+0000] {manager.py:835} INFO - There are 2 files in /opt/airflow/dags
+[2024-09-19T17:41:21.892+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/TrainModels.py                           0           1  0.51s           2024-09-19T17:41:19                       5
+/opt/airflow/dags/welcome_dag.py                           1           0  0.50s           2024-09-19T17:41:05                      12
+================================================================================
+[2024-09-19T17:41:52.128+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/TrainModels.py                           0           1  0.70s           2024-09-19T17:41:50                       5
+/opt/airflow/dags/welcome_dag.py                           1           0  0.60s           2024-09-19T17:41:36                      12
+================================================================================
+[2024-09-19T17:42:22.604+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/welcome_dag.py                           1           0  0.91s           2024-09-19T17:42:07                      34
+/opt/airflow/dags/TrainModels.py                           0           1  0.50s           2024-09-19T17:42:20                       5
+================================================================================
+[2024-09-19T17:42:55.717+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/welcome_dag.py                           1           0  0.60s           2024-09-19T17:42:38                      12
+/opt/airflow/dags/TrainModels.py                           0           1  0.50s           2024-09-19T17:42:51                       5
+================================================================================
+[2024-09-19T17:44:26.563+0000] {manager.py:468} INFO - Exiting gracefully upon receiving signal 15
+[2024-09-19T17:44:26.783+0000] {manager.py:486} INFO - Processing files using up to 1 processes at a time 
+[2024-09-19T17:44:26.785+0000] {manager.py:487} INFO - Process each file at most once every 30 seconds
+[2024-09-19T17:44:26.785+0000] {manager.py:488} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2024-09-19T17:44:26.785+0000] {manager.py:832} INFO - Searching for files in /opt/airflow/dags
+[2024-09-19T17:44:26.854+0000] {manager.py:835} INFO - There are 2 files in /opt/airflow/dags
+[2024-09-19T17:44:27.433+0000] {manager.py:1008} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                         PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/welcome_dag.py                           1           0  0.50s           2024-09-19T17:44:27                      12
+/opt/airflow/dags/TrainModels.py                           0           0                                                            0
+================================================================================

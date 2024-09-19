@@ -40,7 +40,7 @@ dag = DAG(
 
 
 print_welcome_task = PythonOperator(
-    task_id='print_welcome',
+    task_id='Starting_pipeline',
     python_callable=print_welcome,
     dag=dag
 )
@@ -84,4 +84,4 @@ run_notebook_ranking_task = PythonOperator(
 
 # Set the dependencies between the tasks
 
-print_welcome_task >> run_notebook_retrival_task >> run_notebook_ranking_task
+print_welcome_task >> [run_notebook_retrival_task, run_notebook_ranking_task]
