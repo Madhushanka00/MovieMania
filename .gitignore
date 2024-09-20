@@ -5,3 +5,6 @@
 *.log
 *.pyc
 __pycache__/
+
+model/
+rankingModel/
