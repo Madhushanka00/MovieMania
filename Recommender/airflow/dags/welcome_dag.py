@@ -19,6 +19,13 @@ def run_notebook_ranking():
 
     )
 
+def run_notebook_recomending():
+    pm.execute_notebook(
+        '/opt/airflow/dags/savedModelsUse.ipynb',  # Path inside the container
+        '/opt/airflow/dags/savedModelsOutput.ipynb'     # Output file inside the container
+
+    )
+
 def print_welcome():
     print('Pipeline started')
 
@@ -70,18 +77,14 @@ run_notebook_ranking_task = PythonOperator(
 )
 
 
-# print_random_quote = PythonOperator(
-
-#     task_id='print_random_quote',
-
-#     python_callable=print_random_quote,
-
-#     dag=dag
-
-# )
+run_recomending_task = PythonOperator(
+    task_id='Use_saved_models',
+    python_callable=run_notebook_recomending,
+    dag=dag
+)
 
 
 
 # Set the dependencies between the tasks
 
-print_welcome_task >> [run_notebook_retrival_task, run_notebook_ranking_task]
+print_welcome_task >> [run_notebook_retrival_task, run_notebook_ranking_task] >> run_recomending_task
