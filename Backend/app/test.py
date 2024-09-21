@@ -399,7 +399,7 @@ def get_Recommendations():
     user_id = request.args.get('user_id')
     api_key = current_app.config['TMDB_API_KEY']
     # get the recomended movie list
-    response_MovieIDs = requests.get(f'http://localhost:3000/getRecommendations?user_id={user_id}')
+    response_MovieIDs = requests.get(f'https://dspndkpg-3000.asse.devtunnels.ms/getRecommendations?user_id={user_id}')
     movie_ids = response_MovieIDs.json()
 
     print('response_MovieIDs',len (movie_ids['recommendaIDs']))

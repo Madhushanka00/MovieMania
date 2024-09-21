@@ -14,6 +14,7 @@ const MainPage = () => {
     SetClickedItem,
     similarMovies,
     setSimilarMovies,
+    currentUserId,
   } = useContext(MovieContext);
 
   const [type, setType] = useState(null);
@@ -24,6 +25,7 @@ const MainPage = () => {
   const [fakeState, setFakeState] = useState(0);
   const [goToDetails, setGoToDetails] = useState(false);
   const [selectedMovieDetails, setSelectedMovieDetails] = useState(null);
+  const [recomendations, setRecommendations] = useState([]);
 
   const handleClick = (details) => {
     console.log("Clicked");
@@ -66,6 +68,25 @@ const MainPage = () => {
     console.log("similar movies recieved:", similarMovies);
     setMovies(similarMovies);
   }, [similarMovies]);
+
+  useEffect(() => {
+    console.log("user_id", currentUserId);
+
+    axios
+      .get(
+        `https://dspndkpg-5000.asse.devtunnels.ms/getRecommendations?user_id=${currentUserId}`
+      )
+      .then((res) => {
+        console.log("Recommendations:", res.data);
+        setRecommendations(res.data);
+      })
+      .catch((error) => {
+        console.error(
+          "Error fetching recommendations:",
+          error.response || error.message
+        );
+      });
+  }, [currentUserId]);
 
   const responsive = {
     superLargeDesktop: {
@@ -197,7 +218,28 @@ const MainPage = () => {
       <div className="recommendations">
         <div className="subtitle">Movies You might like</div>
         <div className="moveara">
-          <MoviesArea mode="topRated" tab={"Home"} type="movie" />
+          {/* <MoviesArea mode="topRated" tab={"Home"} type="movie" /> */}
+          <div className="moviesArea_Recommendations" ref={carouselRef}>
+            {Array.isArray(recomendations) && recomendations.length > 0
+              ? recomendations.map((movie) => {
+                  return (
+                    <div key={movie.id} onClick={() => handleClick(movie)}>
+                      <MovieCard
+                        key={movie.id}
+                        movie={{
+                          title: movie.title
+                            ? movie.title
+                            : movie.original_name,
+                          ratings: movie.ratings,
+                          posterUrl: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                          id: movie.id,
+                        }}
+                      />
+                    </div>
+                  );
+                })
+              : ""}
+          </div>
         </div>
       </div>
     </div>
