@@ -141,6 +141,19 @@ app.get('/getRatings', async (req, res) => {
     
 });
 
+app.get('/getRecommendations', async(req, res) => {
+    const {user_id } =  req.query;
+    try{
+        const recommendaIDs = await mdb.collection('recommendations').find({ user_id: user_id },{ projection: { recommended_movie_ids: 1, _id: 0 } }).toArray();
+        console.log(recommendaIDs);
+        res.status(200).json({recommendaIDs});
+    }catch(error){
+        console.log(error);
+        res.status(500).json({message: 'Failed to get recommendations', error});
+    }
+
+});
+
 app.get('/getRating', async (req, res) => {
     const {userId, movieId} = req.query;
     try {
