@@ -400,14 +400,18 @@ def get_Recommendations():
     api_key = current_app.config['TMDB_API_KEY']
     # get the recomended movie list
     response_MovieIDs = requests.get(f'http://localhost:3000/getRecommendations?user_id={user_id}')
-    if response_MovieIDs.status_code == 200:
+    movie_ids = response_MovieIDs.json()
+
+    print('response_MovieIDs',len (movie_ids['recommendaIDs']))
+
+    if response_MovieIDs.status_code == 200 and len (movie_ids['recommendaIDs']) > 0:
         
-        movie_ids = response_MovieIDs.json()
+        
         
         recommended_movie_ids = movie_ids['recommendaIDs'][0]['recommended_movie_ids']
-
 # Print the extracted movie IDs
         print(recommended_movie_ids)
+
         recommended_movies = []
         # for movie_id in recommended_movie_ids:
         #     response = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}&language=en-US')
