@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 import re
 import json
 import pickle
+import concurrent.futures
 
 
 from typing import Dict, Text
@@ -95,6 +96,13 @@ def formatTxtx(movie_input):
 
     
     return formatted_movies
+
+def fetch_movie_details(movie_id, api_key):
+    """Fetch movie details from TMDB API for a single movie_id."""
+    response = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}&language=en-US')
+    if response.status_code == 200:
+        return response.json()
+    return None
 
 def search_movie_on_tmdb(movie_title):
     url = f'https://api.themoviedb.org/3/search/movie'
@@ -384,5 +392,41 @@ def get_torrent_links():
             return jsonify({"error": "No movies found"}), 404
     else:
         return jsonify({"error": "Unable to fetch torrent links"}), response.status_code
+    
+
+@app.route('/getRecommendations',methods=['GET'])
+def get_Recommendations():
+    user_id = request.args.get('user_id')
+    api_key = current_app.config['TMDB_API_KEY']
+    # get the recomended movie list
+    response_MovieIDs = requests.get(f'http://localhost:3000/getRecommendations?user_id={user_id}')
+    if response_MovieIDs.status_code == 200:
+        
+        movie_ids = response_MovieIDs.json()
+        
+        recommended_movie_ids = movie_ids['recommendaIDs'][0]['recommended_movie_ids']
+
+# Print the extracted movie IDs
+        print(recommended_movie_ids)
+        recommended_movies = []
+        # for movie_id in recommended_movie_ids:
+        #     response = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}&language=en-US')
+        #     if response.status_code == 200:
+        #         recommended_movies.append(response.json())
+
+
+        # parallel processing ///////////////////////
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            # Map fetch_movie_details to movie_ids
+            future_to_movie = {executor.submit(fetch_movie_details, movie_id, api_key): movie_id for movie_id in recommended_movie_ids}
+            
+            for future in concurrent.futures.as_completed(future_to_movie):
+                movie_details = future.result()
+                if movie_details:
+                    recommended_movies.append(movie_details)
+        return jsonify(recommended_movies)
+    else:
+        return jsonify({"error": "Unable to fetch recommendations"}), response_MovieIDs.status_code
+
 
 app.run(port=5000, debug=True , host="0.0.0.0")
