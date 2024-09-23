@@ -239,7 +239,6 @@
     position: relative;
     justify-content: center;
     place-items: center;
-    background-color: #15de8a;
     height: 90vh;
     width: auto !important;
     border-radius: 0px 0px 0px 0px;
@@ -251,17 +250,11 @@
   .glass .Construction .DetailsSection_ {
     display: block;
     position: fixed;
-    bottom: -80%;
     height: 90vh;
     background-color: rgba(21, 21, 21, 0.1882352941);
     border-radius: 20px;
     -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
-    overflow: scroll !important;
-    scroll-behavior: smooth;
-  }
-  .glass .Construction .DetailsSection_::-webkit-scrollbar {
-    display: none;
   }
   .glass .Construction .DetailsSection_ .titleSection_ h3 {
     font-size: 2.2rem !important;
@@ -295,5 +288,19 @@
   }
   .glass .Construction .DetailsSection_ .myRatings {
     font-size: 0.7rem;
+  }
+}
+@media (max-width: 430px) {
+  .glass .Construction .movie-backdrop {
+    position: relative;
+    justify-content: center;
+    place-items: center;
+    height: 90vh;
+    width: auto !important;
+    border-radius: 20px 20px 20px 20px;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 16/9;
+    max-width: 103% !important;
   }
 }/*# sourceMappingURL=DetailedView.css.map */
