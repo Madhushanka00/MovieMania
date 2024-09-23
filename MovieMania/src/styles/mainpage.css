@@ -251,6 +251,31 @@
   .HomeMain .searcharea .mobileSimilarmovies .carousel-btn:hover {
     transform: scale(1.5);
   }
+  .HomeMain .recommendations .subtitle {
+    padding-left: 2%;
+    font-size: 1rem;
+    color: rgb(233, 233, 233);
+  }
+  .HomeMain .recommendations .moveara {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .HomeMain .recommendations .moveara .carousel-btn {
+    display: none;
+  }
+  .HomeMain .recommendations .moveara .moviesArea_Recommendations {
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
+  .HomeMain .recommendations .moveara .moviesArea_Recommendations::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @keyframes gradientAnimation {
