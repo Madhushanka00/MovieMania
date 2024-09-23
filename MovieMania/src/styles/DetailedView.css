@@ -17,7 +17,7 @@
   left: 15%;
   top: 5vh;
   width: 70%;
-  height: 90vh;
+  height: auto;
   border-radius: 20px;
   align-items: center;
   background: rgba(21, 21, 21, 0.9058823529);
@@ -32,14 +32,17 @@
 }
 .glass .Construction {
   display: flex;
-  flex: 1;
+  flex-direction: row;
 }
 .glass .Construction .movie-backdrop {
+  background-color: #ff0000;
   border-radius: 20px 0 0 20px;
   position: relative;
-  height: 89.5vh;
+  max-height: 89.5vh;
+  max-width: 50%;
 }
 .glass .Construction .DetailsSection_ {
+  flex: 1;
   padding-left: 20px;
   padding-top: 35px;
   padding-right: 30px;
