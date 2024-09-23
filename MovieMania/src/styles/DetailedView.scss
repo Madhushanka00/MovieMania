@@ -5,14 +5,14 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.419); /* Adjust opacity to control dimming */
-    z-index: 1001; /* Ensure the overlay is below the highlighted content */
+    z-index: 1020; /* Ensure the overlay is below the highlighted content */
     backdrop-filter: blur(2px);
 }
 
 
 .glass{
     position: absolute;
-    z-index:1002;
+    z-index:1021;
     color: white;
     left:15%;
     top: 5vh;
@@ -394,6 +394,9 @@
     }
 }
 @media (max-width: 430px){
+    width: 90%;
+    max-height: 90% !important;
+    left:5%;
     .Construction{
     & .movie-backdrop{
         position: relative;
@@ -407,8 +410,12 @@
         align-items: center;
         aspect-ratio: 16 / 9; 
         // height: auto;
-        max-width:  103% !important; 
-    }}
+        max-width:  104% !important; 
+    }
+    & .DetailsSection_{
+        background-color: #1515159a;
+    }
+    }
 }
 
 }
