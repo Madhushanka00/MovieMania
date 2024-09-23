@@ -223,4 +223,77 @@
 }
 .glass .Construction .DetailsSection_ .myRatings .stars :root {
   --ant-rate-star-color: #15de8a; /* Change this to your desired color */
+}
+@media (max-width: 769px) {
+  .glass .Construction {
+    height: auto;
+    width: 100%;
+    display: flex;
+    padding-left: 2%;
+    padding-right: 2%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .glass .Construction .movie-backdrop {
+    position: relative;
+    justify-content: center;
+    place-items: center;
+    background-color: #15de8a;
+    height: 90vh;
+    width: auto !important;
+    border-radius: 0px 0px 0px 0px;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 16/9;
+    max-width: 80%;
+  }
+  .glass .Construction .DetailsSection_ {
+    display: block;
+    position: fixed;
+    bottom: -80%;
+    height: 90vh;
+    background-color: rgba(21, 21, 21, 0.1882352941);
+    border-radius: 20px;
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+    overflow: scroll !important;
+    scroll-behavior: smooth;
+  }
+  .glass .Construction .DetailsSection_::-webkit-scrollbar {
+    display: none;
+  }
+  .glass .Construction .DetailsSection_ .titleSection_ h3 {
+    font-size: 2.2rem !important;
+  }
+  .glass .Construction .DetailsSection_ .titleSection_ .releaseDate h6 {
+    font-size: 0.7rem !important;
+  }
+  .glass .Construction .DetailsSection_ .wrapAround .ratingSection .star {
+    font-size: 1.3rem;
+  }
+  .glass .Construction .DetailsSection_ .wrapAround .genras .genre {
+    font-size: 0.7rem !important;
+  }
+  .glass .Construction .DetailsSection_ .Overview .ttle {
+    font-size: 1rem !important;
+  }
+  .glass .Construction .DetailsSection_ .Overview p {
+    font-size: 0.8rem !important;
+  }
+  .glass .Construction .DetailsSection_ .titletorents {
+    font-size: 0.7rem;
+  }
+  .glass .Construction .DetailsSection_ .Torrents .torrents .type {
+    font-size: 0.7rem;
+  }
+  .glass .Construction .DetailsSection_ .Torrents .torrents .quality {
+    font-size: 0.7rem;
+  }
+  .glass .Construction .DetailsSection_ .Torrents .torrents .size {
+    font-size: 0.6rem;
+  }
+  .glass .Construction .DetailsSection_ .myRatings {
+    font-size: 0.7rem;
+  }
 }/*# sourceMappingURL=DetailedView.css.map */

@@ -299,7 +299,104 @@
    
     }
 
+@media (max-width: 769px){
+    // .glass{
+        // width: 90vw;
+        // left: 5%; /* Centered horizontally */
+        // height: auto;
+        // background: linear-gradient(135deg, rgba(0, 0, 0, 0.392), rgba(144, 144, 144, 0));
+        
+    // }
+    .Construction{
+        // background: linear-gradient(135deg, rgba(0, 0, 0, 0.392), rgba(144, 144, 144, 0));
+        height: auto;
+        width: 100%;
+        display: flex;
+        padding-left: 2%;
+        padding-right: 2% ;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        & .movie-backdrop{
+            position: relative;
+            justify-content: center;
+            place-items: center;
+            background-color: #15de8a;
+            height:  90vh;
+            width: auto !important;
+            border-radius: 0px 0px 0px 0px;
+            justify-content: center;
+            align-items: center;
+            aspect-ratio: 16 / 9; 
+            // height: auto;
+            max-width:  80%; 
+        }
+        & .DetailsSection_{
+            display: block;
+            position: fixed;
+            bottom: -80%;
+            height: 90vh;
+            background-color: #15151530;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            overflow: scroll !important;
+            scroll-behavior: smooth;
 
+            &::-webkit-scrollbar {
+                    display: none;
+            }
+            & .titleSection_{
+                & h3{
+                    font-size: 2.2rem !important;
+                }
+                & .releaseDate{
+                    & h6{
+                        font-size: .7rem !important;
+                    }
+                }
+            }
+            & .wrapAround{
+                & .ratingSection{
+                    & .star{
+                        font-size: 1.3rem;
+                    }
+                }
+                & .genras{
+                    & .genre{
+                        font-size: .7rem !important; 
+                    }
+                }
+            }
+            & .Overview{
+                & .ttle{
+                    font-size: 1rem !important;
+                }
+                & p{
+                    font-size: .8rem !important;
+                }
+            }
+            & .titletorents{
+                font-size: .7rem;
+            }
+            & .Torrents{
+                & .torrents{
+                    & .type{
+                        font-size: .7rem;
+                    }
+                    & .quality{
+                        font-size: .7rem;
+                    }
+                    & .size{
+                        font-size: .6rem;
+                    }
+                }
+            }
+            & .myRatings{
+                font-size: .7rem;
+            }
+        }
+    }
+}
     
 }
 // .stars .ant-rate-star-full .ant-rate-star-second,
