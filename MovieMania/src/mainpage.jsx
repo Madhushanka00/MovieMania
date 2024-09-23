@@ -39,6 +39,7 @@ const MainPage = () => {
   };
 
   const carouselRef = useRef(null);
+  const carouselRef2 = useRef(null);
 
   const scrollLeft = () => {
     carouselRef.current.scrollBy({ left: -800, behavior: "smooth" });
@@ -46,6 +47,14 @@ const MainPage = () => {
 
   const scrollRight = () => {
     carouselRef.current.scrollBy({ left: 800, behavior: "smooth" });
+  };
+
+  const scrollLeft2 = () => {
+    carouselRef2.current.scrollBy({ left: -800, behavior: "smooth" });
+  };
+
+  const scrollRight2 = () => {
+    carouselRef2.current.scrollBy({ left: 800, behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -189,7 +198,7 @@ const MainPage = () => {
           </button>
           <div className="subtitle2_mobile">Similar Movies</div>
           <div className="mobileSimilarmovies">
-            <div className="moviesArea_Mainpage" ref={carouselRef}>
+            <div className="moviesArea_Mainpage">
               {console.log("Movies:", movies)}
               {console.log("Type:", type)}
 
@@ -218,8 +227,11 @@ const MainPage = () => {
       <div className="recommendations">
         <div className="subtitle">Movies You might like</div>
         <div className="moveara">
+          <button className="carousel-btn left" onClick={scrollLeft2}>
+            &#8249;
+          </button>
           {/* <MoviesArea mode="topRated" tab={"Home"} type="movie" /> */}
-          <div className="moviesArea_Recommendations" ref={carouselRef}>
+          <div className="moviesArea_Recommendations" ref={carouselRef2}>
             {Array.isArray(recomendations) && recomendations.length > 0
               ? recomendations.map((movie) => {
                   return (
@@ -240,6 +252,9 @@ const MainPage = () => {
                 })
               : ""}
           </div>
+          <button className="carousel-btn right" onClick={scrollRight2}>
+            &#8250;
+          </button>
         </div>
       </div>
     </div>
