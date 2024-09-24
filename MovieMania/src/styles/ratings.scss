@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     top:15vh;
-    left:5.2%;
+    left:  5.2%;
     height: inline-box;
     // height: 10vh;
     width: 25vw;
@@ -76,6 +76,7 @@
     }
     
 }
+
     
 }
 .slide-inrate {
@@ -91,15 +92,80 @@
         left: -20%;
     }
     to {
-        left: 5.2%;
+        left:  5.2%;
     }
 }
 
 @keyframes slideoutrate {
     from {
-        left: 5.2%;
+        left:  5.2%;
     }
     to {
         left: -20%;
     }
+
+
+
+}
+
+@media (max-width: 768px) {
+
+    .ratingsWindow {
+        width: 40vw; /* Update the CSS variable to control positioning */
+        margin-left: 3vw;
+
+        & h1{
+            font-size: 1rem;
+        }
+        & .ratings{
+            max-height: 50vh;
+            & .rating{
+                & h3{
+                    font-size: .7rem;
+                }
+                & .title{
+                    font-size: .8rem;
+                }
+                & .starsratings{
+                    font-size: .8rem ;
+                    & .star{
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+    }
+
+    
+}
+
+@media (max-width: 430px) {
+
+    .ratingsWindow {
+        width: 60vw; /* Update the CSS variable to control positioning */
+        margin-left: 10vw;
+
+        & h1{
+            font-size: 1rem;
+        }
+        & .ratings{
+            max-height: 50vh;
+            & .rating{
+                & h3{
+                    font-size: .7rem;
+                }
+                & .title{
+                    font-size: .8rem;
+                }
+                & .starsratings{
+                    font-size: .8rem ;
+                    & .star{
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+    }
+
+    
 }
