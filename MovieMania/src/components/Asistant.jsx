@@ -130,21 +130,6 @@ Let’s explore the world of movies together! 🍿🎥`,
                 )}
               </div>
             ))}
-            {/* <div className="bot">
-              <p>
-                Hi, I am FilmSeeker, your personal movie assistant. How can I
-                help
-              </p>
-            </div>
-            <div className="user">
-              <p>
-                Hi, I am looking for a movie to watch with my family Lorem ipsum
-                dolor sit, amet consectetur adipisicing elit. Officiis fuga
-                rerum sit neque autem modi minima facere quaerat dignissimos
-                molestiae aspernatur tempore sed tenetur dolores, esse
-                voluptatibus reiciendis corporis natus!
-              </p>
-            </div> */}
           </div>
           <div className="chatInput">
             <input
