@@ -269,7 +269,7 @@ def get_chatagent_movielist():
         # print(api_key)
         for movie in respondedmovies:
             response = requests.get(
-                f'https://api.themoviedb.org/3/search/movie',
+                f'https://api.themoviedb.org/3/search/multi',
                 params={
                     'query': movie,
                     'api_key': api_key,
@@ -346,7 +346,7 @@ def  get_similatFrom_ML():
     else:
         for movie in recommended_movies_ML:
             response = requests.get(
-                f'https://api.themoviedb.org/3/search/movie',
+                f'https://api.themoviedb.org/3/search/multi',
                 params={
                     'query': movie,
                     'api_key': api_key,
