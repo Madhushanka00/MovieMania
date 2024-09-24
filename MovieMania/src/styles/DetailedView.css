@@ -295,12 +295,13 @@
     width: 90%;
     max-height: 90% !important;
     left: 5%;
+    background-color: rgba(183, 183, 183, 0.4823529412);
   }
   .glass .Construction .movie-backdrop {
     position: relative;
     justify-content: center;
     place-items: center;
-    height: 90vh;
+    height: 80vh !important;
     width: auto !important;
     border-radius: 20px 20px 20px 20px;
     justify-content: center;
@@ -309,6 +310,22 @@
     max-width: 104% !important;
   }
   .glass .Construction .DetailsSection_ {
+    top: 0%;
+    max-height: 100%;
     background-color: rgba(21, 21, 21, 0.6039215686);
+  }
+  .glass .Construction .DetailsSection_ .WholeSection {
+    max-height: 45vh;
+    min-height: 40vh;
+    margin-bottom: 2vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
+  .glass .Construction .DetailsSection_ .WholeSection::-webkit-scrollbar {
+    display: none;
+  }
+  .glass .Construction .DetailsSection_ .myRatings {
+    bottom: 2%;
+    right: 5%;
   }
 }/*# sourceMappingURL=DetailedView.css.map */

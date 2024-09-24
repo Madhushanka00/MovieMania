@@ -397,13 +397,14 @@
     width: 90%;
     max-height: 90% !important;
     left:5%;
+    background-color: #b7b7b77b;
     .Construction{
     & .movie-backdrop{
         position: relative;
         justify-content: center;
         place-items: center;
         // background-color: #15de8a;
-        height:  90vh;
+        height:  80vh !important;
         width: auto !important;
         border-radius: 20px 20px 20px 20px;
         justify-content: center;
@@ -413,7 +414,29 @@
         max-width:  104% !important; 
     }
     & .DetailsSection_{
+        // height: 80vh;
+        top:0%;
+        max-height: 100%;
         background-color: #1515159a;
+        // background-color: #d7d7d79a;
+
+        & .WholeSection{
+            max-height: 45vh;
+            min-height: 40vh;
+            margin-bottom: 2vh;
+            // background-color: #15de8a;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+        & .myRatings{
+            bottom: 2%;
+            right: 5%;
+        }
+
     }
     }
 }
