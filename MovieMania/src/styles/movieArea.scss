@@ -45,6 +45,25 @@
     }
 
   }
+
+@media (max-width: 430px) {
+  
+  & .carousel-btn {
+    font-size: 2rem !important;
+    padding: 10px !important;
+    // background-color: aliceblue;
+    & .left{
+      padding-left: 10px !important;
+      background-color: aliceblue !important;
+      
+  }
+    
+  }
+   
+}
+
+
+
 }
 
 

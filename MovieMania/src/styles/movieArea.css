@@ -32,4 +32,14 @@
 }
 .allWrap .carousel-btn:hover {
   transform: scale(1.5);
+}
+@media (max-width: 430px) {
+  .allWrap .carousel-btn {
+    font-size: 2rem !important;
+    padding: 10px !important;
+  }
+  .allWrap .carousel-btn .left {
+    padding-left: 10px !important;
+    background-color: aliceblue !important;
+  }
 }/*# sourceMappingURL=movieArea.css.map */
