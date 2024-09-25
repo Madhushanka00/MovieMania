@@ -388,12 +388,12 @@ def get_torrent_links():
     
     if response.status_code == 200:
         data = response.json()
-        print('data',data)
+        # print('data',data)
         
         # Check if the 'movies' field is present and contains data
         if 'movie' in data['data'] and data['data']['movie']:
             movie = data['data']['movie']
-            print('movie',movie) # Assuming you only care about the first movie in the list
+            # print('movie',movie) # Assuming you only care about the first movie in the list
             torrents = movie.get('torrents', [])  # Get the 'torrents' list or return an empty list if not present
             return jsonify(torrents)  # Return only the torrent details
         else:

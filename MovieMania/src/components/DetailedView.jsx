@@ -133,21 +133,21 @@ const DetailedView = ({ movie, onClose, type }) => {
   useEffect(() => {
     if (selectUrl) {
       console.log("Downloading torrent link:", selectUrl);
+      // Create an anchor element
+      const link = document.createElement("a");
+      link.href = selectUrl;
 
-      // Create a form element
-      const form = document.createElement("form");
-      form.style.display = "none"; // Hide the form
-      form.method = "GET"; // Set the method to GET, assuming direct download URL
-      form.action = selectUrl; // Set the action to the download URL
+      // Set the download attribute (optional, you can specify a filename here if needed)
+      link.setAttribute("download", "");
 
-      // Append the form to the body
-      document.body.appendChild(form);
+      // Append the link to the body (necessary for some browsers)
+      document.body.appendChild(link);
 
-      // Submit the form to trigger the download
-      form.submit();
+      // Programmatically trigger the click event on the link to download the file
+      link.click();
 
-      // Clean up: Remove the form after submission
-      document.body.removeChild(form);
+      // Remove the link from the document
+      document.body.removeChild(link);
     }
   }, [selectUrl]);
 
