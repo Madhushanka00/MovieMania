@@ -29,6 +29,8 @@
     & .ratings{
         display: flex;
         flex-direction: column;
+        // background-color: #f1c40f;
+        width: 90%;
         max-height: 65vh;
         overflow-y: scroll;
         scroll-behavior: smooth;
@@ -41,6 +43,7 @@
             flex-direction: row;
             // justify-content: space-between;
             color: white;
+            // width: 100%;
             margin-top: 1vh;
 
             & h3{flex:1;

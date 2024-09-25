@@ -27,6 +27,7 @@
 .ratingsWindow .ratings {
   display: flex;
   flex-direction: column;
+  width: 90%;
   max-height: 65vh;
   overflow-y: scroll;
   scroll-behavior: smooth;
