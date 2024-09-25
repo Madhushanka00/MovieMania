@@ -17,7 +17,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 load_dotenv()
 
 
@@ -372,20 +372,28 @@ def  get_similatFrom_ML():
 
 @app.route('/getTorrentLinks', methods=['GET'])
 def get_torrent_links():
-    movie_title = request.args.get('movie_title')
+    tmdbId = request.args.get('id')
+    api_key = current_app.config['TMDB_API_KEY']
+
+    IDresponse = requests.get(f'https://api.themoviedb.org/3/movie/{tmdbId}/external_ids?api_key={api_key}&language=en-US&page=1')
+    print('IDresponse',IDresponse.json())
+
     # Check if the movie title is provided
-    if not movie_title:
+    if not tmdbId:
         return jsonify({"error": "movie_title is required"}), 400
     
+    imdbID = IDresponse.json()['imdb_id']
     # Search for the movie on YTS.mx
-    response = requests.get(f'https://yts.mx/api/v2/list_movies.json?query_term={movie_title}')
+    response = requests.get(f'https://yts.mx/api/v2/movie_details.json?imdb_id={imdbID}')
     
     if response.status_code == 200:
         data = response.json()
+        print('data',data)
         
         # Check if the 'movies' field is present and contains data
-        if 'movies' in data['data'] and data['data']['movies']:
-            movie = data['data']['movies'][0]  # Assuming you only care about the first movie in the list
+        if 'movie' in data['data'] and data['data']['movie']:
+            movie = data['data']['movie']
+            print('movie',movie) # Assuming you only care about the first movie in the list
             torrents = movie.get('torrents', [])  # Get the 'torrents' list or return an empty list if not present
             return jsonify(torrents)  # Return only the torrent details
         else:
