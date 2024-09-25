@@ -98,3 +98,65 @@
         left: -20%;
     }
 }
+
+@media (max-width: 768px) {
+
+    .historyWindow {
+        width: 40vw; /* Update the CSS variable to control positioning */
+        margin-left: 3vw;
+
+        & h1{
+            font-size: 1rem;
+        }
+        & .ratings{
+            max-height: 50vh;
+            & .history{
+                & h3{
+                    font-size: .7rem;
+                }
+                & .title{
+                    font-size: .8rem;
+                }
+                & .historyDetails{
+                    font-size: .8rem ;
+                    & .star{
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+    }
+
+    
+}
+
+@media (max-width: 430px) {
+
+    .historyWindow {
+        width: 60vw; /* Update the CSS variable to control positioning */
+        margin-left: 10vw;
+
+        & h1{
+            font-size: 1rem;
+        }
+        & .ratings{
+            max-height: 50vh;
+            & .history{
+                & h3{
+                    font-size: .7rem;
+                }
+                & .title{
+                    font-size: .8rem;
+                }
+                & .historyDetails{
+                    font-size: .8rem ;
+                    & .star{
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+    }
+
+    
+}
