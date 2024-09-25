@@ -19,6 +19,7 @@
     padding-bottom: 5vh;
     padding-top:2vh ;
     z-index: 10;
+    // opacity: 1;
 
     & h1{
         color: white;
@@ -93,9 +94,11 @@
 @keyframes slideinrate {
     from {
         left: -20%;
+      
     }
     to {
         left:  5.2%;
+    
     }
 }
 
