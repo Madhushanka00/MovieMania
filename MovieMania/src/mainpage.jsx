@@ -133,72 +133,49 @@ const MainPage = () => {
           MovieMania!
         </h2>
       </div>
-      <div className="Searchresults">
-        <div className="devider">
-          <div className="subtitle1">Search Result</div>
-          <div className="subtitle2">Similar Movies</div>
-        </div>
+      {selectItem && (
+        <div className="Searchresults">
+          {selectItem && (
+            <div className="devider">
+              <div className="subtitle1">Search Result</div>
+              <div className="subtitle2">Similar Movies</div>
+            </div>
+          )}
 
-        <div className="searcharea">
-          <div className="subtitle1_mobile">Search Result</div>
-          <div className="searchedMovie">
-            {selectItem && (
-              <>
-                <div onClick={() => handleClick(selectItem)}>
-                  <MovieCard
-                    key={selectItem.id}
-                    movie={{
-                      title: selectItem.title
-                        ? selectItem.title
-                        : selectItem.original_name,
-                      ratings: selectItem.ratings,
-                      posterUrl: `https://image.tmdb.org/t/p/w500${selectItem.poster_path}`,
-                      id: selectItem.id,
-                    }}
-                  />
-                </div>
-              </>
-            )}
-            {goToDetails && (
-              <DetailedView
-                movie={selectedMovieDetails}
-                onClose={hideDetailedView}
-                type={type}
-              />
-            )}
-          </div>
+          <div className="searcharea">
+            <div className="subtitle1_mobile">Search Result</div>
+            <div className="searchedMovie">
+              {selectItem && (
+                <>
+                  <div onClick={() => handleClick(selectItem)}>
+                    <MovieCard
+                      key={selectItem.id}
+                      movie={{
+                        title: selectItem.title
+                          ? selectItem.title
+                          : selectItem.original_name,
+                        ratings: selectItem.ratings,
+                        posterUrl: `https://image.tmdb.org/t/p/w500${selectItem.poster_path}`,
+                        id: selectItem.id,
+                      }}
+                    />
+                  </div>
+                </>
+              )}
+              {goToDetails && (
+                <DetailedView
+                  movie={selectedMovieDetails}
+                  onClose={hideDetailedView}
+                  type={type}
+                />
+              )}
+            </div>
 
-          {/* <Slider {...settings}> */}
-          <button className="carousel-btn left" onClick={scrollLeft}>
-            &#8249;
-          </button>
-          <div className="moviesArea_Mainpage" ref={carouselRef}>
-            {console.log("Movies:", movies)}
-            {console.log("Type:", type)}
-
-            {movies.map((movie) => {
-              return (
-                <div key={movie.id} onClick={() => handleClick(movie)}>
-                  <MovieCard
-                    key={movie.id}
-                    movie={{
-                      title: movie.title ? movie.title : movie.original_name,
-                      ratings: movie.ratings,
-                      posterUrl: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-                      id: movie.id,
-                    }}
-                  />
-                </div>
-              );
-            })}
-            {/* </Slider> */}
-          </div>
-          <button className="carousel-btn right" onClick={scrollRight}>
-            &#8250;
-          </button>
-          <div className="subtitle2_mobile">Similar Movies</div>
-          <div className="mobileSimilarmovies">
-            <div className="moviesArea_Mainpage">
+            {/* <Slider {...settings}> */}
+            <button className="carousel-btn left" onClick={scrollLeft}>
+              &#8249;
+            </button>
+            <div className="moviesArea_Mainpage" ref={carouselRef}>
               {console.log("Movies:", movies)}
               {console.log("Type:", type)}
 
@@ -219,11 +196,40 @@ const MainPage = () => {
               })}
               {/* </Slider> */}
             </div>
-          </div>
+            <button className="carousel-btn right" onClick={scrollRight}>
+              &#8250;
+            </button>
+            <div className="subtitle2_mobile">Similar Movies</div>
+            <div className="mobileSimilarmovies">
+              <div className="moviesArea_Mainpage">
+                {console.log("Movies:", movies)}
+                {console.log("Type:", type)}
 
-          {/* </Slider> */}
+                {movies.map((movie) => {
+                  return (
+                    <div key={movie.id} onClick={() => handleClick(movie)}>
+                      <MovieCard
+                        key={movie.id}
+                        movie={{
+                          title: movie.title
+                            ? movie.title
+                            : movie.original_name,
+                          ratings: movie.ratings,
+                          posterUrl: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                          id: movie.id,
+                        }}
+                      />
+                    </div>
+                  );
+                })}
+                {/* </Slider> */}
+              </div>
+            </div>
+
+            {/* </Slider> */}
+          </div>
         </div>
-      </div>
+      )}
       <div className="recommendations">
         <div className="subtitle">Movies You might like</div>
         <div className="moveara">
