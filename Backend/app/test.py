@@ -433,4 +433,11 @@ def get_Recommendations():
         return jsonify({"error": "Unable to fetch recommendations"}), response_MovieIDs.status_code
 
 
+@app.route('/getTrending',methods=['GET'])
+def get_Trending():
+    type = request.args.get('type')
+    api_key = current_app.config['TMDB_API_KEY']
+    response = requests.get(f'https://api.themoviedb.org/3/trending/{type}/day?api_key={api_key}')
+    return jsonify(response.json())
+
 app.run(port=5000, debug=True , host="0.0.0.0")
