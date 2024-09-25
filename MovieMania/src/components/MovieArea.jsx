@@ -59,6 +59,13 @@ const MoviesArea = ({ mode, tab, type }) => {
             // console.log(data);
             setMovies(data.results);
           });
+      } else if (mode == "trending") {
+        fetch(`https://dspndkpg-5000.asse.devtunnels.ms/getTrending?type=movie`)
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data);
+            setMovies(data.results);
+          });
       }
     } else if (type === "tv") {
       if (mode === "popularTV") {
@@ -70,6 +77,13 @@ const MoviesArea = ({ mode, tab, type }) => {
           });
       } else if (mode === "topRatedTV") {
         fetch(`https://dspndkpg-5000.asse.devtunnels.ms/tv/top-rated`)
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data);
+            setMovies(data.results);
+          });
+      } else if (mode == "trending") {
+        fetch(`https://dspndkpg-5000.asse.devtunnels.ms/getTrending?type=tv`)
           .then((res) => res.json())
           .then((data) => {
             // console.log(data);

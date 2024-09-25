@@ -136,6 +136,10 @@ const Home = () => {
           <div className="moviesArea">
             <MoviesArea mode="upcoming" tab={tab} type="movie" />
           </div>
+          <h1>Trending Today</h1>
+          <div className="moviesArea">
+            <MoviesArea mode="trending" tab={tab} type="movie" />
+          </div>
           <h1>Top rated Movies</h1>
           <div className="moviesArea">
             <MoviesArea mode="topRated" tab={tab} type="movie" />
@@ -148,6 +152,10 @@ const Home = () => {
           <h1>Popular TV Series</h1>
           <div className="moviesArea">
             <MoviesArea mode="popularTV" tab={tab} type="tv" />
+          </div>
+          <h1>Trending Today</h1>
+          <div className="moviesArea">
+            <MoviesArea mode="trending" tab={tab} type="tv" />
           </div>
           <h1>Top rated TV series</h1>
           <div className="moviesArea">

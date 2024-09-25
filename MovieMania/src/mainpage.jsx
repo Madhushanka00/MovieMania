@@ -187,13 +187,6 @@ const MainPage = () => {
                   </div>
                 </>
               )}
-              {goToDetails && (
-                <DetailedView
-                  movie={selectedMovieDetails}
-                  onClose={hideDetailedView}
-                  type={type}
-                />
-              )}
             </div>
 
             {/* <Slider {...settings}> */}
@@ -321,6 +314,13 @@ const MainPage = () => {
           </button>
         </div>
       </div>
+      {goToDetails && (
+        <DetailedView
+          movie={selectedMovieDetails}
+          onClose={hideDetailedView}
+          type={type}
+        />
+      )}
     </div>
   );
 };
