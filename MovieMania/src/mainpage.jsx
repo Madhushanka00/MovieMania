@@ -26,7 +26,7 @@ const MainPage = () => {
   const [goToDetails, setGoToDetails] = useState(false);
   const [selectedMovieDetails, setSelectedMovieDetails] = useState(null);
   const [recomendations, setRecommendations] = useState([]);
-
+  const [trendings, setTrendings] = useState([]);
   const handleClick = (details) => {
     console.log("Clicked");
     setGoToDetails(true);
@@ -40,6 +40,7 @@ const MainPage = () => {
 
   const carouselRef = useRef(null);
   const carouselRef2 = useRef(null);
+  const carouselRef3 = useRef(null);
 
   const scrollLeft = () => {
     carouselRef.current.scrollBy({ left: -800, behavior: "smooth" });
@@ -55,6 +56,14 @@ const MainPage = () => {
 
   const scrollRight2 = () => {
     carouselRef2.current.scrollBy({ left: 800, behavior: "smooth" });
+  };
+
+  const scrollLeft3 = () => {
+    carouselRef3.current.scrollBy({ left: -800, behavior: "smooth" });
+  };
+
+  const scrollRight3 = () => {
+    carouselRef3.current.scrollBy({ left: 800, behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -77,6 +86,22 @@ const MainPage = () => {
     console.log("similar movies recieved:", similarMovies);
     setMovies(similarMovies);
   }, [similarMovies]);
+
+  useEffect(() => {
+    axios
+      .get(`https://dspndkpg-5000.asse.devtunnels.ms/getTrending?type=all`)
+      .then((res) => {
+        console.log("Trending Movies:", res.data);
+        setTrendings(res.data.results);
+      })
+      .catch((error) => {
+        console.error(
+          "Error fetching trending movies:",
+          error.response || error.message
+        );
+      });
+  }, []);
+  // console.log("Trendings:", trendings);
 
   useEffect(() => {
     console.log("user_id", currentUserId);
@@ -259,6 +284,39 @@ const MainPage = () => {
               : ""}
           </div>
           <button className="carousel-btn right" onClick={scrollRight2}>
+            &#8250;
+          </button>
+        </div>
+      </div>
+      <div className="recommendations">
+        <div className="subtitle">Trending Today</div>
+        <div className="moveara">
+          <button className="carousel-btn left" onClick={scrollLeft3}>
+            &#8249;
+          </button>
+          {/* <MoviesArea mode="topRated" tab={"Home"} type="movie" /> */}
+          <div className="moviesArea_Recommendations" ref={carouselRef3}>
+            {Array.isArray(recomendations) && recomendations.length > 0
+              ? trendings.map((movie) => {
+                  return (
+                    <div key={movie.id} onClick={() => handleClick(movie)}>
+                      <MovieCard
+                        key={movie.id}
+                        movie={{
+                          title: movie.title
+                            ? movie.title
+                            : movie.original_name,
+                          ratings: movie.ratings,
+                          posterUrl: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                          id: movie.id,
+                        }}
+                      />
+                    </div>
+                  );
+                })
+              : ""}
+          </div>
+          <button className="carousel-btn right" onClick={scrollRight3}>
             &#8250;
           </button>
         </div>
