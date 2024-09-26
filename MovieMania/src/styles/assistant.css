@@ -126,6 +126,9 @@
 .box .moviesSugest::-webkit-scrollbar {
   display: none;
 }
+.box .moviesSugest .skeleton {
+  background-color: rgb(39, 39, 39);
+}
 .box .moviesSugest .moviesArea_next {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
