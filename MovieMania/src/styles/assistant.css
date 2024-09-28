@@ -126,22 +126,30 @@
 .box .moviesSugest::-webkit-scrollbar {
   display: none;
 }
-.box .moviesSugest .box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  margin-top: 10px;
-}
-.box .moviesSugest .box .skeleton {
-  background-color: rgb(39, 39, 39);
-}
 .box .moviesSugest .moviesArea_next {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 10px; /* Adjust the gap between cards */
   padding: 15px;
+}
+.box .moviesSugest .moviesArea_next .box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 1vh;
+  margin-left: 1vh;
+  padding-right: 1vh;
+}
+.box .moviesSugest .moviesArea_next .box .skeleton_box {
+  background-color: rgb(39, 39, 39);
+  width: 100%;
+  height: 22vh;
+}
+.box .moviesSugest .moviesArea_next .box .skeleton_text {
+  background-color: rgb(39, 39, 39);
+  width: 100%;
 }
 @media (max-width: 430px) {
   .box {

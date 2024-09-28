@@ -171,24 +171,6 @@
             &::-webkit-scrollbar {
                 display: none;
             }
-           
-
-              & .box{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height:100%;
-            margin-top:10px ;
-            // width: 250px;
-            // padding: 10px;
-            // background-color: #2a2e2e;
-            
-            & .skeleton{
-            background-color: rgb(39, 39, 39);
-        }}  
-            
-        
         
         // width: 4%0;
         // background-color: rgb(154, 20, 20);
@@ -199,6 +181,30 @@
         gap: 10px; /* Adjust the gap between cards */
         padding: 15px;
         // background-color: rgba(179, 177, 177, 0.419);
+        & .box{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height:100%;
+            margin-top:1vh ;
+            margin-left: 1vh;
+            padding-right: 1vh;
+            // width: 250px;
+            // padding: 10px;
+            // background-color: #eb154b;
+            
+                & .skeleton_box{
+                background-color: rgb(39, 39, 39);
+                width: 100%;
+                height: 22vh;
+                }
+                & .skeleton_text{
+                    background-color: rgb(39, 39, 39);
+                    width: 100%;
+                    // height: 20px;
+                }
+            } 
        }
     }
 @media (max-width: 430px){
