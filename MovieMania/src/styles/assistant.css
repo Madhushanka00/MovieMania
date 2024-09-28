@@ -126,7 +126,15 @@
 .box .moviesSugest::-webkit-scrollbar {
   display: none;
 }
-.box .moviesSugest .skeleton {
+.box .moviesSugest .box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 10px;
+}
+.box .moviesSugest .box .skeleton {
   background-color: rgb(39, 39, 39);
 }
 .box .moviesSugest .moviesArea_next {

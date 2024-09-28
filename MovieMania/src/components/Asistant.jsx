@@ -168,20 +168,32 @@ Let’s explore the world of movies together! 🍿🎥`,
             })
           ) : (
             // <p>OOps! No movies found.</p>
-            <Box sx={{ pt: 0.5 }}>
-              <Skeleton
-                className="skeleton"
-                variant="rounded"
-                width={250}
-                height={100}
-                color={"white"}
-              />
-              <Skeleton
-                className="skeleton"
-                variant="text"
-                width={250}
-                sx={{ fontSize: "1.5rem" }}
-              />
+
+            <Box
+              className="grid-container"
+              sx={{
+                display: "grid",
+                gap: 5,
+                gridTemplateColumns: "repeat(3, 1fr)",
+              }}
+            >
+              {[...Array(4)].map((_, index) => (
+                <Box className="box" key={index}>
+                  <Skeleton
+                    className="skeleton"
+                    variant="rounded"
+                    width={200}
+                    height={180}
+                    color={"white"}
+                  />
+                  <Skeleton
+                    className="skeleton"
+                    variant="text"
+                    width={200}
+                    sx={{ fontSize: "1.5rem" }}
+                  />
+                </Box>
+              ))}
             </Box>
           )}
           {goToDetails && (

@@ -171,9 +171,25 @@
             &::-webkit-scrollbar {
                 display: none;
             }
-        & .skeleton{
+           
+
+              & .box{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height:100%;
+            margin-top:10px ;
+            // width: 250px;
+            // padding: 10px;
+            // background-color: #2a2e2e;
+            
+            & .skeleton{
             background-color: rgb(39, 39, 39);
-        }
+        }}  
+            
+        
+        
         // width: 4%0;
         // background-color: rgb(154, 20, 20);
 
