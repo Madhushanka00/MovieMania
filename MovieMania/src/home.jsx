@@ -45,6 +45,12 @@ const Home = () => {
   useEffect(() => {
     setMovieType("movie");
     setActiveType("movie");
+    fetch(`https://dspndkpg-5000.asse.devtunnels.ms/genres?media_type=movie`)
+      .then((res) => res.json())
+      .then((data) => {
+        setGenres(data.genres);
+        // console.log(data.genres);
+      });
     setActiveGenreName("Action");
     setActiveGenre(28);
   }, []);

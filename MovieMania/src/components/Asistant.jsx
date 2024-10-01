@@ -21,6 +21,7 @@ const Asistant = () => {
   const [goToDetails, setGoToDetails] = useState(false);
   const [selectedMovieId, setSelectedMovieId] = useState(null);
   const [selectedMovieDetails, setSelectedMovieDetails] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const [messages, setMessages] = useState([
     {
@@ -51,20 +52,14 @@ Let’s explore the world of movies together! 🍿🎥`,
     setGoToDetails(false);
   };
 
-  // useEffect(() => {
-  //   setMessages[
-  //     {
-  //       text: "Hi, I am FilmSeeker, your personal movie assistant. How can I help",
-  //       sender: "bot",
-  //     }
-  //   ];
-  // }, []);
   const sendMsg = () => {
     const userMessage = msgRef.current.value.trim();
     if (userMessage === "") return;
 
     // Add the user's message to the state
     setMessages([...messages, { text: userMessage, sender: "user" }]);
+
+    setLoading(true); // Set loading to true when message is sent
 
     // Clear the text input
     msgRef.current.value = "";
@@ -82,9 +77,11 @@ Let’s explore the world of movies together! 🍿🎥`,
           ...prevMessages,
           { text: data, sender: "bot" },
         ]);
+        setLoading(false); // Set loading to false when message is received
       })
       .catch((error) => {
         console.error("Error:", error);
+        setLoading(false); // Set loading to false when message is received
       });
   };
   useEffect(() => {
@@ -132,6 +129,18 @@ Let’s explore the world of movies together! 🍿🎥`,
                 )}
               </div>
             ))}
+            {/* Show 'thinking...' message while waiting for response */}
+            {loading && (
+              <div className="bot">
+                <div className="markdown">
+                  <div className="thinking-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
           <div className="chatInput">
             <input
