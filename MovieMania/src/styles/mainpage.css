@@ -168,17 +168,29 @@
   height: 30vh;
   width: 100%;
   margin-top: 0%;
-  margin-left: 1%;
+  margin-right: 20px;
 }
 .HomeMain .recommendations .moveara .moviesArea_Recommendations .skeletonArea .box .skeleton_rect {
   background-color: rgb(39, 39, 39);
-  width: 10vw;
+  width: 150px;
   height: 85%;
 }
 .HomeMain .recommendations .moveara .moviesArea_Recommendations .skeletonArea .box .skeleton_text {
   background-color: rgb(39, 39, 39);
-  width: 10vw;
+  width: 150px;
   height: 15%;
+}
+@media (max-width: 770px) {
+  .HomeMain .skeleton_rect {
+    background-color: rgb(39, 39, 39);
+    width: 130px !important;
+    height: 85%;
+  }
+  .HomeMain .skeleton_text {
+    background-color: rgb(39, 39, 39);
+    width: 130px !important;
+    height: 15%;
+  }
 }
 @media (max-width: 430px) {
   .HomeMain .titlebox {
