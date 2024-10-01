@@ -125,19 +125,19 @@ const MoviesArea = ({ mode, tab, type }) => {
           </div>
         ) : (
           <>
-            {[...Array(4)].map((_, index) => (
+            {[...Array(6)].map((_, index) => (
               <div className="box" key={index}>
                 <Skeleton
-                  className="skeleton"
+                  className="skeleton_rect"
                   variant="rounded"
-                  width={200}
-                  height={180}
+                  // width={20v}
+                  // height={180}
                   color={"white"}
                 />
                 <Skeleton
-                  className="skeleton"
+                  className="skeleton_text"
                   variant="text"
-                  width={200}
+                  // width={200}
                   sx={{ fontSize: "1.5rem" }}
                 />
               </div>
