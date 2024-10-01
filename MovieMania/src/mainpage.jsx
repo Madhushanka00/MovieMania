@@ -5,6 +5,7 @@ import { MovieContext } from "./components/movieContext";
 import MovieCard from "./components/MovieCard";
 import axios from "axios";
 import DetailedView from "./components/DetailedView";
+import { Skeleton } from "@mui/material";
 
 const MainPage = () => {
   const {
@@ -289,25 +290,43 @@ const MainPage = () => {
           </button>
           {/* <MoviesArea mode="topRated" tab={"Home"} type="movie" /> */}
           <div className="moviesArea_Recommendations" ref={carouselRef3}>
-            {Array.isArray(recomendations) && recomendations.length > 0
-              ? trendings.map((movie) => {
-                  return (
-                    <div key={movie.id} onClick={() => handleClick(movie)}>
-                      <MovieCard
-                        key={movie.id}
-                        movie={{
-                          title: movie.title
-                            ? movie.title
-                            : movie.original_name,
-                          ratings: movie.ratings,
-                          posterUrl: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-                          id: movie.id,
-                        }}
-                      />
-                    </div>
-                  );
-                })
-              : ""}
+            {Array.isArray(recomendations) && recomendations.length > 0 ? (
+              trendings.map((movie) => {
+                return (
+                  <div key={movie.id} onClick={() => handleClick(movie)}>
+                    <MovieCard
+                      key={movie.id}
+                      movie={{
+                        title: movie.title ? movie.title : movie.original_name,
+                        ratings: movie.ratings,
+                        posterUrl: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                        id: movie.id,
+                      }}
+                    />
+                  </div>
+                );
+              })
+            ) : (
+              <div className="skeletonArea">
+                {[...Array(10)].map((_, index) => (
+                  <div className="box">
+                    <Skeleton
+                      className="skeleton_rect"
+                      variant="rounded"
+                      // width={200}
+                      // height={180}
+                      color={"white"}
+                    />
+                    <Skeleton
+                      className="skeleton_text"
+                      variant="text"
+                      // width={200}
+                      sx={{ fontSize: "1.5rem" }}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
           <button className="carousel-btn right" onClick={scrollRight3}>
             &#8250;

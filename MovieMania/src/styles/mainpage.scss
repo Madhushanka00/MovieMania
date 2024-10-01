@@ -213,6 +213,37 @@
                 &::-webkit-scrollbar {
                     display: none;
                 }
+                & .skeletonArea{
+                    display: flex;
+                    flex-direction: row;
+                    width: 90vw;
+                    margin-top: 2%;
+                    & .box{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        height: 30vh;
+                        width: 100%;
+                        // background-color: antiquewhite;
+                        // width: 100%;
+                        margin-top: 0%;
+                        margin-left: 1%;
+                        // margin-right: 1%;
+                        
+                        & .skeleton_rect{
+                          background-color: rgb(39, 39, 39);
+                                    width: 10vw;
+                                    height: 85%;
+                        }
+                        & .skeleton_text{
+                          background-color: rgb(39, 39, 39);
+                                    width: 10vw;
+                                    height: 15%;
+                        }
+                      }
+                }
+                
             }
             
         }
@@ -385,7 +416,9 @@
                 &::-webkit-scrollbar {
                     display: none;
                 }
-            }
+            
+                
+        }
             
         }
     }
