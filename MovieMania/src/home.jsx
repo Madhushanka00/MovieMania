@@ -22,6 +22,7 @@ import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 import NavigateNextRoundedIcon from "@mui/icons-material/NavigateNextRounded";
 // import
 import "./styles/home.css";
+import { set } from "date-fns";
 
 const Home = () => {
   const [genres, setGenres] = useState([]);
@@ -40,6 +41,13 @@ const Home = () => {
   const popularRef = useRef(null);
   const upcomingRef = useRef(null);
   const topRatedRef = useRef(null);
+
+  useEffect(() => {
+    setMovieType("movie");
+    setActiveType("movie");
+    setActiveGenreName("Action");
+    setActiveGenre(28);
+  }, []);
 
   const scrollLeft = () => {
     popularRef.current.scrollBy({ left: -800, behavior: "smooth" });

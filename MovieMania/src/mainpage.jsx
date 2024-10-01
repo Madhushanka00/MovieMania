@@ -197,7 +197,7 @@ const MainPage = () => {
             <div className="moviesArea_Mainpage" ref={carouselRef}>
               {console.log("Movies:", movies)}
               {console.log("Type:", type)}
-
+              {/* {movies && movies.length > 0 ? "" : ""} */}
               {movies.map((movie) => {
                 return (
                   <div key={movie.id} onClick={() => handleClick(movie)}>
