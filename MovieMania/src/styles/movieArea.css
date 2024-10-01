@@ -33,6 +33,18 @@
 .allWrap .carousel-btn:hover {
   transform: scale(1.5);
 }
+.allWrap .box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 45vh;
+  margin-top: 0%;
+  padding: 0%;
+}
+.allWrap .box .skeleton {
+  background-color: rgb(39, 39, 39);
+}
 @media (max-width: 430px) {
   .allWrap .carousel-btn {
     font-size: 2rem !important;

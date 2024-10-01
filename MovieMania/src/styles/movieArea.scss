@@ -46,6 +46,22 @@
 
   }
 
+  & .box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 45vh;
+    margin-top: 0%;
+    padding: 0%;
+    // background-color: aliceblue;
+    & .skeleton{
+      background-color: rgb(39, 39, 39);
+                // width: 100%;
+                // height: 22vh;
+    }
+  }
+
 @media (max-width: 430px) {
   
   & .carousel-btn {

@@ -4,6 +4,8 @@ import axios from "axios";
 import MovieCard from "./MovieCard"; // import your MovieCard component
 import "../styles/movieArea.css";
 import DetailedView from "./DetailedView";
+import Skeleton from "@mui/material/Skeleton";
+import Box from "@mui/material/Box";
 
 const MoviesArea = ({ mode, tab, type }) => {
   const [movies, setMovies] = useState([]);
@@ -99,27 +101,49 @@ const MoviesArea = ({ mode, tab, type }) => {
         <button className="carousel-btn left" onClick={scrollLeft}>
           &#8249;
         </button>
-        <div className="moviesArea_next" ref={carouselRef}>
-          {movies.map((movie) => {
-            // console.log("Movie:", movie);
-            return (
-              <>
-                <div onClick={() => handleClick(movie)}>
-                  <MovieCard
-                    key={movie.id}
-                    movie={{
-                      title:
-                        type === "movie" ? movie.title : movie.original_name,
-                      ratings: movie.ratings,
-                      posterUrl: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-                      id: movie.id,
-                    }}
-                  />
-                </div>
-              </>
-            );
-          })}
-        </div>
+        {movies && movies.length > 0 ? (
+          <div className="moviesArea_next" ref={carouselRef}>
+            {movies.map((movie) => {
+              // console.log("Movie:", movie);
+              return (
+                <>
+                  <div onClick={() => handleClick(movie)}>
+                    <MovieCard
+                      key={movie.id}
+                      movie={{
+                        title:
+                          type === "movie" ? movie.title : movie.original_name,
+                        ratings: movie.ratings,
+                        posterUrl: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                        id: movie.id,
+                      }}
+                    />
+                  </div>
+                </>
+              );
+            })}
+          </div>
+        ) : (
+          <>
+            {[...Array(4)].map((_, index) => (
+              <div className="box" key={index}>
+                <Skeleton
+                  className="skeleton"
+                  variant="rounded"
+                  width={200}
+                  height={180}
+                  color={"white"}
+                />
+                <Skeleton
+                  className="skeleton"
+                  variant="text"
+                  width={200}
+                  sx={{ fontSize: "1.5rem" }}
+                />
+              </div>
+            ))}
+          </>
+        )}
         <button className="carousel-btn right" onClick={scrollRight}>
           &#8250;
         </button>
