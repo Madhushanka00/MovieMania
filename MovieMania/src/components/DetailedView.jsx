@@ -182,7 +182,7 @@ const DetailedView = ({ movie, onClose, type }) => {
   const [rating, setRating] = useState(0);
   // console.log("Movie ID:", movieId);
   // const movieId = 533535;
-  const handleRateChange = (value) => {
+  const handleRateChange = (event, value) => {
     console.log("Rating:", value);
     setRating(value);
     let title = movie.title ? movie.title : movie.original_name;
@@ -334,10 +334,11 @@ const DetailedView = ({ movie, onClose, type }) => {
                   <Rating
                     className="stars"
                     name="half-rating"
-                    value={rating} // Bind the rating value from the state
+                    // Bind the rating value from the state
                     // value={rating} // Bind the rating value from the state
                     precision={0.5}
                     onChange={handleRateChange} // Handles rating changes
+                    value={rating}
                   />
                 </Stack>
               </div>
