@@ -7,6 +7,8 @@ import { Rate } from "antd";
 import { yellow } from "@mui/material/colors";
 import axios from "axios";
 import { MovieContext } from "./movieContext";
+import Rating from "@mui/material/Rating";
+import Stack from "@mui/material/Stack";
 
 const DetailedView = ({ movie, onClose, type }) => {
   const detailsRef = useRef(null);
@@ -205,6 +207,15 @@ const DetailedView = ({ movie, onClose, type }) => {
   console.log("Current User ID:", currentUserId);
   console.log("Movie ID:", movie.id);
 
+  const [ratingValue, setRatingValue] = useState(rating); // Default value of 2.5
+  console.log("Rating value:", ratingValue); // Log the rating value
+
+  // Handler to update the rating value
+  const handleRatingChange = (event, newValue) => {
+    setRatingValue(newValue); // Updates the state with the new rating value
+    console.log("Rating value:", newValue); // You can also log it or use it as needed
+  };
+
   useEffect(() => {
     axios
       .get(
@@ -311,13 +322,22 @@ const DetailedView = ({ movie, onClose, type }) => {
 
               <div className="myRatings">
                 <div className="txt">How much I like {"  "}</div>
-                <Rate
+                {/* <Rate
                   allowHalf
                   className="stars"
                   style={{ colorPrimary: yellow[500] }}
                   onChange={handleRateChange}
                   value={rating}
-                />
+                /> */}
+                <Stack spacing={1}>
+                  <Rating
+                    className="stars"
+                    name="half-rating"
+                    value={rating} // Bind the rating value from the state
+                    precision={0.5}
+                    onChange={handleRateChange} // Handles rating changes
+                  />
+                </Stack>
               </div>
               {/* Render other movie details here */}
             </div>
