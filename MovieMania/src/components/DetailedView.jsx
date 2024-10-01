@@ -207,14 +207,14 @@ const DetailedView = ({ movie, onClose, type }) => {
   console.log("Current User ID:", currentUserId);
   console.log("Movie ID:", movie.id);
 
-  const [ratingValue, setRatingValue] = useState(rating); // Default value of 2.5
-  console.log("Rating value:", ratingValue); // Log the rating value
+  // const [ratingValue, setRatingValue] = useState(rating); // Default value of 2.5
+  // console.log("Rating value:", ratingValue); // Log the rating value
 
   // Handler to update the rating value
-  const handleRatingChange = (event, newValue) => {
-    setRatingValue(newValue); // Updates the state with the new rating value
-    console.log("Rating value:", newValue); // You can also log it or use it as needed
-  };
+  // const handleRatingChange = (event, newValue) => {
+  //   setRatingValue(newValue); // Updates the state with the new rating value
+  //   console.log("Rating value:", newValue); // You can also log it or use it as needed
+  // };
 
   useEffect(() => {
     axios
@@ -330,10 +330,12 @@ const DetailedView = ({ movie, onClose, type }) => {
                   value={rating}
                 /> */}
                 <Stack spacing={1}>
+                  {console.log("rating", rating)}
                   <Rating
                     className="stars"
                     name="half-rating"
                     value={rating} // Bind the rating value from the state
+                    // value={rating} // Bind the rating value from the state
                     precision={0.5}
                     onChange={handleRateChange} // Handles rating changes
                   />
