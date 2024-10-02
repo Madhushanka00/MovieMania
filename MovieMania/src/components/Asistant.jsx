@@ -93,13 +93,13 @@ Let’s explore the world of movies together! 🍿🎥`,
       .then((res) => res.text())
       .then((data) => {
         console.log(data);
-        if (data == {} || data == [] || data.trim() === "") {
+        if (!data || data.length === 0 || data.trim() === "") {
           console.log("no movies");
         } else {
+          console.log("data", data, "data.length", data.length);
           axios
             .get("https://dspndkpg-5000.asse.devtunnels.ms/chatMovieDetails")
             .then((response) => {
-              console.log(response.data); // Access the data in the response
               setMovies(response.data);
               console.log("movies,", response.data);
             })
