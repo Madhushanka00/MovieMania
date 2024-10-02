@@ -81,7 +81,15 @@ Let’s explore the world of movies together! 🍿🎥`,
       })
       .catch((error) => {
         console.error("Error:", error);
+
         setLoading(false); // Set loading to false when message is received
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          {
+            text: "Oops! Something went wrong 🔌❌ . Please try again later.",
+            sender: "bot",
+          },
+        ]);
       });
   };
   useEffect(() => {
