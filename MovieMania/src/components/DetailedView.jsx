@@ -9,6 +9,7 @@ import axios from "axios";
 import { MovieContext } from "./movieContext";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
+// import { set } from "mongoose";
 
 const DetailedView = ({ movie, onClose, type }) => {
   const detailsRef = useRef(null);
@@ -16,6 +17,7 @@ const DetailedView = ({ movie, onClose, type }) => {
   const [torrents, setTorrents] = useState([]);
   const [selectUrl, setSelectUrl] = useState("");
   const [initialRating, setInitialRating] = useState(0);
+  const [added, setAdded] = useState(false);
   const genreDetails = [
     {
       id: 28,
@@ -133,8 +135,6 @@ const DetailedView = ({ movie, onClose, type }) => {
   };
 
   const addToWatchlist = () => {
-    console.log("Adding to watchlist");
-
     let title = movie.title ? movie.title : movie.original_name;
     let mediaType = movie.media_type; // Assuming `media_type` is part of the `movie` object
     let userId = currentUserId; // Replace with the actual user ID logic
@@ -152,6 +152,7 @@ const DetailedView = ({ movie, onClose, type }) => {
       .post("https://dspndkpg-3000.asse.devtunnels.ms/addToWatchlist", data)
       .then((res) => {
         console.log("Added to watchlist:", res.data);
+        setAdded(true);
       })
       .catch((err) => {
         console.error("Error adding to watchlist:", err);
@@ -316,8 +317,11 @@ const DetailedView = ({ movie, onClose, type }) => {
                   <p>{movie.overview}</p>
                 </div>
               </div>
-              <button className="watchlist" onClick={addToWatchlist}>
-                Add to Watchlist
+              <button
+                className={`${added ? "Watchlistadded" : "Watchlist"}`}
+                onClick={addToWatchlist}
+              >
+                {added ? "Added to Watchlist" : "Add to Watchlist"}
               </button>
               <button className="Download" onClick={searchForTorrent}>
                 Download Torrent

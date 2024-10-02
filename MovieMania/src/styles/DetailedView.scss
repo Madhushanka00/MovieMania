@@ -189,7 +189,7 @@
                 }
             }
         }
-            & .watchlist ,.Download {
+            & .watchlist ,.Download ,.Watchlistadded {
                 background-color: #4A5568;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
                 // width: 6vw;
@@ -207,8 +207,19 @@
 
                 &:hover{
                     background-color: #2d3748;
+                } 
+
+                & .added{
+                    background-color: #084ec0 !important;
                 }
             }
+            & .Watchlistadded{
+
+                background-color: #2d3748;
+                color: #9e9e9e;
+               
+            }
+
             & .titletorents{
                 padding-top: 2vh;
                 padding-left: 2vh;
