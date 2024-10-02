@@ -105,6 +105,14 @@ Let’s explore the world of movies together! 🍿🎥`,
             })
             .catch((error) => {
               console.error("Error fetching movie details:", error);
+              // Add an error message to the chat
+              setMessages((prevMessages) => [
+                ...prevMessages,
+                {
+                  text: "Oops! Something went wrong. Please try again later.",
+                  sender: "bot",
+                },
+              ]);
             });
         }
       });

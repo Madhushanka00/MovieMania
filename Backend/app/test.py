@@ -264,31 +264,40 @@ def get_chatagent_movies():
 def get_chatagent_movielist():
     currentList =[]
     global respondedmovies 
+    
     if len(respondedmovies):  # Assuming respondedmovies is defined elsewhere
         api_key = current_app.config['TMDB_API_KEY']
-        # print(api_key)
-        for movie in respondedmovies:
-            response = requests.get(
-                f'https://api.themoviedb.org/3/search/multi',
-                params={
-                    'query': movie,
-                    'api_key': api_key,
-                    'include_adult': 'false',
-                    'language': 'en-US',
-                    'page': 1
-                }
-            )
-            if response.status_code == 200:
-                movie_details = response.json()  # Extract JSON from the Response object
-                if movie_details.get('results'):  # Check if there are results
-                    currentList.append(movie_details['results'][0])  # Append the first result
-            else:
-                print(f"Error fetching details for {movie}: {response.status_code}")
-        print(currentList)
+
+        def fetch_movie_details(movie):
+            url = 'https://api.themoviedb.org/3/search/multi'
+            params = {
+                'query': movie,
+                'api_key': api_key,
+                'include_adult': 'false',
+                'language': 'en-US',
+                'page': 1
+            }
+            try:
+                response = requests.get(url, params=params)
+                if response.status_code == 200:
+                    movie_details = response.json()
+                    if movie_details.get('results'):
+                        return movie_details['results'][0]  # Return the first result
+            except Exception as e:
+                print(f"Error fetching details for {movie}: {e}")
+            return None
+
+        # Use ThreadPoolExecutor to make requests concurrently
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            results = list(executor.map(fetch_movie_details, respondedmovies))
+
+        # Filter out any None results (in case of failed requests)
+        currentList = [result for result in results if result is not None]
+
         return jsonify(currentList)  # Return the list of movie details as JSON
 
     else:
-        return jsonify({"error": "No movies to fetch details for"}), 400  
+        return jsonify({"error": "No movies to fetch details for"}), 400
     
 @app.route('/searchmovies', methods=['GET'])
 def search_movies():
