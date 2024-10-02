@@ -132,6 +132,32 @@ const DetailedView = ({ movie, onClose, type }) => {
     }
   };
 
+  const addToWatchlist = () => {
+    console.log("Adding to watchlist");
+
+    let title = movie.title ? movie.title : movie.original_name;
+    let mediaType = movie.media_type; // Assuming `media_type` is part of the `movie` object
+    let userId = currentUserId; // Replace with the actual user ID logic
+    let movieId = movie.id; // Assuming `movie.id` is the movie ID
+
+    // Construct the data object that matches the backend endpoint's expected structure
+    const data = {
+      userId: userId,
+      movieId: movieId,
+      movieTitle: title,
+      media_type: mediaType,
+    };
+
+    axios
+      .post("https://dspndkpg-3000.asse.devtunnels.ms/addToWatchlist", data)
+      .then((res) => {
+        console.log("Added to watchlist:", res.data);
+      })
+      .catch((err) => {
+        console.error("Error adding to watchlist:", err);
+      });
+  };
+
   useEffect(() => {
     if (selectUrl) {
       console.log("Downloading torrent link:", selectUrl);
@@ -290,7 +316,9 @@ const DetailedView = ({ movie, onClose, type }) => {
                   <p>{movie.overview}</p>
                 </div>
               </div>
-              <button className="watchlist">Add to Watchlist</button>
+              <button className="watchlist" onClick={addToWatchlist}>
+                Add to Watchlist
+              </button>
               <button className="Download" onClick={searchForTorrent}>
                 Download Torrent
               </button>

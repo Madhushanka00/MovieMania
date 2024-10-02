@@ -265,6 +265,33 @@ app.post('/register/:username/:email/:password', async (req, res) => {
     }
 });
 
+app.post('/addToWatchlist', async (req, res) => {
+    const { userId, movieId, movieTitle, media_type } = req.body;
+    // console.log("req.body",req.body);
+
+    try {
+        const result = await mdb.collection('watchList').updateOne(
+            { userId: userId, movieId: movieId , movieTitle: movieTitle, media_type: media_type},
+            {
+                $set: {
+                    userId: userId,
+                    movieId: movieId,
+                    movieTitle: movieTitle,
+                    media_type: media_type,
+                    updatedAt: new Date()
+                }
+            },
+            { upsert: true } // Insert if no document matches the query
+        );
+
+        console.log("Watchlist updated successfully", userId, movieId);
+        res.status(200).json({ message: 'Watchlist updated successfully', userId, movieId });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Failed to update watchlist', error });
+    }
+});
+
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
