@@ -18,6 +18,7 @@ import Genres from "./genres";
 import MovieContext from "./components/movieContext";
 import Ratings from "./components/ratings";
 import History from "./components/history";
+import Watchlist from "./components/watchlist";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 import NavigateNextRoundedIcon from "@mui/icons-material/NavigateNextRounded";
 // import
@@ -37,6 +38,7 @@ const Home = () => {
   const [currentUserId, setCurrentUserId] = useState(null);
   const [ratingRender, setRatingRender] = useState(false);
   const [historyRender, setHistoryRender] = useState(false);
+  const [watchlistRender, setWatchlistRender] = useState(false);
   const [draver, setDraver] = useState(false);
   const popularRef = useRef(null);
   const upcomingRef = useRef(null);
@@ -70,11 +72,18 @@ const Home = () => {
   const gotoRatings = () => {
     setRatingRender(true);
     setHistoryRender(false);
+    setWatchlistRender(false);
   };
 
   const gotoHistory = () => {
     setHistoryRender(true);
     setRatingRender(false);
+    setWatchlistRender(false);
+  };
+  const gotoWatchlist = () => {
+    setWatchlistRender(true);
+    setRatingRender(false);
+    setHistoryRender(false);
   };
   const toggleDrawer = () => {
     setDraver(!draver);
@@ -261,7 +270,7 @@ const Home = () => {
           <img src="../public/logo-02.svg" className="mainicon" />
           <StarOutlinedIcon className="Icons" onClick={gotoRatings} />
           <AccessTimeIcon className="Icons" onClick={gotoHistory} />
-          <BookmarkAddIcon className="Icons" />
+          <BookmarkAddIcon className="Icons" onClick={gotoWatchlist} />
           <SettingsOutlinedIcon className="Icons" />
           <LogoutOutlinedIcon className="bottomIcon" onClick={handleLogout} />
         </div>
@@ -290,6 +299,14 @@ const Home = () => {
           <History
             setHistoryRender={setHistoryRender}
             historyRender={historyRender}
+          />
+        ) : (
+          ""
+        )}
+        {watchlistRender ? (
+          <Watchlist
+            setWatchlistRender={setWatchlistRender}
+            watchlistRender={watchlistRender}
           />
         ) : (
           ""
