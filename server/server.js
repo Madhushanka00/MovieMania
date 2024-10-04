@@ -332,6 +332,25 @@ app.get('/checkWatchList', async (req, res) => {
 );
 
 
+app.get('/getWatchlist', async (req, res) => {
+    const { userId } = req.query;
+    // console.log("userId",userId);
+    try {
+        // Find the user by userId
+        const watchlist = await mdb.collection('watchList').find({ userId: userId }).toArray();
+        
+        if (!watchlist) {
+            console.log("Watchlist not found", userId);
+            return res.status(404).json({ message: 'Watchlist not found' });
+        }
+
+        console.log("Watchlist found", watchlist);
+        res.status(200).json({ watchlist });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Failed to get watchlist', error });
+    }
+});
 
 
 
