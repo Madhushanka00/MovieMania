@@ -130,6 +130,7 @@ const MoviesArea = ({ mode, tab, type }) => {
                 <Skeleton
                   className="skeleton_rect"
                   variant="rounded"
+                  animation="wave"
                   // width={20v}
                   // height={180}
                   color={"white"}
@@ -137,6 +138,7 @@ const MoviesArea = ({ mode, tab, type }) => {
                 <Skeleton
                   className="skeleton_text"
                   variant="text"
+                  animation="wave"
                   // width={200}
                   sx={{ fontSize: "1.5rem" }}
                 />

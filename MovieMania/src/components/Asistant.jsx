@@ -202,11 +202,13 @@ Let’s explore the world of movies together! 🍿🎥`,
                     variant="rounded"
                     // width={200}
                     // height={180}
+                    animation="wave"
                     color={"white"}
                   />
                   <Skeleton
                     className="skeleton_text"
                     variant="text"
+                    animation="wave"
                     // width={200}
                     sx={{ fontSize: "1.5rem" }}
                   />

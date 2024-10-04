@@ -282,11 +282,13 @@ const MainPage = () => {
                       variant="rounded"
                       // width={200}
                       // height={180}
+                      animation="wave"
                       color={"white"}
                     />
                     <Skeleton
                       className="skeleton_text"
                       variant="text"
+                      animation="wave"
                       // width={200}
                       sx={{ fontSize: "1.5rem" }}
                     />
@@ -331,6 +333,7 @@ const MainPage = () => {
                     <Skeleton
                       className="skeleton_rect"
                       variant="rounded"
+                      animation="wave"
                       // width={200}
                       // height={180}
                       color={"white"}
@@ -338,6 +341,7 @@ const MainPage = () => {
                     <Skeleton
                       className="skeleton_text"
                       variant="text"
+                      animation="wave"
                       // width={200}
                       sx={{ fontSize: "1.5rem" }}
                     />

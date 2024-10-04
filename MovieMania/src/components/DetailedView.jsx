@@ -321,7 +321,7 @@ const DetailedView = ({ movie, onClose, type }) => {
                 className={`${added ? "Watchlistadded" : "watchlist"}`}
                 onClick={addToWatchlist}
               >
-                {added ? "Added to Watchlist" : "Add to Watchlist"}
+                {added ? "Remove From Watchlist" : "Add to Watchlist"}
               </button>
               <button className="Download" onClick={searchForTorrent}>
                 Download Torrent
