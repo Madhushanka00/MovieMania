@@ -255,6 +255,18 @@ const DetailedView = ({ movie, onClose, type }) => {
       .catch((error) => {
         console.error("Error fetching movie details:", error);
       });
+
+    axios
+      .get(
+        `https://dspndkpg-3000.asse.devtunnels.ms/checkWatchList?userId=${currentUserId}&movieId=${movie.id}&media_type=${type}`
+      )
+      .then((response) => {
+        console.log("watchlist details here :", response.request.status);
+        if (response.request.status === 200) {
+          setAdded(true);
+        }
+        // if(response.data);
+      });
   }, []);
 
   const handleClose = () => {
