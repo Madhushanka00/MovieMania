@@ -21,10 +21,19 @@ const Watchlist = ({ setWatchlistRender, watchlistRender }) => {
     }));
   };
 
+  const deleteSelected = () => {
+    const selectedMovies = Object.keys(watchedStatus).filter(
+      (movieId) => watchedStatus[movieId]
+    );
+    console.log(watchedStatus);
+  };
+
   const handleClickOutside = (event) => {
     if (watchRef.current && !watchRef.current.contains(event.target)) {
       setIsVisible(false); // Close the profile when clicked
+
       setTimeout(() => setWatchlistRender(false), 500);
+      deleteSelected();
       //   setRatingRender(false); // Close the profile when clicked outside
       //   console.log("Clicked Outside");
     }
