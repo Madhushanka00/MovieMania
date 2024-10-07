@@ -14,6 +14,11 @@ const Watchlist = ({ setWatchlistRender, watchlistRender }) => {
   const [checked, setChecked] = React.useState(true);
   const [watchedStatus, setWatchedStatus] = useState({});
   const [toDelete, setToDelete] = useState([]);
+  const toDeleteRef = useRef(toDelete);
+
+  useEffect(() => {
+    toDeleteRef.current = toDelete;
+  }, [toDelete]);
 
   const handleChange = (movieId) => {
     // print("MovieId: ", movieId);
@@ -35,20 +40,22 @@ const Watchlist = ({ setWatchlistRender, watchlistRender }) => {
   };
 
   const deleteSelected = (listitems) => {
-    // const selectedMovies = Object.keys(watchedStatus).filter(
-    //   (movieId) => !watchedStatus[movieId]
-    // );
+    axios.post("https://dspndkpg-3000.asse.devtunnels.ms/removeFromWatchlist", {
+      userId: currentUserId,
+      movieIds: listitems,
+    });
+    //
+
     console.log(listitems);
   };
 
   const handleClickOutside = (event) => {
-    console.log(toDelete);
     if (watchRef.current && !watchRef.current.contains(event.target)) {
       setIsVisible(false); // Close the profile when clicked
 
       setTimeout(() => setWatchlistRender(false), 500);
 
-      deleteSelected(toDelete);
+      deleteSelected(toDeleteRef.current);
       // setRatingRender(false); // Close the profile when clicked outside
       // console.log("Clicked Outside");
     }

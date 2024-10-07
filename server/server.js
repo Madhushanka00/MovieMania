@@ -293,16 +293,17 @@ app.post('/addToWatchlist', async (req, res) => {
 });
 
 app.post('/removeFromWatchlist', async (req, res) => {
-    const { userId, movieId, media_type } = req.body;
-    // console.log("req.body",req.body);
+    const { userId, movieIds} = req.body;
+
 
     try {
-        const result = await mdb.collection('watchList').deleteOne(
-            { userId: userId, movieId: movieId, media_type: media_type }
+        const result = await mdb.collection('watchList').deleteMany(
+            {userId: userId,
+            movieId: { $in: movieIds }}
         );
 
-        console.log("Watchlist updated successfully", userId, movieId);
-        res.status(200).json({ message: 'Watchlist updated successfully', userId, movieId });
+        console.log(`Deleted ${result.deletedCount} items from the watchlist for user ${userId}`);
+        res.status(200).json({ message: `Deleted ${result.deletedCount} items from watchlist`, userId });
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: 'Failed to update watchlist', error });
@@ -344,7 +345,7 @@ app.get('/getWatchlist', async (req, res) => {
             return res.status(404).json({ message: 'Watchlist not found' });
         }
 
-        console.log("Watchlist found", watchlist);
+        // console.log("Watchlist found", watchlist);
         res.status(200).json({ watchlist });
     } catch (error) {
         console.log(error);
