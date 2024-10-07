@@ -312,12 +312,13 @@ app.post('/removeFromWatchlist', async (req, res) => {
 
 
 app.get('/checkWatchList', async (req, res) => {
-    let {userId, movieId, media_type} = req.query;
+    let {userId, movieId} = req.query;
     movieId = parseInt(movieId, 10);
+    console.log(userId, movieId);
     try {
         // Find the user by userId
-        const watchlist = await mdb.collection('watchList').findOne({ userId: userId, movieId: movieId, media_type: media_type});
-        console.log(watchlist);
+        const watchlist = await mdb.collection('watchList').findOne({ userId: userId, movieId: movieId});
+        // console.log(watchlist);
         if (!watchlist) {
             console.log("Watchlist not found", userId ," ", movieId);
             return res.status(404).json({ message: 'Watchlist not found' });
