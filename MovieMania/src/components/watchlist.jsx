@@ -13,29 +13,44 @@ const Watchlist = ({ setWatchlistRender, watchlistRender }) => {
   const [isVisible, setIsVisible] = useState(watchlistRender);
   const [checked, setChecked] = React.useState(true);
   const [watchedStatus, setWatchedStatus] = useState({});
+  const [toDelete, setToDelete] = useState([]);
 
   const handleChange = (movieId) => {
+    // print("MovieId: ", movieId);
+    // console.log("WatchedStatus: ", watchedStatus);
     setWatchedStatus((prevStatus) => ({
       ...prevStatus,
-      [movieId]: !prevStatus[movieId], // Toggle the watched status for the clicked movie
+      [movieId]: !prevStatus[movieId],
+      // Toggle the watched status for the clicked movie
     }));
+    setToDelete((prevSetToDelete) => {
+      if (prevSetToDelete.includes(movieId)) {
+        // Remove the movieId from the array if it exists
+        return prevSetToDelete.filter((id) => id !== movieId);
+      } else {
+        // Add the movieId to the array if it doesn't exist
+        return [...prevSetToDelete, movieId];
+      }
+    });
   };
 
-  const deleteSelected = () => {
-    const selectedMovies = Object.keys(watchedStatus).filter(
-      (movieId) => watchedStatus[movieId]
-    );
-    console.log(watchedStatus);
+  const deleteSelected = (listitems) => {
+    // const selectedMovies = Object.keys(watchedStatus).filter(
+    //   (movieId) => !watchedStatus[movieId]
+    // );
+    console.log(listitems);
   };
 
   const handleClickOutside = (event) => {
+    console.log(toDelete);
     if (watchRef.current && !watchRef.current.contains(event.target)) {
       setIsVisible(false); // Close the profile when clicked
 
       setTimeout(() => setWatchlistRender(false), 500);
-      deleteSelected();
-      //   setRatingRender(false); // Close the profile when clicked outside
-      //   console.log("Clicked Outside");
+
+      deleteSelected(toDelete);
+      // setRatingRender(false); // Close the profile when clicked outside
+      // console.log("Clicked Outside");
     }
   };
 
