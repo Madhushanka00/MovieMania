@@ -56,8 +56,6 @@ const Watchlist = ({ setWatchlistRender, watchlistRender }) => {
       setTimeout(() => setWatchlistRender(false), 500);
 
       deleteSelected(toDeleteRef.current);
-      // setRatingRender(false); // Close the profile when clicked outside
-      // console.log("Clicked Outside");
     }
   };
 
