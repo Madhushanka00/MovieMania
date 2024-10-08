@@ -87,6 +87,11 @@ export default function Form({ setIsLogin, userId, setUserId }) {
             placeholder="Enter your password"
             type="password"
             ref={passRef}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                handleSignIn();
+              }
+            }}
           />
         </div>
         <div className="flex justify-between mt-8 items-center">
