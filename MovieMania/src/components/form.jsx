@@ -23,14 +23,6 @@ export default function Form({ setIsLogin, userId, setUserId }) {
     // Perform any form validation or API calls here
     console.log(userRef.current.value);
     console.log(passRef.current.value);
-    // axios
-    //   .post("https://dspndkpg-3000.asse.devtunnels.ms/register", {
-    //     username: userRef.current.value,
-    //     password: passRef.current.value,
-    //   })
-    //   .then((res) => {
-    //     console.log(res.data);
-    //   });
     fetch("https://dspndkpg-3000.asse.devtunnels.ms/validateUser", {
       method: "POST",
       headers: {
@@ -95,11 +87,6 @@ export default function Form({ setIsLogin, userId, setUserId }) {
             placeholder="Enter your password"
             type="password"
             ref={passRef}
-            // onKeyPress={(e) => {
-            //   if (e.key === "Enter") {
-            //     handleSignIn();
-            //   }
-            // }}
           />
         </div>
         <div className="flex justify-between mt-8 items-center">
