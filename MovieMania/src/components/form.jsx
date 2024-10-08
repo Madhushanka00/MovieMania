@@ -62,9 +62,17 @@ export default function Form({ setIsLogin, userId, setUserId }) {
   const gotoSignup = () => {
     setIsLogin(false);
   };
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleSignIn();
+    }
+  };
 
   return (
-    <div className="bg-gray-800 px-10 py-10 rounded-3xl border-2 border-gray-700">
+    <div
+      className="bg-gray-800 px-10 py-10 rounded-3xl border-2 border-gray-700"
+      onKeyDown={handleKeyDown}
+    >
       <h1 className="text-4xl font-semibold text-white">Welcome Back</h1>
       <p className="font-base text-sm text-gray-400 mt-4">
         Welcome Back to MovieMania! Please enter your details.
@@ -87,11 +95,11 @@ export default function Form({ setIsLogin, userId, setUserId }) {
             placeholder="Enter your password"
             type="password"
             ref={passRef}
-            onKeyPress={(e) => {
-              if (e.key === "Enter") {
-                handleSignIn();
-              }
-            }}
+            // onKeyPress={(e) => {
+            //   if (e.key === "Enter") {
+            //     handleSignIn();
+            //   }
+            // }}
           />
         </div>
         <div className="flex justify-between mt-8 items-center">

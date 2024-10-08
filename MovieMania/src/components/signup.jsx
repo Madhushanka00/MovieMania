@@ -71,6 +71,11 @@ export default function Signup({ setIsLogin, userId, setUserId }) {
     // }
     // // navigate("/home");
   };
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleSignUp();
+    }
+  };
   const gotoSignin = () => {
     setIsLogin(true);
   };
@@ -81,7 +86,7 @@ export default function Signup({ setIsLogin, userId, setUserId }) {
       <p className="font-base text-sm text-gray-400 mt-3">
         Join MovieMania! Please fill in your details to create an account.
       </p>
-      <div className="mt-5">
+      <div className="mt-5" onKeyDown={handleKeyDown}>
         <div className="mb-4">
           <label className="text-base font-semibold text-white">Username</label>
           <input
