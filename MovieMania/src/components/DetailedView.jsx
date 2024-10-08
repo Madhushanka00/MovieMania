@@ -309,21 +309,27 @@ const DetailedView = ({ movie, onClose, type }) => {
                   </div>
                   <div className="genras">
                     {console.log("genre_ids", movie.genre_ids)}
-                    {movie.genre_ids && movie.genre_ids.length > 0 ? (
-                      movie.genre_ids.map((genre, index) => {
-                        const genrename = genreDetails.find(
-                          (g) => g.id === genre
-                        );
-                        return (
-                          <span key={genrename.id} className="genre">
-                            {genrename.name}
-                            {index < movie.genre_ids.length - 1 && " | "}
-                          </span>
-                        );
-                      })
-                    ) : (
-                      <span>No genres available</span>
-                    )}
+                    {movie.genre_ids && movie.genre_ids.length > 0
+                      ? movie.genre_ids.map((genre, index) => {
+                          const genrename = genreDetails.find(
+                            (g) => g.id === genre
+                          );
+                          return (
+                            <span key={genrename.id} className="genre">
+                              {genrename.name}
+                              {index < movie.genre_ids.length - 1 && " | "}
+                            </span>
+                          );
+                        })
+                      : // {console.log("genres", movie.genres)}
+                        movie.genres.map((genre, index) => {
+                          return (
+                            <span key={genre.id} className="genre">
+                              {genre.name}
+                              {index < movie.genres.length - 1 && " | "}
+                            </span>
+                          );
+                        })}
                   </div>
                 </div>
                 <div className="Overview">
