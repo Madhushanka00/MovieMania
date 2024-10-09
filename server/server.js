@@ -106,7 +106,11 @@ app.get('/getHistory', async (req, res) => {
     // console.log("userId",userId);
     try {
         // Find the user by userId
-        const history = await mdb.collection('history').find({ userId: userId }).toArray();
+        const history = await mdb.collection('history')
+            .find({ userId: userId })
+            .sort({ timestamp: -1 })  // Assuming `timestamp` is the field for sorting by most recent
+            .limit(50)  // Limit to 50 results
+            .toArray();
         
         if (!history) {
             console.log("History not found", userId);
