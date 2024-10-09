@@ -65,7 +65,7 @@ const Ratings = ({ setRatingRender, ratingRender }) => {
             ))
         ) : (
           <div className="skeletonSet">
-            {[...Array(10)].map((_, index) => (
+            {[...Array(5)].map((_, index) => (
               <Skeleton
                 key={index}
                 className="skeleton_rect"
