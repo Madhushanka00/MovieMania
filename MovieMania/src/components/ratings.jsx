@@ -64,19 +64,17 @@ const Ratings = ({ setRatingRender, ratingRender }) => {
               </div>
             ))
         ) : (
-          <>
-            {[...Array(6)].map((_, index) => (
-              <div className="box" key={index}>
-                <Skeleton
-                  className="skeleton_rect"
-                  variant="text"
-                  animation="wave"
-                  width={200}
-                  sx={{ fontSize: "1.5rem" }}
-                />
-              </div>
+          <div className="skeletonSet">
+            {[...Array(10)].map((_, index) => (
+              <Skeleton
+                key={index}
+                className="skeleton_rect"
+                variant="text"
+                animation="wave"
+                sx={{ fontSize: "1.2rem" }}
+              />
             ))}
-          </>
+          </div>
         )}
       </div>
     </div>

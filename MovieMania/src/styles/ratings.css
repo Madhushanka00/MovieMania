@@ -65,6 +65,13 @@
   color: #f1c40f;
   font-size: 1.2rem;
 }
+.ratingsWindow .skeletonSet .skeleton_rect {
+  flex: 1;
+  width: 100%;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  border-radius: 10px;
+}
 
 .slide-inrate {
   animation: slideinrate 0.5s forwards ease-in-out;
