@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useContext } from "react";
 import axios from "axios";
 import { MovieContext } from "./movieContext";
 import StarIcon from "@mui/icons-material/Star";
+import Skeleton from "@mui/material/Skeleton";
 // import { set } from "mongoose";
 
 const Ratings = ({ setRatingRender, ratingRender }) => {
@@ -49,18 +50,34 @@ const Ratings = ({ setRatingRender, ratingRender }) => {
     >
       <h1>My Ratings</h1>
       <div className="ratings">
-        {ratings
-          .sort((a, b) => b.rating - a.rating)
-          .map((rating, index) => (
-            <div className="rating" key={index}>
-              <h3>{index + 1}.</h3>
-              <div className="title">{rating.movieTitle}</div>
-              <div className="starsratings">
-                <StarIcon className="star" />
-                {rating.rating}
+        {ratings.length !== 0 ? (
+          ratings
+            .sort((a, b) => b.rating - a.rating)
+            .map((rating, index) => (
+              <div className="rating" key={index}>
+                <h3>{index + 1}.</h3>
+                <div className="title">{rating.movieTitle}</div>
+                <div className="starsratings">
+                  <StarIcon className="star" />
+                  {rating.rating}
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+        ) : (
+          <>
+            {[...Array(6)].map((_, index) => (
+              <div className="box" key={index}>
+                <Skeleton
+                  className="skeleton_rect"
+                  variant="text"
+                  animation="wave"
+                  width={200}
+                  sx={{ fontSize: "1.5rem" }}
+                />
+              </div>
+            ))}
+          </>
+        )}
       </div>
     </div>
   );
