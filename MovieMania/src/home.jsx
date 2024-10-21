@@ -253,6 +253,7 @@ const Home = () => {
   };
 
   return (
+    //use hitsiry to navigate when refresh
     <MovieContext.Provider
       value={{
         selectItem,
