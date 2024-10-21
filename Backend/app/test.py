@@ -59,7 +59,7 @@ def recommend(movie):
         # If the movie is not found, return a message
         return("404")
 
-def formatTxtx(movie_input):
+def formatTxtx(movie_input): # neeed to imporve this function
     # Handle input strings by converting them to a common format
     if isinstance(movie_input, str):
         tempFormatedarr =[]
