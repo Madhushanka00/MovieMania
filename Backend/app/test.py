@@ -58,6 +58,11 @@ def recommend(movie):
     except IndexError:
         # If the movie is not found, return a message
         return("404")
+    
+def formatTxtxNew(movie_input):
+    bold_texts = re.findall(r"\*\*(.*?)\*\*", movie_input)
+
+    return bold_texts
 
 def formatTxtx(movie_input): # neeed to imporve this function
     # Handle input strings by converting them to a common format
@@ -98,11 +103,14 @@ def formatTxtx(movie_input): # neeed to imporve this function
     return formatted_movies
 
 def fetch_movie_details(movie_id, api_key):
-    """Fetch movie details from TMDB API for a single movie_id."""
-    response = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}&language=en-US')
-    if response.status_code == 200:
-        return response.json()
-    return None
+    try:
+        response = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}&language=en-US')
+        if response.status_code == 200:
+            return response.json()
+        return None
+    except Exception as e:
+        print(f"Error fetching movie details for {movie_id}: {e}")
+        return None
 
 def search_movie_on_tmdb(movie_title):
     url = f'https://api.themoviedb.org/3/search/movie'
@@ -268,7 +276,7 @@ def get_chatagent_movies():
     # List of movie IDs you want to fetch details for
     movie_row = messages[-1]
 
-    injectMessage = f"""give me the film titles if mentioned here only in a string coma seperated list {movie_row} if no movietitles there, reply empty list"""
+    injectMessage = f"""give me the film titles if mentioned here only in a string coma seperated list {movie_row} if no movietitles there, reply empty list. Ignore if there are any other text like Movies or TV Series"""
     
     response = model.generate_content(injectMessage)
     # print(response)
