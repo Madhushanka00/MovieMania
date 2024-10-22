@@ -13,10 +13,15 @@ export default function Form({ setIsLogin, userId, setUserId }) {
   const passRef = useRef("");
 
   useEffect(() => {
-    // console.log("validateUser", validateUser);
-    validateUser
-      ? navigate("/home", { state: { userId } })
-      : console.log("error login");
+    if (validateUser) {
+      // Set the current tab to 'home' in localStorage
+      localStorage.setItem("currentTab", "Home");
+
+      // Navigate to the home route with the userId state
+      navigate("/home", { state: { userId } });
+    } else {
+      console.log("error login");
+    }
   }, [validateUser]);
 
   const handleSignIn = () => {

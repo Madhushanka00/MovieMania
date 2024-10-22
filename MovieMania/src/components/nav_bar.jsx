@@ -13,7 +13,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 const NavBar = ({ changeTab }) => {
-  const [activeTab, setActiveTab] = useState("Home");
+  const [activeTab, setActiveTab] = useState(
+    localStorage.getItem("currentTab")
+  );
   const { currentUserId, setCurrentUserId } = useContext(MovieContext);
   const [profile, setProfile] = useState(false);
   const [details, setDetails] = useState({});

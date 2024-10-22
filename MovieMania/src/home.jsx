@@ -31,7 +31,7 @@ const Home = () => {
   const [activeGenreName, setActiveGenreName] = useState("");
   const [activeGenre, setActiveGenre] = useState("");
   const [movietype, setMovieType] = useState("");
-  const [tab, setTab] = useState("Home");
+  const [tab, setTab] = useState(localStorage.getItem("currentTab") || "Home");
   const [selectItem, setSelectItem] = useState(null);
   const [clickedItem, SetClickedItem] = useState(null);
   const [similarMovies, setSimilarMovies] = useState([]);
@@ -45,6 +45,8 @@ const Home = () => {
   const topRatedRef = useRef(null);
 
   useEffect(() => {
+    const CurrentTAB = localStorage.getItem("currentTab");
+    setTab(CurrentTAB);
     setMovieType("movie");
     setActiveType("movie");
     fetch(`https://dspndkpg-5000.asse.devtunnels.ms/genres?media_type=movie`)
@@ -131,6 +133,7 @@ const Home = () => {
   };
 
   const changeTab = (tab) => {
+    localStorage.setItem("currentTab", tab);
     setTab(tab);
   };
 
