@@ -38,6 +38,11 @@ const Asistant = () => {
 Let’s explore the world of movies together! 🍿🎥`,
       sender: "bot",
     },
+    {
+      text: "1. give me some recomendations based on my movie ratings",
+      sender: "init",
+    },
+    {},
   ]);
 
   const handleClick = (details) => {
