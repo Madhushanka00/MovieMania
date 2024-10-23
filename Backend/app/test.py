@@ -466,4 +466,44 @@ def get_Trending():
     response = requests.get(f'https://api.themoviedb.org/3/trending/{type}/day?api_key={api_key}')
     return jsonify(response.json())
 
+
+@app.route('/getRecomendationsbasedOnRatings',methods=['GET'])
+def get_RecomendationsbasedOnRatings():
+    userId = request.args.get('userId')
+    ratingsURL = f'https://dspndkpg-3000.asse.devtunnels.ms/getRatings?userId={userId}'
+    ratings_response = requests.get(ratingsURL)
+    ratings_data = None
+    respondedmovies =[]
+    
+    # Check if the request was successful
+    if ratings_response.status_code == 200:
+        # Get the ratings data in JSON format (assuming the external API returns JSON)
+        ratings_data = ratings_response.json()
+    if ratings_data:
+        
+        injectMessage = f"""
+        I have a list of movies with their user ratings here: {ratings_data}.
+        I want you to analyze this list to recommend similar movies that the user might enjoy.
+
+        Please follow these specific instructions:
+        1. Analyze the provided movie titles and ratings.
+        2. Recommend 20 movies and TV shows that are similar to those in the list.
+        3. Only return the movie titles of the recommended movies in a list format. 
+        4. Do not provide explanations or any additional information—only the movie titles in a list format.
+        """
+
+        responseDmovies = model.generate_content(injectMessage)
+
+        injectMessage2 = f"""give me the film titles if mentioned here only in a string coma seperated list {responseDmovies} if no movietitles there, reply empty list. Ignore if there are any other text like Movies or TV Series"""
+    
+        response = model.generate_content(injectMessage2)
+        # print(response)
+        respondedmovies=formatTxtx(response.text)
+        print(respondedmovies, len(respondedmovies))
+
+        print(responseDmovies)
+
+        return responseDmovies.text
+
+
 app.run(port=5000, debug=True , host="0.0.0.0")
