@@ -317,17 +317,7 @@ const Home = () => {
         )}
         <div className="content">
           <NavBar className="navSection" changeTab={changeTab} />
-          <div className="section">
-            {/* <h1>Most Popular</h1>
-          // <div className="moviesArea">
-          //   <MoviesArea mode="popular" />
-          // </div>
-          // <h1>You might like</h1>
-          // <div className="moviesArea">
-          //   <MoviesArea mode="topRated" />
-          </div> */}
-            {renderContent()}
-          </div>
+          <div className="section">{renderContent()}</div>
         </div>
       </div>
     </MovieContext.Provider>
