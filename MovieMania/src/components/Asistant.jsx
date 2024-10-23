@@ -53,6 +53,12 @@ Let’s explore the world of movies together! 🍿🎥`,
     // console.log("Selected Movie Details:", selectedMovieDetails);
   };
 
+  const recomendMovies = (msg) => {
+    if (msg == "init") {
+      console.log("msg", msg);
+    }
+  };
+
   const hideDetailedView = () => {
     setGoToDetails(false);
   };
@@ -148,7 +154,9 @@ Let’s explore the world of movies together! 🍿🎥`,
                   </div>
                 ) : (
                   <div className="markdown">
-                    <ReactMarkdown>{msg.text}</ReactMarkdown>
+                    <ReactMarkdown onClick={() => recomendMovies(msg.sender)}>
+                      {msg.text}
+                    </ReactMarkdown>
                   </div>
                 )}
               </div>
