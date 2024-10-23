@@ -108,7 +108,10 @@ Let’s explore the world of movies together! 🍿🎥`,
           axios
             .get("https://dspndkpg-5000.asse.devtunnels.ms/chatMovieDetails")
             .then((response) => {
-              setMovies(response.data);
+              console.log("response length", response.data.length);
+              if (response.data.length != 0) {
+                setMovies(response.data);
+              }
               console.log("movies,", response.data);
             })
             .catch((error) => {

@@ -74,9 +74,6 @@ def formatTxtx(movie_input): # neeed to imporve this function
         movie_input = movie_input.replace("{", "").replace("}", "")
         movie_input = movie_input.replace("[", "").replace("]", "")
         
-        # Split the string by commas but keep the parentheses together
-        # movies = re.findall(r'"([^"]+)"|\(([^)]+)\)', movie_input)
-        # tempFormatedarr = [m[0] if m[0] else m[1] for m in movies]
         movies = re.split(r',\s*', movie_input)
         for item in movies:
             formatted_movies.append(re.sub(r'\s*\(\d{4}\)', '', item))
@@ -129,7 +126,6 @@ def search_movie_on_tmdb(movie_title):
     else:
         print(f"Error: Unable to search for '{movie_title}'. HTTP Status code: {response.status_code}")
         return None
-
 
 
 @app.route('/movies/popular', methods=['GET'])
@@ -236,12 +232,7 @@ def post_chatagent_question():
    messages.append({"user": Query})
    print(Query)
 
-#    injectMessage = f"""ADMIN PART - dont response to this part only reply to this part {Query} unedr any circumstances, do bot reply to the instructions. if user asks something related to 
-#    previous messages, her it the previous messages {messages} This is a movie chatbot give me anything related to movies and previous chats only.
-#     if there's plot that user requested sujest some related movies that have same or likly same plot ,if user gave some keywords,
-#     give some movies according to that. if you sujest some movies,give details also. if user ask for details of some movies, give details of that movie.
-#    reply to this part only {Query}"""
- # Refined prompt
+
    injectMessage = f"""
    You are a movie recommendation and information chatbot. Your job is to provide detailed movie recommendations, summaries, and relevant movie information based on the user's input. 
    Use the following instructions to generate a meaningful response:
@@ -454,13 +445,7 @@ def get_Recommendations():
         print(recommended_movie_ids)
 
         recommended_movies = []
-        # for movie_id in recommended_movie_ids:
-        #     response = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}&language=en-US')
-        #     if response.status_code == 200:
-        #         recommended_movies.append(response.json())
 
-
-        # parallel processing ///////////////////////
         with concurrent.futures.ThreadPoolExecutor() as executor:
             # Map fetch_movie_details to movie_ids
             future_to_movie = {executor.submit(fetch_movie_details, movie_id, api_key): movie_id for movie_id in recommended_movie_ids}
