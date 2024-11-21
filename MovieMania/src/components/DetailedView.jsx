@@ -235,15 +235,6 @@ const DetailedView = ({ movie, onClose, type }) => {
   console.log("Current User ID:", currentUserId);
   console.log("Movie ID:", movie.id);
 
-  // const [ratingValue, setRatingValue] = useState(rating); // Default value of 2.5
-  // console.log("Rating value:", ratingValue); // Log the rating value
-
-  // Handler to update the rating value
-  // const handleRatingChange = (event, newValue) => {
-  //   setRatingValue(newValue); // Updates the state with the new rating value
-  //   console.log("Rating value:", newValue); // You can also log it or use it as needed
-  // };
-
   useEffect(() => {
     axios
       .get(
