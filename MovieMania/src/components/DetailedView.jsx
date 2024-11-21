@@ -3,13 +3,10 @@ import { useState, useEffect, useContext, useRef } from "react";
 import "../styles/DetailedView.css";
 import StarIcon from "@mui/icons-material/Star";
 import CloseIcon from "@mui/icons-material/Close";
-import { Rate } from "antd";
-import { yellow } from "@mui/material/colors";
 import axios from "axios";
 import { MovieContext } from "./movieContext";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
-// import { set } from "mongoose";
 
 const DetailedView = ({ movie, onClose, type }) => {
   console.log("Movie:", movie);
