@@ -337,6 +337,7 @@ const DetailedView = ({ movie, onClose, type }) => {
                   <p>{movie.overview}</p>
                 </div>
               </div>
+              <button className="watchlist">Watch Trailer</button>
               <button
                 className={`${added ? "Watchlistadded" : "watchlist"}`}
                 onClick={addToWatchlist}
