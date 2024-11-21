@@ -12,6 +12,7 @@ import Stack from "@mui/material/Stack";
 // import { set } from "mongoose";
 
 const DetailedView = ({ movie, onClose, type }) => {
+  console.log("Movie:", movie);
   const detailsRef = useRef(null);
   const { currentUserId } = useContext(MovieContext);
   const [torrents, setTorrents] = useState([]);
@@ -337,7 +338,7 @@ const DetailedView = ({ movie, onClose, type }) => {
                   <p>{movie.overview}</p>
                 </div>
               </div>
-              <button className="watchlist">Watch Trailer</button>
+              {/* <button className="watchlist">Watch Trailer</button> */}
               <button
                 className={`${added ? "Watchlistadded" : "watchlist"}`}
                 onClick={addToWatchlist}
